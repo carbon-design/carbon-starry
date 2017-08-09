@@ -9,25 +9,25 @@ const vueRouter = new Router({
   routes: [{
     path: '/home',
     component: resolve => {
-      require(['views/home.vue'], resolve)
+      require(['@/views/home.vue'], resolve)
     }
   }, {
     path: '/chat',
     component: resolve => {
-      require(['views/chat/index.vue'], resolve)
+      require(['@/views/chat/index.vue'], resolve)
     },
     children: [{
       path: 'bar',
-      component: require('views/chat/bar.vue')
+      component: require('@/views/chat/bar.vue')
     }, {
       path: 'todo',
       component: resolve => {
-        require(['views/chat/todo.vue'], resolve)
+        require(['@/views/chat/todo.vue'], resolve)
       }
     }, {
       path: 'foo',
       component: resolve => {
-        require(['views/chat/foo.vue'], resolve)
+        require(['@/views/chat/foo.vue'], resolve)
       }
     }]
   }, {

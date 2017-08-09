@@ -1,6 +1,11 @@
+.idea
 .DS_Store
+.ftppass
 node_modules/
 dist/
+dist_diff/
+data/
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

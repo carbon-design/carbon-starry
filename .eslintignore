@@ -1,2 +1,13 @@
-build/*.js
-config/*.js
+bin
+build
+config
+data
+dist
+dist_diff
+node_modules
+public
+resources
+bash
+static
+src/libs/
+src/assets/

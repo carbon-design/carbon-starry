@@ -23,7 +23,12 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDir: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/WechatBank': {
+        target: 'http://test.hccb.cc',
+        changeOrigin: true
+      }
+    },
     cssSourceMap: false
   }
 }

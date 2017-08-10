@@ -44,7 +44,7 @@ compiler.plugin('compilation', compilation => {
 })
 
 Object.keys(proxyTable).forEach(context => {
-  var options = proxyTable[context]
+  const options = proxyTable[context]
   if (typeof options === 'string') {
     options = { target: options }
   }
@@ -57,13 +57,13 @@ app.use(devMiddleware)
 
 app.use(hotMiddleware)
 
-var staticPath = path.posix.join(settings.assetsPublicPath, settings.assetsSubDir)
+const staticPath = path.posix.join(settings.assetsPublicPath, settings.assetsSubDir)
 app.use(staticPath, express.static('./static'))
 
 const uri = `http://${ip.address()}:${port}`
 
-var _resolve
-var readyPromise = new Promise(resolve => {
+let _resolve
+const readyPromise = new Promise(resolve => {
   _resolve = resolve
 })
 
@@ -76,7 +76,7 @@ devMiddleware.waitUntilValid(() => {
   _resolve()
 })
 
-var server = app.listen(port)
+const server = app.listen(port)
 
 module.exports = {
   ready: readyPromise,

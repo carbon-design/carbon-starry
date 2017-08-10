@@ -8,7 +8,6 @@ const baseWebpackConfig = require('./webpack.base')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 const resolve = dir => path.join(__dirname, '..', dir)
@@ -80,6 +79,7 @@ let webpackConfig = merge(baseWebpackConfig, {
 })
 
 if (settings.gzip) {
+  const CompressionWebpackPlugin = require('compression-webpack-plugin')
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',

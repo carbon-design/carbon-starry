@@ -1,6 +1,6 @@
 const path = require('path')
-const utils = require('./util-tools')
 const webpack = require('webpack')
+const utils = require('./util-tools')
 const merge = require('webpack-merge')
 const settings = require('../settings/customize').dev
 const baseWebpackConfig = require('./webpack.base')

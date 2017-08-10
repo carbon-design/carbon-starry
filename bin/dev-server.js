@@ -1,18 +1,19 @@
 require('./check-versions')()
+const settings = require('../settings/customize').dev
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = JSON.parse(settings.env.NODE_ENV)
+}
+
 const ip = require('ip')
 const opn = require('opn')
 const path = require('path')
 const chalk = require('chalk')
 const express = require('express')
 const webpack = require('webpack')
-const settings = require('../settings/customize').dev
 const proxyMiddleware = require('http-proxy-middleware')
 
 const isTest = process.env.NODE_ENV === 'testing'
 
-if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = JSON.parse(settings.env.NODE_ENV)
-}
 
 const webpackConfig = isTest ? require('../config/webpack.prod') : require('../config/webpack.dev')
 
@@ -22,7 +23,7 @@ const autoOpenBrowser = !!settings.autoOpenBrowser
 const proxyTable = settings.proxyTable
 
 const app = express()
-// console.log(JSON.stringify(webpackConfig))
+
 const compiler = webpack(webpackConfig)
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {

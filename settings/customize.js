@@ -14,7 +14,7 @@ module.exports = {
     lint: false,
     gzip: false,
     distServerPort: 3001,
-    distServerPath: 'www',
+    distServerPath: 'dist',
     gzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report
   },

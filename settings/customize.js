@@ -9,7 +9,7 @@ module.exports = {
     index: resolve('dist/index.html'),
     assetsRoot: resolve('dist'),
     assetsSubDir: '',
-    assetsPublicPath: '/halo/',
+    assetsPublicPath: '/carbon/',
     sourceMap: false,
     lint: false,
     gzip: false,

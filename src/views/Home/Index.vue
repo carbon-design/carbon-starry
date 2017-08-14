@@ -27,8 +27,8 @@ export default {
     }).then(res => {
       console.log(res)
       res.status === 200
-        ? alert('数据请求成功！')
-        : alert('数据请求失败！')
+        ? this.message = '数据请求成功！'
+        : this.message = '数据请求失败！'
     })
   },
   computed: {

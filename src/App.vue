@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <app-header>
+      <h1>我是分发小王子</h1>
+    </app-header>
     <router-view></router-view>
   </div>
 </template>

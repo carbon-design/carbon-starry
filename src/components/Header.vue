@@ -5,6 +5,7 @@
     header {{route}}
     <button @click="logIn">{{state ? '点击退出' : '点击登录'}}</button>
     {{state ? '已登录' : '未登录'}}
+    <slot>只有在没有要分发的内容时才会显示。</slot>
   </header>
 </template>
 

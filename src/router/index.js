@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/views/Home/Async'
+import Chat from '@/views/Chat/Async'
+import Bar from '@/views/Chat/Bar/Async'
+import Todo from '@/views/Chat/Todo/Async'
+import Foo from '@/views/Chat/Foo/Async'
 
 Vue.use(Router)
 
@@ -8,27 +13,19 @@ const vueRouter = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [{
     path: '/home',
-    component: resolve => {
-      require(['@/views/Home'], resolve)
-    }
+    component: Home
   }, {
     path: '/chat',
-    component: resolve => {
-      require(['@/views/Chat/Index'], resolve)
-    },
+    component: Chat,
     children: [{
       path: 'bar',
-      component: require('@/views/Chat/Bar')
+      component: Bar
     }, {
       path: 'todo',
-      component: resolve => {
-        require(['@/views/Chat/Todo'], resolve)
-      }
+      component: Todo
     }, {
       path: 'foo',
-      component: resolve => {
-        require(['@/views/Chat/Foo'], resolve)
-      }
+      component: Foo
     }]
   }, {
     path: '*',

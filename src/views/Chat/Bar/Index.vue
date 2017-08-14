@@ -1,13 +1,13 @@
 <template>
-  <article class="foo">{{ loginName | uppercase }}</article>
+  <article class="bar">yes! Bar!</article>
 </template>
 
 <script>
 export default {
-  name: 'foo',
+  name: 'bar',
   data () {
     return {
-      loginName: 'admin'
+      loginName: ''
     }
   },
   components: {

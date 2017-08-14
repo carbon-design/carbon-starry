@@ -1,13 +1,16 @@
 <template>
-  <article class="todo">Todo</article>
+  <article class="todo">
+    Todo!
+  </article>
 </template>
 
 <script>
+
 export default {
   name: 'todo',
   data () {
     return {
-      loginName: ''
+
     }
   },
   components: {
@@ -20,7 +23,7 @@ export default {
 
   },
   beforeMount () {
-
+    console.log('123')
   },
   methods: {
 

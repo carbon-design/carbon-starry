@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <app-header>
+      <img src="~@/assets/images/logo.png" alt="">
       <h1>我是分发小王子</h1>
     </app-header>
     <router-view></router-view>

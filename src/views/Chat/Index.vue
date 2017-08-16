@@ -1,6 +1,7 @@
 <template>
   <article class="message">
     {{message}}
+    {{info}}
     <button @click="showToast">toast</button>
     <router-link to="/chat/bar" active-class="active">home</router-link>
     <router-link to="/chat/todo" active-class="active">todo</router-link>
@@ -11,12 +12,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 
 export default {
   name: 'chat',
   data () {
     return {
-      loginName: ''
+      info: ''
     }
   },
   components: {
@@ -30,7 +32,19 @@ export default {
 
   },
   beforeMount () {
-
+    axios({
+      method: 'post',
+      url: '/WechatBank/fee/queryAreaCode',
+      data: {
+        actionFlag: '0',
+        areaCode: '00'
+      }
+    }).then(res => {
+      console.log(res)
+      res.status === 200
+        ? this.info = '数据请求成功！'
+        : this.info = '数据请求失败！'
+    })
   },
   methods: {
     showToast () {

@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const utils = require('./util-tools')
 const vueLoaderConfig = require('./vue-loader')
+const packageConfig = require('../package.json')
 const settings = require('../settings/customize')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
@@ -66,7 +67,14 @@ if (settings[env].lint && !isProd) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    vendor: [
+      'axios',
+      'vue',
+      'vue-router',
+      'vuex',
+      'vuex-router-sync'
+    ]
   },
   output: {
     path: settings.build.assetsRoot,

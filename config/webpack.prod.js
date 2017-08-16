@@ -25,7 +25,7 @@ let webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: settings.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash:8].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash:8].js')
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash:8].js')
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -59,10 +59,7 @@ let webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: (module, count) =>
-        module.resource &&
-        /\.js$/.test(module.resource) &&
-        module.resource.indexOf(resolve('node_modules')) === 0
+      minChunks: ({ resource }) => resource && resource.indexOf(path.join(__dirname, '../node_modules')) >= 0
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',

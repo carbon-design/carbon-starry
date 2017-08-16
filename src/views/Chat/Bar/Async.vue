@@ -9,7 +9,7 @@ import AppError from '@/components/Error'
 export default {
   components: {
     AsyncModule: () => ({
-      component: import('./Index'),
+      component: import('./Index' /* webpackChunkName: 'bar' */),
       loading: AppLoading,
       error: AppError,
       delay: 200,

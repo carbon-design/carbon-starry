@@ -32,6 +32,7 @@ export default {
 
   },
   beforeMount () {
+    console.log(this.$store.getters.chatMessage)
     axios({
       method: 'post',
       url: '/WechatBank/fee/queryAreaCode',

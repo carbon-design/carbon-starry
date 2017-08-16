@@ -40,7 +40,7 @@ export default {
         areaCode: '00'
       }
     }).then(res => {
-      console.log(res)
+      this.$store.dispatch('setMessage', 'dispatch 直接分发参数')
       res.status === 200
         ? this.info = '数据请求成功！'
         : this.info = '数据请求失败！'

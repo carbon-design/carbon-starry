@@ -1,5 +1,5 @@
 const path = require('path')
-const settings = require('../settings/customize')
+const settings = require('../settings/core')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'

@@ -1,5 +1,5 @@
 const utils = require('./util-tools')
-const settings = require('../settings/customize')
+const settings = require('../settings/core')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {

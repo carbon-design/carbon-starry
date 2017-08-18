@@ -1,5 +1,5 @@
 require('./check-versions')()
-const settings = require('../settings/customize').dev
+const settings = require('../settings/core').dev
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(settings.env.NODE_ENV)
 }

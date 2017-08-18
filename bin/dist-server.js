@@ -3,7 +3,7 @@ const opn = require('opn')
 const path = require('path')
 const chalk = require('chalk')
 const express = require('express')
-const settings = require('../settings/customize')
+const settings = require('../settings/core')
 const proxyMiddleware = require('http-proxy-middleware')
 const proxyTable = settings.dev.proxyTable
 

@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const utils = require('./util-tools')
 const vueLoaderConfig = require('./vue-loader')
 const packageConfig = require('../package.json')
-const settings = require('../settings/customize')
+const settings = require('../settings/core')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'

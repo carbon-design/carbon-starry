@@ -1,7 +1,7 @@
 'use strict'
 const gulp = require('gulp')
 const server = require('gulp-express')
-const settings = require('./settings/customize')
+const settings = require('./settings/core')
 
 gulp.task('dist-server', () => {
   server.run(['bin/dist-server.js'])

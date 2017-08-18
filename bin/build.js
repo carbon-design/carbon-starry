@@ -7,7 +7,7 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const spinner = ora('building for production...')
-const settings = require('../settings/customize').build
+const settings = require('../settings/core').build
 const webpackConfig = require('../config/webpack.prod')
 
 spinner.start()

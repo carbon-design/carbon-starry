@@ -2,8 +2,10 @@ const ip = require('ip')
 const opn = require('opn')
 const path = require('path')
 const chalk = require('chalk')
+const tools = require('./tools')
 const express = require('express')
 const settings = require('../settings/core')
+const devices = require('../settings/devices')
 const proxyMiddleware = require('http-proxy-middleware')
 const proxyTable = settings.dev.proxyTable
 
@@ -20,7 +22,8 @@ app.listen(port, error => {
     throw error
   }
   console.log(chalk.green(`Server is running at ${uri}`))  
-  opn(uri)
+  process.env.npm_config_opn && opn(uri)
+  process.env.npm_config_shot && tools.screenshot(uri, devices)
 })
 
 Object.keys(proxyTable).forEach(context => {

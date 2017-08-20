@@ -13,7 +13,7 @@ exports.screenshot = async (url, deviceList, delay) => {
   const sleep = time => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-          resolve('ok')
+          resolve('done')
       }, time || 0)
     })
   }

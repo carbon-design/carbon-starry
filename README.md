@@ -8,7 +8,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost
 npm run dev
 
 # build for production with minification
@@ -17,11 +17,12 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
+# serve with static files at localhost, if you want to automatically open the browser or generate screenshots, adds the [--opn] or [--shot] parameter for the current command line
+npm run dist-server --opn --shot
+
 # run unit tests
 npm run unit
 
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

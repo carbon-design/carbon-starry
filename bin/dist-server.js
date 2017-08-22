@@ -21,7 +21,7 @@ app.listen(port, error => {
   if (error) {
     throw error
   }
-  console.log(chalk.green(`Server is running at ${uri}`))  
+  console.log(chalk.green(`Server is running at ${uri}`))
   process.env.npm_config_opn && opn(uri)
   process.env.npm_config_shot && tools.screenshot(uri, devices)
 })

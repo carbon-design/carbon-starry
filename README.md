@@ -1,5 +1,7 @@
 # carbon-megatron
 
+[![Dependency Status](https://gemnasium.com/badges/github.com/carbon-design/carbon-megatron.svg)](https://gemnasium.com/github.com/carbon-design/carbon-megatron)
+
 > A Vue Web Application
 
 ## Build Setup

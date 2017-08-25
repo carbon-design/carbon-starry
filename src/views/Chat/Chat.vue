@@ -12,7 +12,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from 'axios'
 
 export default {
   name: 'chat',
@@ -33,7 +32,7 @@ export default {
   },
   beforeMount () {
     console.log(this.$store.getters.chatMessage)
-    axios({
+    this.fetch({
       method: 'post',
       url: '/WechatBank/fee/queryAreaCode',
       data: {

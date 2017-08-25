@@ -7,7 +7,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import axios from 'axios'
 
 export default {
   name: 'home',
@@ -17,7 +16,7 @@ export default {
     }
   },
   beforeMount () {
-    axios({
+    this.fetch({
       method: 'post',
       url: '/WechatBank/fee/queryAreaCode',
       data: {

@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home/Async'
-import Chat from '@/views/Chat/Async'
-import Bar from '@/views/Chat/Bar/Async'
-import Todo from '@/views/Chat/Todo/Async'
-import Foo from '@/views/Chat/Foo/Async'
+import Home from '@/views/Home'
+import Chat from '@/views/Chat'
+import Bar from '@/views/Chat/Bar'
+import Todo from '@/views/Chat/Todo'
+import Foo from '@/views/Chat/Foo'
 
 Vue.use(Router)
 

@@ -41,9 +41,9 @@ acorn@^5.0.0, acorn@^5.1.1:
   version "5.1.1"
   resolved "http://registry.npm.taobao.org/acorn/download/acorn-5.1.1.tgz#53fe161111f912ab999ee887a90a0bc52822fd75"
 
-add-asset-html-webpack-plugin@^2.1.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/add-asset-html-webpack-plugin/download/add-asset-html-webpack-plugin-2.1.0.tgz#16575d6a3c7ff22f8c7abc9aef9cb54103a330a2"
+add-asset-html-webpack-plugin@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/add-asset-html-webpack-plugin/-/add-asset-html-webpack-plugin-2.1.1.tgz#bbcdfbfad657847d1b9424e9ed4476650975180c"
   dependencies:
     bluebird "^3.4.6"
     globby "^6.1.0"
@@ -5926,9 +5926,9 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-puppeteer@0.10.0:
-  version "0.10.0"
-  resolved "http://registry.npm.taobao.org/puppeteer/download/puppeteer-0.10.0.tgz#f0a95de4b2660608fa9dbc54f525d013ef6262e7"
+puppeteer@0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-0.10.1.tgz#a26f7012ff0fcc9f21c70ff9e2a8c60cba568a83"
   dependencies:
     debug "^2.6.8"
     extract-zip "^1.6.5"

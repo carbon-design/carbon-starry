@@ -1,6 +1,19 @@
 # carbon-megatron
 
-[![Dependency Status](https://gemnasium.com/badges/github.com/carbon-design/carbon-megatron.svg)](https://gemnasium.com/github.com/carbon-design/carbon-megatron)
+<p align="center">
+   <a href="https://github.com/carbon-design/carbon-megatron">
+    <img src="https://img.shields.io/github/issues/carbon-design/carbon-megatron.svg" alt="">
+  </a>
+  <a href="https://github.com/carbon-design/carbon-megatron">
+    <img src="https://img.shields.io/github/forks/carbon-design/carbon-megatron.svg" alt="">
+  </a>
+  <a href="https://github.com/carbon-design/carbon-megatron">
+    <img src="https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg" alt="">
+  </a>
+  <a href="https://github.com/carbon-design/carbon-megatron">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="">
+  </a>
+</p>
 
 > A Vue Web Application
 

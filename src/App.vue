@@ -11,6 +11,7 @@
 <style src="./assets/styles/global.css"></style>
 <style lang="less" src="./assets/styles/pages.less"></style>
 <style lang="scss" src="./assets/styles/loading.scss"></style>
+
 <script>
 import AppHeader from './components/Header'
 

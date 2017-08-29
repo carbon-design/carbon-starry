@@ -1,19 +1,9 @@
 # carbon-megatron
 
-<p align="center">
-   <a href="https://github.com/carbon-design/carbon-megatron">
-    <img src="https://img.shields.io/github/issues/carbon-design/carbon-megatron.svg" alt="">
-  </a>
-  <a href="https://github.com/carbon-design/carbon-megatron">
-    <img src="https://img.shields.io/github/forks/carbon-design/carbon-megatron.svg" alt="">
-  </a>
-  <a href="https://github.com/carbon-design/carbon-megatron">
-    <img src="https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg" alt="">
-  </a>
-  <a href="https://github.com/carbon-design/carbon-megatron">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="">
-  </a>
-</p>
+[![issues](https://img.shields.io/github/issues/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
+[![forks](https://img.shields.io/github/forks/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
+[![stars](https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carbon-design/carbon-megatron)
 
 > A Vue Web Application
 

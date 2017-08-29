@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { getCode } from '@/utils/api'
 import { mapActions } from 'vuex'
 
 export default {
@@ -15,20 +16,12 @@ export default {
       message: ''
     }
   },
-  beforeMount () {
-    this.fetch({
-      method: 'post',
-      url: '/WechatBank/fee/queryAreaCode',
-      data: {
-        actionFlag: '0',
-        areaCode: '00'
-      }
-    }).then(res => {
-      console.log(res)
-      res.status === 200
-        ? this.message = '数据请求成功！'
-        : this.message = '数据请求失败！'
-    })
+  beforeMount: async function () {
+    const res = await getCode()
+    console.log(res)
+    res.status === 200
+      ? this.message = '数据请求成功！'
+      : this.message = '数据请求失败！'
   },
   computed: {
 

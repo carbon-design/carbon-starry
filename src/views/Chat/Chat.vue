@@ -30,21 +30,20 @@ export default {
   watch: {
 
   },
-  beforeMount () {
+  beforeMount: async function () {
     console.log(this.$store.getters.chatMessage)
-    this.fetch({
+    const res = await this.fetch({
       method: 'post',
       url: '/WechatBank/fee/queryAreaCode',
       data: {
         actionFlag: '0',
         areaCode: '00'
       }
-    }).then(res => {
-      this.$store.dispatch('setMessage', 'dispatch 直接分发参数')
-      res.status === 200
-        ? this.info = '数据请求成功！'
-        : this.info = '数据请求失败！'
     })
+    this.$store.dispatch('setMessage', 'dispatch 直接分发参数')
+    res.status === 200
+      ? this.info = '数据请求成功！'
+      : this.info = '数据请求失败！'
   },
   methods: {
     showToast () {

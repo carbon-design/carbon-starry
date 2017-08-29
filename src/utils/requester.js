@@ -1,8 +1,17 @@
 import axios from 'axios'
 
+export const Axios = axios.create({
+  baseURL: '/',
+  timeout: 10000,
+  responseType: 'json',
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+  }
+})
+
 export default {
   install (Vue, options) {
-    // Vue.prototype.fetch = axios
-    Object.defineProperty(Vue.prototype, 'fetch', { value: axios })
+    Object.defineProperty(Vue.prototype, 'fetch', { value: Axios })
   }
 }

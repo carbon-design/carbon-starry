@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node bin/dev-server.js",
     "start": "node bin/dev-server.js",
-    "build": "node bin/build.js",
+    "build": "node bin/production.js",
     "dist-server": "gulp dist-server",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",

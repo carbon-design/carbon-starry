@@ -1,4 +1,4 @@
-import asyncLoadConfig from '@/utils/asyncLoadConfig'
+import asyncLoadConfig from '@/config/asyncLoad'
 
 export default {
   template: '<async-module></async-module>',

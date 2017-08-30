@@ -1,9 +1,9 @@
 import { Axios } from './requester'
 
-const getPath = name => `/WechatBank/fee/${name}`
+const rq = name => `/WechatBank/fee/${name}`
 
 export const API = {
-  queryCode: getPath('queryAreaCode')
+  queryCode: rq('queryAreaCode')
 }
 
 export const getCode = () => Axios({

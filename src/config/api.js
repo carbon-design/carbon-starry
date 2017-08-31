@@ -1,4 +1,4 @@
-import { Axios } from './requester'
+import { Axios } from '@/utils/requester'
 
 const rq = name => `/WechatBank/fee/${name}`
 

@@ -1,5 +1,5 @@
-import AppLoading from '@/components/Loading'
-import AppError from '@/components/Error'
+import AppLoading from '^/Loading'
+import AppError from '^/Error'
 
 export default {
   loading: AppLoading,

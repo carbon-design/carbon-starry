@@ -67,7 +67,7 @@ const readyPromise = new Promise(resolve => {
   _resolve = resolve
 })
 
-console.log('> Starting dev server...')
+console.log(chalk.blue('> Starting dev server...'))
 devMiddleware.waitUntilValid(() => {
   console.log(chalk.cyan(`> Listening at ${uri} \n`))
   if (autoOpenBrowser && !isTest) {

@@ -1,4 +1,5 @@
-﻿import Vue from 'vue'
+﻿import '@/utils/device'
+import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import requester from './utils/requester'
@@ -20,4 +21,4 @@ const app = new Vue({
   ...App
 })
 
-app.$mount('#app')
+app.$mount('#MOUNT_NODE')

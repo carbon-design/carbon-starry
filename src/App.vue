@@ -12,7 +12,7 @@
 import '#/styles/global.css'
 import '#/styles/pages.less'
 import '#/styles/loading.scss'
-import AppHeader from './components/Header'
+import AppHeader from '^/layouts/Header'
 
 export default {
   components: {

@@ -7,3 +7,11 @@ gulp.task('dist-server', () => {
   server.run(['bin/dist-server.js'])
   gulp.watch([`${settings.build.distServerPath}/**/*`], server.notify)
 })
+
+gulp.task('dev', () => {
+  require('./bin/dev-server')
+})
+
+gulp.task('build', () => {
+  require('./bin/production')
+})

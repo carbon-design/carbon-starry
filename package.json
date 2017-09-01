@@ -5,9 +5,9 @@
   "author": "Aford <zhangyh@belink.com>",
   "private": true,
   "scripts": {
-    "dev": "node bin/dev-server.js",
-    "start": "node bin/dev-server.js",
-    "build": "node bin/production.js",
+    "dev": "gulp dev",
+    "start": "gulp dev",
+    "build": "gulp build",
     "dist-server": "gulp dist-server",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",

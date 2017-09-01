@@ -12,7 +12,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 let plugins = []
 
-if (debug) {
+if (debug && !window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
   const logger = createLogger({
     collapsed: false,
     transformer (state) {

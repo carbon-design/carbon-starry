@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div class="app-main">
     <app-header>
-      <img src="~@/assets/images/logo.png" alt="">
-      <h1>我是分发小王子</h1>
+      <img src="~#/images/logo.png" width="200" alt="">
+      <h1>我是分发的内容</h1>
     </app-header>
     <router-view></router-view>
   </div>

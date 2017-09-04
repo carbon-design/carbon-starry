@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getCode } from '@/config/api'
+import { getCode } from '~/config/api'
 import { mapActions } from 'vuex'
 
 export default {

@@ -1,4 +1,4 @@
-﻿import '@/utils/device'
+﻿import './utils/device'
 import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'

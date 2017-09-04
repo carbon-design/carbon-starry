@@ -1,4 +1,4 @@
-import * as Filters from '@/filters'
+import * as Filters from '~/filters'
 
 describe('filters.js', () => {
   it('should be uppercase', () => {

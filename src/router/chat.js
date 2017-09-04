@@ -1,7 +1,7 @@
-import Chat from '@/views/Chat'
-import Bar from '@/views/Chat/Bar'
-import Todo from '@/views/Chat/Todo'
-import Foo from '@/views/Chat/Foo'
+import Chat from '@/Chat'
+import Bar from '@/Chat/Bar'
+import Todo from '@/Chat/Todo'
+import Foo from '@/Chat/Foo'
 
 export default {
   path: '/chat',

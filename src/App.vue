@@ -1,7 +1,7 @@
 <template>
   <div class="app-main">
     <app-header>
-      <img src="~#/images/logo.png" width="200" alt="">
+      <img src="~/#/images/logo.png" width="200" alt="">
       <h1>我是分发的内容</h1>
     </app-header>
     <router-view></router-view>

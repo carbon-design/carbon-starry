@@ -1,9 +1,13 @@
 # carbon-megatron
-
+[![GitHub watchers](https://img.shields.io/github/watchers/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
 [![issues](https://img.shields.io/github/issues/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
 [![forks](https://img.shields.io/github/forks/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
 [![stars](https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
+[![downloads](https://img.shields.io/github/downloads/carbon-design/carbon-megatron/total.svg)](https://github.com/carbon-design/carbon-megatron)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carbon-design/carbon-megatron)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/carbon-design/carbon-megatron)
+[![GitHub followers](https://img.shields.io/github/followers/OwlAford.svg?style=social&label=Follow)](https://github.com/OwlAford)
+[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/Aford79872215)
 
 >  ❤️A Vue Web Application
 

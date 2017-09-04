@@ -16,6 +16,7 @@ const distServerPath = settings.build.distServerPath
 const uri = `http://${ip.address()}:${port}${publicPath}`
 
 app.use(publicPath, express.static(path.join(__dirname, '..', distServerPath)))
+app.use('/mock', express.static('./mock'))
 
 app.listen(port, error => {
   if (error) {

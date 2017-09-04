@@ -5,7 +5,7 @@
 [![stars](https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carbon-design/carbon-megatron)
 
-> A Vue Web Application
+>  ❤️A Vue Web Application
 
 ## Build Setup
 

@@ -23,7 +23,7 @@ export default {
 
   },
   beforeMount () {
-    console.log('123')
+    console.log(this.getDevice())
   },
   methods: {
 

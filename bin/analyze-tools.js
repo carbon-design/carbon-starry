@@ -18,7 +18,10 @@ exports.screenshot = async (url, deviceList, delay) => {
     await page.emulate(params)
     await page.goto(url)
     await sleep(delay)
+    console.log(chalk.blue(`> Starting generate ${params.name} screenshot...`))
     await page.screenshot({ path: getFullPath(`screenshot/${params.name.replace(/\s+/g, '_')}.png`) })
+    console.log(chalk.green(`${params.name} screenshot have been generated!`))
+
   }
   browser.close()
 }

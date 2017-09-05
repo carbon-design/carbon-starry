@@ -6,6 +6,7 @@ const resolve = dir => path.join(__dirname, '..', dir)
 module.exports = {
   build: {
     env: env.prod,
+    entry: 'static/mobile.html',
     index: resolve('dist/index.html'),
     assetsRoot: resolve('dist'),
     assetsSubDir: '',
@@ -20,6 +21,7 @@ module.exports = {
   },
   dev: {
     env: env.dev,
+    entry: 'static/mobile.html',
     port: 3000,
     lint: true,
     autoOpenBrowser: true,

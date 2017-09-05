@@ -1,7 +1,7 @@
 <template>
   <header :class="{isHome: isHome}">
-    <router-link to="/home" active-class="active">首页</router-link>
-    <router-link to="/chat/bar" active-class="active">留言</router-link>
+    <router-link to="/home" active-class="active">HOME</router-link>
+    <router-link to="/chat/bar" active-class="active">CHAT</router-link>
     header {{route}}
     <button @click="logIn">{{state ? '点击退出' : '点击登录'}}</button>
     {{state ? '已登录' : '未登录'}}

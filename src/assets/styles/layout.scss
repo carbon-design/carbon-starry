@@ -1,0 +1,29 @@
+@function setFont($ext) {
+  @return '../images/fonts/iconfont.' + $ext
+}
+
+.app-wrap {
+  font-size: 0.24rem;
+}
+
+// @font-face {
+//   font-family: 'iconfont';
+//   src: url(setFont('eot'));
+//   src: url(setFont('eot?#iefix')) format('embedded-opentype'),
+//   url(setFont('woff')) format('woff'),
+//   url(setFont('ttf')) format('truetype'),
+//   url(setFont('svg#iconfont')) format('svg');
+// }
+
+@font-face {
+  font-family: 'iconfont';
+  src: url(setFont('ttf')) format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 0.32rem;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

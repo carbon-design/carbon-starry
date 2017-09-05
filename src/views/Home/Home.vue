@@ -1,5 +1,9 @@
 <template>
   <article class="home">
+    <app-header>
+      <img src="~/#/images/logo.png" width="200" alt="">
+      <h1>我是分发的内容</h1>
+    </app-header>
     <input type="text" value="" v-model="message">
     <button @click="publicMessage">发布消息</button>
     {{ userName }}
@@ -7,6 +11,7 @@
 </template>
 
 <script>
+import AppHeader from '^/layouts/Header'
 import { getCode, getLogin } from '~/config/api'
 import { mapActions } from 'vuex'
 
@@ -17,6 +22,9 @@ export default {
       message: '',
       userName: ''
     }
+  },
+  components: {
+    AppHeader
   },
   beforeMount: async function () {
     const res = await getCode()

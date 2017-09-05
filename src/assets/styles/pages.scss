@@ -4,6 +4,32 @@
   position: absolute;
 }
 
+@keyframes shine1 {
+  0%, 100% {
+    right: 0.2rem;
+    top: 0.2rem;
+    opacity: .6;
+  }
+
+  40% {
+    right: 0.4rem;
+    top: 0.4rem;
+    opacity: 1;
+  }
+}
+
+@keyframes shine2 {
+  0%, 100% {
+    right: -0.18rem;
+    top: -0.1rem;
+  }
+
+  40% {
+    right: -0.28rem;
+    top: -0.2rem;
+  }
+}
+
 .page-user {
   padding: 0.3rem 0.4rem;
 
@@ -12,6 +38,8 @@
     min-height: 2.3rem;
     background-color: #fff;
     border-radius: 0.08rem;
+    padding-top: 2rem;
+    box-sizing: border-box;
     box-shadow: 0 0.06rem 0.24rem -0.02rem rgba(0, 0, 0, .04);
     position: relative;
 
@@ -77,6 +105,7 @@
       right: 0.4rem;
       top: 0.4rem;
       @include dot(0.2);
+      animation: shine1 5s ease 3s infinite both;
       
       &:after {
         content: '';
@@ -87,6 +116,7 @@
         right: -0.28rem;
         top: -0.2rem;
         @include dot(0.16);
+        animation: shine2 5s ease 3s infinite both;
       }
 
       &:before {
@@ -163,7 +193,8 @@
     }
 
     &.detail {
-      height: 2.7rem;
+      min-height: 2.7rem;
+      padding-top: 2.4rem;
 
       .circle {
         height: 2rem;
@@ -198,6 +229,30 @@
             height: 100%;
             width: 100%;
             font-size: 0.2rem;
+          }
+        }
+      }
+      
+      .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0.2rem;
+
+        .cell {
+          padding: 0.2rem 0.3rem;
+
+          span {
+            font-size: 0.28rem;
+            margin-left: 0.1rem;
+          }
+
+          .iconfont {
+            font-size: 0.48rem;
+            color: #1ea1ff;
+            display: inline-block;
+            vertical-align: middle;
           }
         }
       }

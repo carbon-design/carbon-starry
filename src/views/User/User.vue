@@ -32,6 +32,24 @@
           </div>
         </div>
       </div>
+      <div class="menu">
+        <div class="cell">
+          <i class="iconfont">&#xe68e;</i>
+          <span>扫一扫</span>
+        </div>
+        <div class="cell">
+          <i class="iconfont">&#xe6f9;</i>
+          <span>理财指导</span>
+        </div>
+        <div class="cell">
+          <i class="iconfont">&#xe624;</i>
+          <span>贷款申请</span>
+        </div>
+        <div class="cell">
+          <i class="iconfont">&#xe623;</i>
+          <span>信用提升</span>
+        </div>
+      </div>
     </div>
     <div class="chassis">
       <div class="card type2">

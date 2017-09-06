@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const express = require('express')
 const tools = require('./analyze-tools')
 const settings = require('../settings/core')
+const routes = require('../settings/routes')
 const devices = require('../settings/devices')
 const proxyMiddleware = require('http-proxy-middleware')
 const proxyTable = settings.dev.proxyTable
@@ -24,7 +25,13 @@ app.listen(port, error => {
   }
   console.log(chalk.green(`Server is running at ${uri}`))
   process.env.npm_config_opn && opn(uri)
-  process.env.npm_config_shot && tools.screenshot(uri, devices)
+  const genShot = async () => {
+    for (route of routes) {
+      const fullPath = uri + route.path
+      await tools.screenshot(fullPath, devices, route.name, route.delay)
+    }
+  }
+  process.env.npm_config_shot && genShot()
 })
 
 Object.keys(proxyTable).forEach(context => {

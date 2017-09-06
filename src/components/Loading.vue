@@ -1,12 +1,11 @@
 <template>
-  <span class="loading">loading...</span>
+  <div class="app-loading">
+    <div class="triangle"></div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'loading',
-  beforeMount () {
-    console.log('页面正在加载！')
-  }
+  name: 'loading'
 }
 </script>

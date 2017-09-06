@@ -73,7 +73,7 @@ const readyPromise = new Promise(resolve => {
 console.log(chalk.blue('> Starting dev server...'))
 devMiddleware.waitUntilValid(() => {
   console.log(chalk.cyan(`> Listening at ${uri} \n`))
-  if (autoOpenBrowser && !isTest) {
+  if (autoOpenBrowser && !isTest && !process.env.npm_config_silence) {
     opn(uri)
   }
   _resolve()

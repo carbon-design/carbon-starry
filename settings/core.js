@@ -11,7 +11,7 @@ module.exports = {
     assetsRoot: resolve('dist'),
     assetsSubDir: '',
     assetsPublicPath: '/carbon/',
-    sourceMap: false,
+    productionSourceMap: false,
     lint: false,
     gzip: false,
     distServerPort: 3001,
@@ -33,6 +33,6 @@ module.exports = {
         changeOrigin: true
       }
     },
-    cssSourceMap: false
+    cssSourceMap: true
   }
 }

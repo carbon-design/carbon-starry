@@ -1,0 +1,25 @@
+@keyframes triangleRotate {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg)
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 1080deg)
+  }
+}
+
+.app-loading {
+  position: relative;
+  padding-top: 1rem;
+
+  .triangle {
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    margin-left: -0.3rem;
+    background: url(../../images/triangle.svg) center center no-repeat;
+    background-size: 100% auto;
+    animation: triangleRotate 3s infinite;
+  }
+}

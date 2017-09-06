@@ -1,17 +1,12 @@
 <template>
-  <span class="error">页面发生错误！</span>
+  <div class="app-error">
+    <div class="fail-icon"></div>
+    <div class="title">页面获取发生错误！</div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'error',
-  data () {
-    return {
-      msg: ''
-    }
-  },
-  beforeMount () {
-    console.warn('页面发生错误！')
-  }
+  name: 'error'
 }
 </script>

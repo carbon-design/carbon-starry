@@ -3,7 +3,7 @@
     {{message}}
     {{info}}
     <button @click="showToast">toast</button>
-    <router-link to="/chat/bar" active-class="active">home</router-link>
+    <router-link to="/scan" active-class="active">scan</router-link>
     <router-link to="/chat/todo" active-class="active">todo</router-link>
     <router-link to="/chat/foo" active-class="active">foo</router-link>
     <router-view></router-view>

@@ -1,5 +1,5 @@
 @function setFont($ext) {
-  @return '../images/fonts/iconfont.' + $ext
+  @return '../../images/fonts/iconfont.' + $ext
 }
 
 .app-wrap {

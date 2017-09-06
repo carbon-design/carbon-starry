@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const utils = require('./util-tools')
 const vueLoaderConfig = require('./vue-loader')
-const packageConfig = require('../package.json')
 const settings = require('../settings/core')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
@@ -71,9 +70,11 @@ module.exports = {
     vendor: [
       'axios',
       'vue',
-      'vue-router',
       'vuex',
-      'vuex-router-sync'
+      'vue-router',
+      'vuex-router-sync',
+      'echarts/lib/echarts',
+      'echarts/lib/chart/pie'
     ]
   },
   output: {

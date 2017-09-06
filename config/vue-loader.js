@@ -1,10 +1,18 @@
 const utils = require('./util-tools')
 const settings = require('../settings/core')
+const packageConfig = require('../package.json')
 const isProd = process.env.NODE_ENV === 'production'
+
+const postcssConfig = [
+  require('autoprefixer')({
+    browsers: packageConfig.browserslist
+  }),
+  require('postcss-flexibility')
+]
 
 module.exports = {
   loaders: utils.cssLoaders({
-    sourceMap: isProd ? settings.build.sourceMap : settings.dev.cssSourceMap,
+    sourceMap: isProd ? settings.build.productionSourceMap : settings.dev.cssSourceMap,
     extract: isProd
   }),
   transformToRequire: {
@@ -13,23 +21,5 @@ module.exports = {
     img: 'src',
     image: 'xlink:href'
   },
-  postcss: [
-    require('autoprefixer')({
-      browsers: [
-        'ie >= 9',
-        'ie_mob >= 10',
-        'ff >= 30',
-        'chrome >= 34',
-        'safari >= 7',
-        'opera >= 23',
-        'ios >= 7',
-        'android >= 4.4',
-        'bb >= 10'
-      ]
-    }),
-    require('postcss-flexibility'),
-    require('cssnano')({
-      preset: 'default'
-    })
-  ]
+  postcss: postcssConfig
 }

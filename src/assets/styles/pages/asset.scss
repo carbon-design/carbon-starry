@@ -2,6 +2,7 @@
   .main-panel {
     min-height: 1rem;
     background-color: #fff;
+    box-shadow: 0 0.08rem 0.36rem -0.04rem rgba(0, 0, 0, 0.04);
 
     .app-grid-menu {
       padding: 0.2rem 0.3rem 0.1rem;
@@ -50,6 +51,52 @@
       position: relative;
       background-image: -webkit-linear-gradient(160deg, #1389ff, #74deff);
       transition: box-shadow .2s linear;
+      
+      .title {
+        position: absolute;
+        right: 0.2rem;
+        top: 0.2rem;
+        text-align: right;
+        
+        h1 {
+          font-size: 0.36rem;
+          margin-bottom: 0.14rem;
+        }
+        
+        p {
+          font-size: 0.2rem;
+          opacity: .8;
+        }
+      }
+
+      .circle {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        &:before {
+          content: "所占比例";
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          font-size: 0.16rem;
+        }
+
+        &:after {
+          content: attr(data-num);
+          height: 100%;
+          position: absolute;
+          left: 102%;
+          top: 0;
+          line-height: inherit;
+          font-size: 0.42rem;
+          opacity: .8;
+        }
+      }
     }
 
     &:nth-child(2n) {

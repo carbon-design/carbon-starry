@@ -8,17 +8,32 @@
       <swiper :options="swiperOption">
         <swiper-slide>
           <div class="card">
-            <div ref="deposit">card1</div>
+            <div ref="deposit"></div>
+            <div class="circle" ref="depositCircle" data-num="0%"></div>
+            <div class="title">
+              <h1>定期存款</h1>
+              <p>截止至今日</p>
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card">
-            <div ref="bonds">card2</div>
+            <div ref="bonds"></div>
+            <div class="circle" ref="bondsCircle" data-num="0%"></div>
+            <div class="title">
+              <h1>基金理财</h1>
+              <p>截止至今日</p>
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card">
-            <div ref="fund">card3</div>
+            <div ref="fund"></div>
+            <div class="circle" ref="fundCircle" data-num="0%"></div>
+            <div class="title">
+              <h1>股票债券</h1>
+              <p>截止至今日</p>
+            </div>
           </div>
         </swiper-slide>
       </swiper>
@@ -39,6 +54,7 @@
 <script>
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
+import 'echarts/lib/chart/pie'
 
 export default {
   name: 'asset',
@@ -50,10 +66,11 @@ export default {
         paginationClickable: true,
         onInit: swiper => {
           const { $refs, runChart, initChart } = this
-          const { deposit, bonds, fund } = $refs
+          const { deposit, bonds, fund, depositCircle, bondsCircle, fundCircle } = $refs
           const width = swiper.size * 0.7
           const height = swiper.height
           this.triggerChart(swiper)
+          this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.5, [42, 23, 35])
           runChart(initChart(width, height, deposit), [-6, -4, -8, 0, 3, 4, 6, 4, -1, -2, -3, -3])
           runChart(initChart(width, height, bonds), [0, -1, -3, -2, -1, -2, -3, -4, -3, 0, 1, 2])
           runChart(initChart(width, height, fund), [0, 1, 3, 5, 4, 3, 2, 1, 5, 8, 9, 12])
@@ -79,6 +96,40 @@ export default {
       el.style.height = `${height}px`
       el.style.width = `${width}px`
       return echarts.init(el)
+    },
+    initCircle (els, size, datas) {
+      Array.prototype.forEach.call(els, (el, i) => {
+        const data = datas[i]
+        el.style.height = el.style.lineHeight = el.style.width = `${size}px`
+        el.setAttribute('data-num', `${data}%`)
+        echarts.init(el).setOption({
+          series: [{
+            type: 'pie',
+            color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, .3)'],
+            hoverAnimation: false,
+            radius: ['64%', '78%'],
+            avoidLabelOverlap: false,
+            label: {
+              normal: {
+                show: false,
+                position: 'center'
+              }
+            },
+            labelLine: {
+              normal: {
+                show: false
+              }
+            },
+            data: [{
+              value: data,
+              name: '已用'
+            }, {
+              value: 100 - data,
+              name: '剩余'
+            }]
+          }]
+        })
+      })
     },
     runChart (tar, data) {
       tar.setOption({
@@ -133,7 +184,7 @@ export default {
           lineStyle: {
             normal: {
               width: 2 * window.dpr,
-              color: 'rgba(255, 255, 255, .9)'
+              color: 'rgba(255, 255, 255, .7)'
             }
           },
           areaStyle: {

@@ -1,13 +1,10 @@
 <template>
   <article class="foo">
     {{ loginName | uppercase }}
-    <hello></hello>
   </article>
 </template>
 
 <script>
-import Hello from '^/Hello'
-
 export default {
   name: 'foo',
   data () {
@@ -16,7 +13,6 @@ export default {
     }
   },
   components: {
-    Hello
   },
   computed: {
 

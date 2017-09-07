@@ -6,8 +6,8 @@
 </template>
 
 <style src="#/styles/reset.css"></style>
-<style lang="scss" src="#/styles/layouts/index.scss"></style>
-<style lang="scss" src="#/styles/pages/index.scss"></style>
+<style src="swiper/dist/css/swiper.css"></style>
+<style lang="scss" src="#/styles/core.scss"></style>
 
 <script>
 import AppFooter from '^/layouts/Footer'

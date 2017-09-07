@@ -1,6 +1,7 @@
 ﻿import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'
+import swiper from 'vue-awesome-swiper'
 import device from './plugins/device'
 import requester from './plugins/requester'
 import App from './App.vue'
@@ -15,6 +16,7 @@ Object.keys(filters).forEach(key => {
 
 Vue.use(device)
 Vue.use(requester)
+Vue.use(swiper)
 
 const app = new Vue({
   router,

@@ -30,6 +30,7 @@
       doc.head.appendChild(metaEl);
     }
     metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
+    win.dpr = dpr;
     win.rootFontSize = _baseFontSize / 2 * dpr * _fontscale;
     doc.documentElement.style.fontSize = win.rootFontSize + 'px';
   })();

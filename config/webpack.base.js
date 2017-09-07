@@ -74,7 +74,8 @@ module.exports = {
       'vue-router',
       'vuex-router-sync',
       'echarts/lib/echarts',
-      'echarts/lib/chart/pie'
+      'echarts/lib/chart/pie',
+      'echarts/lib/chart/line'
     ]
   },
   output: {

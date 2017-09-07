@@ -5,6 +5,8 @@
   </div>
 </template>
 
+<style lang="scss" src="#/styles/layouts/error.scss"></style>
+
 <script>
 export default {
   name: 'error'

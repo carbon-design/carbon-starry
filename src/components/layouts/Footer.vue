@@ -5,7 +5,7 @@
         <i class="iconfont">&#xe601;</i>
         <div>首页</div>
       </router-link>
-      <router-link to="/chat/bar" active-class="active">
+      <router-link to="/asset" active-class="active">
         <i class="iconfont">&#xe645;</i>
         <div>我的资产</div>
       </router-link>
@@ -20,6 +20,8 @@
     </div>
   </footer>
 </template>
+
+<style lang="scss" src="#/styles/layouts/footer.scss"></style>
 
 <script>
 export default {

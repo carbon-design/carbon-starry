@@ -1,4 +1,4 @@
-import Home from '@/Home'
+import Home from '@/Home/Async'
 
 export default {
   path: '/home',

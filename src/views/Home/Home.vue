@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="menu">
+      <div class="app-grid-menu">
         <div class="cell">
           <i class="iconfont">&#xe68e;</i>
           <span>扫码付款</span>
@@ -100,17 +100,6 @@ import 'echarts/lib/chart/pie'
 
 export default {
   name: 'home',
-  data () {
-    return {
-
-    }
-  },
-  beforeMount () {
-
-  },
-  computed: {
-
-  },
   mounted () {
     const use = 1200
     const all = 9000
@@ -145,12 +134,6 @@ export default {
         }]
       }]
     })
-  },
-  beforeDestroy () {
-
-  },
-  methods: {
-
   }
 }
 </script>

@@ -1,5 +1,5 @@
 @function setFont($ext) {
-  @return '../../images/fonts/iconfont.' + $ext
+  @return '../images/fonts/iconfont.' + $ext
 }
 
 .app-wrap {
@@ -26,4 +26,39 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.app-grid-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+
+  .cell {
+    padding: 0.2rem 0.3rem;
+
+    span {
+      font-size: 0.28rem;
+      margin-left: 0.1rem;
+    }
+
+    .iconfont {
+      font-size: 0.46rem;
+      color: #1ea1ff;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.app-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
 }

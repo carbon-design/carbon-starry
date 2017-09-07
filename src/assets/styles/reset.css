@@ -23,6 +23,11 @@ html {
   text-size-adjust: none
 }
 
+html, body, .app-wrap {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body,
 button,
 dd,

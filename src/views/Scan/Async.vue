@@ -1,3 +1,8 @@
+<template>
+  <async-module></async-module>
+</template>
+
+<script>
 import asyncLoadConfig from '~/config/asyncLoad'
 
 export default {
@@ -10,3 +15,4 @@ export default {
     })
   }
 }
+</script>

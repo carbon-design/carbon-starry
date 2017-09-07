@@ -232,30 +232,6 @@
           }
         }
       }
-      
-      .menu {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 0.2rem;
-
-        .cell {
-          padding: 0.2rem 0.3rem;
-
-          span {
-            font-size: 0.28rem;
-            margin-left: 0.1rem;
-          }
-
-          .iconfont {
-            font-size: 0.48rem;
-            color: #1ea1ff;
-            display: inline-block;
-            vertical-align: middle;
-          }
-        }
-      }
     }
   }
 }

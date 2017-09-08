@@ -48,6 +48,44 @@
         </div>
       </div>
     </div>
+    <div class="review">
+      <div class="view-chart-wrap">
+        <div class="view-chart" ref="viewChart"></div>
+      </div>
+      <div class="list-wrap">
+        <div class="fund-list">
+          <div class="litem">
+            <div class="time">
+              <h2>7月</h2>
+              <h1>20</h1>
+            </div>
+            <div class="title">
+              <h1>博时基金</h1>
+              <p>由天宏基金有限公司提供</p>
+            </div>
+            <div class="profit">
+              <h1 class="up">+9.27%</h1>
+              <p>2017/09/08 12:00</p>
+            </div>
+          </div>
+          <div class="litem">
+            <div class="time">
+              <h2>7月</h2>
+              <h1>21</h1>
+            </div>
+            <div class="title">
+              <h1>兴全货币基金</h1>
+              <p>由天宏基金有限公司提供</p>
+            </div>
+            <div class="profit">
+              <h1 class="down">-4.27%</h1>
+              <p>2017/09/08 12:00</p>
+            </div>
+          </div>
+        </div>
+        <button class="readAll">查看全部</button>
+      </div>
+    </div>
   </article>
 </template>
 
@@ -73,11 +111,15 @@ export default {
           this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.5, [42, 23, 35])
           runChart(initChart(width, height, deposit), [-6, -4, -8, 0, 3, 4, 6, 4, -1, -2, -3, -3])
           runChart(initChart(width, height, bonds), [0, -1, -3, -2, -1, -2, -3, -4, -3, 0, 1, 2])
-          runChart(initChart(width, height, fund), [0, 1, 3, 5, 4, 3, 2, 1, 5, 8, 9, 12])
+          runChart(initChart(width, height, fund), [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12])
         },
         onTransitionEnd: this.triggerChart
       }
     }
+  },
+  mounted () {
+    const { $refs: { viewChart }, initChart, runChart } = this
+    runChart(initChart(viewChart.offsetWidth, viewChart.offsetHeight, viewChart), [6, 11, 2, 0, 3, 4, 6, 4, -1, -2, -3, -3], '20%')
   },
   methods: {
     triggerChart (swiper) {
@@ -131,7 +173,7 @@ export default {
         })
       })
     },
-    runChart (tar, data) {
+    runChart (tar, data, top) {
       tar.setOption({
         grid: {
           show: true,
@@ -139,7 +181,7 @@ export default {
           borderWidth: 0,
           left: 0,
           right: 0,
-          top: '50%',
+          top: top || '50%',
           bottom: 0
         },
         xAxis: [{

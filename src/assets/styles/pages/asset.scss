@@ -39,7 +39,7 @@
 
     &.card-active {
       .card {
-        box-shadow: 0 0.16rem 0.48rem -0.12rem rgba(116, 222, 255, 0.89);
+        box-shadow: 0 0.16rem 0.64rem -0.16rem rgb(108, 177, 236);
       }
     }
 
@@ -106,7 +106,7 @@
 
       &.card-active {
         .card {
-          box-shadow: 0 0.16rem 0.48rem -0.12rem rgba(255, 210, 67, 0.92);
+          box-shadow: 0 0.16rem 0.64rem -0.16rem rgba(255, 210, 67, 0.92);
         }
       }
     }
@@ -118,9 +118,124 @@
 
       &.card-active {
         .card {
-          box-shadow: 0 0.16rem 0.48rem -0.12rem rgba(99, 255, 228, 0.92);
+          box-shadow: 0 0.16rem 0.64rem -0.16rem rgba(99, 255, 228, 0.92);
         }
       }
+    }
+  }
+
+  .review {
+    margin-top: 0.3rem;
+
+    .view-chart-wrap {
+      height: 2.6rem;
+      width: 100%;
+      background-image: -webkit-linear-gradient(160deg, #f73aa4, #f68d77);
+      position: relative;
+
+      &:after {
+        content: '您的基金收益季度走势';
+        color: #fff;
+        position: absolute;
+        right: 0.3rem;
+        top: 0.3rem;
+        font-size: 0.32rem;
+      }
+    }
+
+    .view-chart {
+      width: 100%;
+      height: 100%;
+    }
+
+    .list-wrap {
+      margin: 0 0.2rem 0.4rem;
+      background-color: #fff;
+      padding-bottom: 0.4rem;
+      box-shadow: 0 0.08rem 0.36rem -0.04rem rgba(0, 0, 0, 0.04);
+    }
+
+    .fund-list {
+      min-height: 2rem;
+
+      .litem {
+        display: flex;
+        align-items: center;
+        padding: 0.3rem 0.3rem 0.3rem 0.6rem;
+        position: relative;
+
+        &:after {
+          content: '';
+          display: block;
+          height: 0.2rem;
+          width: 0.2rem;
+          border-radius: 50%;
+          position: absolute;
+          left: 0.2rem;
+          top: 50%;
+          margin-top: -0.1rem;
+          background-color: #7ed321;
+        }
+
+        &:nth-last-child(2n):after {
+          background-color: #bd10e0;
+        }
+
+        h1 {
+          font-size: 0.32rem;
+
+          &.up {
+            color: #ff4c55;
+          }
+
+          &.down {
+            color: #58b514;
+          }
+        }
+
+        h2 {
+          font-size: 0.28rem;
+        }
+
+        p {
+          margin-top: 0.1rem;
+          color: #bbb;
+        }
+
+        .time {
+          text-align: center;
+          margin-right: 0.2rem;
+
+          h1 {
+            font-size: 0.36rem;
+          }
+
+          h2 {
+            color: #999;
+          }
+        }
+
+        .profit {
+          text-align: right;
+        }
+
+        .title {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .readAll {
+      display: block;
+      margin: 0.3rem auto 0;
+      width: 3.8rem;
+      height: 0.9rem;
+      border-radius: 0.48rem;
+      font-size: 0.28rem;
+      color: #fff;
+      text-align: center;
+      line-height: 0.9rem;
+      background-image: -webkit-linear-gradient(135deg, #fb3353, #fe3eb2);
     }
   }
 }

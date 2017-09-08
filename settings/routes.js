@@ -1,9 +1,9 @@
 module.exports = [{
-  path: '#/scan',
-  name: 'scan',
-  delay: 300
+  path: '#/main/asset',
+  name: 'asset',
+  delay: 500
 }, {
-  path: '#/home',
+  path: '#/main/home',
   name: 'home',
   delay: 300
 }]

@@ -1,11 +1,11 @@
 <template>
   <footer>
     <div class="footer">
-      <router-link to="/home" active-class="active">
+      <router-link to="/main/home" active-class="active">
         <i class="iconfont">&#xe601;</i>
         <div>首页</div>
       </router-link>
-      <router-link to="/asset" active-class="active">
+      <router-link to="/main/asset" active-class="active">
         <i class="iconfont">&#xe645;</i>
         <div>我的资产</div>
       </router-link>

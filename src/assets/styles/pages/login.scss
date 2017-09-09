@@ -1,1 +1,88 @@
-﻿
+﻿.app-login {
+  background: #1d1139 url(../../images/bg.jpg) no-repeat 0 0/100% auto;
+  position: relative;
+  box-sizing: border-box;
+  position: relative;
+
+  .foot {
+    width: 100%;
+    height: 40%;
+    background: url(../../images/bg.svg) no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .loginBtn {
+      display: block;
+      margin: 0.4rem auto 0;
+      width: 4rem;
+      height: 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.32rem;
+      color: #fff;
+      text-align: center;
+      line-height: 1rem;
+      background-image: -webkit-linear-gradient(135deg, #e60244, #ff20c2);
+      box-shadow: 0 0.4rem 1rem -0.2rem rgba(255, 32, 135, 0.75);
+      transition: all .3s;
+
+      &:active {
+        background-image: -webkit-linear-gradient(135deg, #ff20c2, #FF004C);
+      }
+    }
+
+    .logo {
+      height: 1.2rem;
+      width: 1.2rem;
+      background: url(../../images/logo.png) no-repeat 0 0/ 100% 100%;
+      position: absolute;
+      left: 50%;
+      margin-left: -0.6rem;
+      bottom: 20%;
+    }
+  }
+
+  .app-avatar {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 0.06rem;
+    box-shadow: 0 0.26rem 0.42rem -0.06rem rgba(0, 0, 0, 0.25);
+  }
+
+  .form {
+    padding: 0.4rem;
+
+    .fm-item {
+      width: 100%;
+      margin-bottom: 0.3rem;
+
+      .ipt-wrap {
+        width: 100%;
+        padding: 0.26rem 0.4rem;
+        border-radius: 0.44rem;
+        background-color: rgba(250, 250, 250, 0.12);
+
+        input {
+          background: transparent;
+          color: #fff;
+          width: 100%;
+          font-size: 0.3rem;
+
+          &::-webkit-input-placeholder {
+            color: rgba(250, 250, 250, 0.4)
+          }
+        }
+      }
+
+      .label {
+        color: #fff;
+        font-size: 0.28rem;
+        margin-bottom: 0.2rem;
+        padding-left: 0.4rem;
+      }
+    }
+  }
+}

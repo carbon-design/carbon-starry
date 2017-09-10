@@ -60,7 +60,8 @@ export default {
           password
         })
         if (resLogin.status === 200) {
-          $router.push('main/home')
+          // $router.push('main/home')
+          $router.push('/redirect?path=/main/asset')
           login(resLogin.data)
         } else {
           alert('数据获取失败！')

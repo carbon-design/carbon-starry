@@ -1,5 +1,6 @@
 import Login from '@/Login'
 import Main from '@/Main'
+import Redirect from '@/Redirect'
 
 import Home from '@/Home/Async'
 import Asset from '@/Asset/Async'
@@ -27,6 +28,9 @@ export default [{
     component: Asset
   }]
 }, {
+  path: '/redirect',
+  component: Redirect
+}, {
   path: '/scan',
   component: Scan
 }, {
@@ -44,5 +48,5 @@ export default [{
   }]
 }, {
   path: '*',
-  redirect: '/main/home'
+  redirect: '/redirect'
 }]

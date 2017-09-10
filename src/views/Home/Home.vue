@@ -103,15 +103,10 @@ export default {
   name: 'home',
   computed: {
     ...mapGetters({
-      route: 'routePath',
-      state: 'loginState'
+      route: 'routePath'
     })
   },
   mounted () {
-    if (!this.state) {
-      alert('请先登录！')
-      this.$router.replace('/login')
-    }
     const use = 1200
     const all = 9000
     const surplus = all - use

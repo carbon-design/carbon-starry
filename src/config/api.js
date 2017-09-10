@@ -16,7 +16,10 @@ export const getCode = () => Axios({
   }
 })
 
-export const getLogin = () => Axios({
-  method: 'get',
-  url: API.login
-})
+export const getLogin = data => {
+  console.log(data)
+  return Axios({
+    method: 'get',
+    url: API.login
+  })
+}

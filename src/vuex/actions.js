@@ -1,5 +1,9 @@
-export const logInOut = ({ commit }, value) => {
-  commit('logInOut', value)
+export const login = ({ commit }, value) => {
+  commit('login', value)
+}
+
+export const logout = ({ commit }) => {
+  commit('logout')
 }
 
 export const setMessage = ({ commit }, value) => {

@@ -97,10 +97,21 @@
 <script>
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/pie'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
+  computed: {
+    ...mapGetters({
+      route: 'routePath',
+      state: 'loginState'
+    })
+  },
   mounted () {
+    if (!this.state) {
+      alert('请先登录！')
+      this.$router.replace('/login')
+    }
     const use = 1200
     const all = 9000
     const surplus = all - use

@@ -1,0 +1,70 @@
+.app-indicator {
+  
+  .app-indicator-mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .app-indicator-wrapper {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    border-radius: 0.1rem;
+    background: rgba(0, 0, 0, .7);
+    color: #fff;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0.3rem;
+  }
+
+  .app-indicator-text {
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+  }
+
+  .app-indicator-spin {
+    text-align: center;
+    
+    .app-spinner-snake {
+      margin: 0 auto;
+      animation: spinner-rotate .8s infinite linear;
+      border: 0.06rem solid transparent;
+      border-radius: 50%;
+      height: 0.64rem;
+      width: 0.64rem;
+      border-color: transparent rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.app-toast {
+  position: fixed;
+  max-width: 80%;
+  border-radius: 0.1rem;
+  background: rgba(0, 0, 0, .7);
+  opacity: 0;
+  color: #fff;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 1000;
+  font-size: 0.24rem;
+  transition: opacity .3s linear;
+  padding: 0.2rem;
+  line-height: 1.5;
+  transform: translate(-50%, -50%);
+
+  &.position-middle {
+    left: 50%;
+    top: 50%;
+  }
+  
+  &.position-bottom {
+    left: 50%;
+    bottom: 1rem;
+  }
+}

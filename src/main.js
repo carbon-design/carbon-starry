@@ -3,6 +3,8 @@ import router from './router'
 import { sync } from 'vuex-router-sync'
 import swiper from 'vue-awesome-swiper'
 import device from './plugins/device'
+import indicator from './plugins/indicator'
+import toast from './plugins/toast'
 import requester from './plugins/requester'
 import App from './App.vue'
 import store from './vuex/store'
@@ -15,6 +17,8 @@ Object.keys(filters).forEach(key => {
 })
 
 Vue.use(device)
+Vue.use(toast)
+Vue.use(indicator)
 Vue.use(requester)
 Vue.use(swiper)
 

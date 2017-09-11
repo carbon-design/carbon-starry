@@ -26,6 +26,7 @@
 
 <script>
 import { getLogin } from '~/config/api'
+import { setCookie } from '~/utils/cookie'
 import { mapActions } from 'vuex'
 
 export default {
@@ -39,32 +40,29 @@ export default {
   mounted () {
     const { loginPage } = this.$refs
     const { clientWidth, clientHeight } = document.documentElement
-    loginPage.style.width = `${clientWidth}px`
-    loginPage.style.minHeight = `${clientHeight}px`
-    loginPage.style.paddingBottom = `${clientHeight * 0.42}px`
-    loginPage.style.paddingTop = `${clientHeight * 0.06}px`
+    loginPage.style.cssText = `width: ${clientWidth}px; min-height: ${clientHeight}px; padding-botttom: ${clientHeight * 0.42}px; padding-top: ${clientHeight * 0.06}px`
   },
   methods: {
     ...mapActions({
       login: 'login'
     }),
-    submit: async function () {
-      const { userName, password, $router, login } = this
+    async submit () {
+      const { indicator, userName, password, $router, login } = this
       if (!userName.trim()) {
         alert('请输入用户名！')
       } else if (!password.trim()) {
         alert('请输入密码！')
       } else {
+        indicator.open('正在登录...')
         const resLogin = await getLogin({
           userName,
           password
         })
-        if (resLogin.status === 200) {
-          // $router.push('main/home')
-          $router.push('/redirect?path=/main/asset')
+        indicator.close()
+        if (resLogin.data) {
+          $router.push('/redirect?path=/main/home')
+          setCookie('token', resLogin.data.token, 3 * 60 * 60 * 1000)
           login(resLogin.data)
-        } else {
-          alert('数据获取失败！')
         }
       }
     }

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { getCookie } from '~/utils/cookie'
 
 export default {
   name: 'redirect',
@@ -14,14 +14,10 @@ export default {
       message: ''
     }
   },
-  computed: {
-    ...mapGetters({
-      state: 'loginState'
-    })
-  },
   beforeMount () {
     const { $router, $route } = this
-    if (!this.state) {
+    const token = getCookie('token')
+    if (!token) {
       this.message = '登录已失效，请先登录！'
       this.backTimer = setTimeout(() => {
         $router.replace('/login')

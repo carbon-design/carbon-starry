@@ -2,6 +2,13 @@
   @return '../images/fonts/iconfont.' + $ext
 }
 
+.web {
+  .app-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
 .app-wrap {
   font-size: 0.24rem;
 }

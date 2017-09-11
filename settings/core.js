@@ -17,6 +17,7 @@ module.exports = {
     distServerPort: 3001,
     distServerPath: 'dist',
     gzipExtensions: ['js', 'css'],
+    esShim: false,
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
@@ -33,6 +34,7 @@ module.exports = {
         changeOrigin: true
       }
     },
+    esShim: false,
     cssSourceMap: true
   }
 }

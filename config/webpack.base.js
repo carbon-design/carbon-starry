@@ -64,6 +64,17 @@ if (settings[env].lint && !isProd) {
   }].concat(rules)
 }
 
+let plugins = [
+  new webpack.optimize.ModuleConcatenationPlugin()
+]
+
+if (settings[env].esShim) {
+  plugins.push(new AddAssetHtmlPlugin([
+    assetConfig('../shim/es5-shim.min.js'),
+    assetConfig('../shim/es6-shim.min.js')
+  ]))
+}
+
 module.exports = {
   entry: {
     app: './src/main.js',
@@ -96,11 +107,5 @@ module.exports = {
   module: {
     rules: rules
   },
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new AddAssetHtmlPlugin([
-      assetConfig('../shim/es5-shim.min.js'),
-      assetConfig('../shim/es6-shim.min.js')
-    ])
-  ]
+  plugins: plugins
 }

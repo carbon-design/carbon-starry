@@ -44,7 +44,7 @@ compiler.plugin('compilation', compilation => {
 })
 
 Object.keys(proxyTable).forEach(context => {
-  const options = proxyTable[context]
+  let options = proxyTable[context]
   if (typeof options === 'string') {
     options = { target: options }
   }

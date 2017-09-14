@@ -26,7 +26,7 @@ app.listen(port, error => {
   console.log(chalk.green(`Server is running at ${uri}`))
   process.env.npm_config_opn && opn(uri)
   const genShot = async () => {
-    for (route of routes) {
+    for (let route of routes) {
       const fullPath = uri + route.path
       await tools.screenshot(fullPath, devices, route.name, route.delay)
     }
@@ -35,7 +35,7 @@ app.listen(port, error => {
 })
 
 Object.keys(proxyTable).forEach(context => {
-  const options = proxyTable[context]
+  let options = proxyTable[context]
   if (typeof options === 'string') {
     options = { target: options }
   }

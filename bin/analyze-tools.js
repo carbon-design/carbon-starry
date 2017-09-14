@@ -24,7 +24,6 @@ exports.screenshot = async (url, deviceList, filename, delay) => {
     createDir(`screenshot/${filename}`)
     await page.screenshot({ path: getFullPath(`screenshot/${filename}/${params.name.replace(/\s+/g, '_')}.png`) })
     console.log(chalk.green(`- [${params.name}] screenshot '${filename}' have been generated!`))
-
   }
   browser.close()
 }

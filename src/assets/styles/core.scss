@@ -2,6 +2,16 @@
   @return '../images/fonts/iconfont.' + $ext
 }
 
+html {
+  &.bg-white {
+    background-color: #fff;
+  }
+
+  &.bg-light-white {
+    background-color: #f9fafc;
+  }
+}
+
 .web {
   .app-wrap {
     max-width: 420px;
@@ -83,4 +93,30 @@
   padding: 0.3rem;
   text-align: center;
   font-size: 0.28rem;
+}
+
+.app-checkbox {
+  height: 0.44rem;
+  width: 0.44rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #282967;
+  transition: background-color .3s;
+  flex-shrink: 0;
+
+  &.checked {
+    background-color: #282967;
+    border: none;
+    
+    &:after {
+      @extend .iconfont;
+      color: #fff;
+      content: '\e602';
+      font-size: 0.24rem;
+      line-height: 0.44rem;
+    }
+  }
+
 }

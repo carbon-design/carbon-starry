@@ -2,15 +2,17 @@
   <async-module></async-module>
 </template>
 
+<style lang="scss" src="#/styles/pages/channel.scss"></style>
+
 <script>
 import asyncLoadConfig from '~/config/asyncLoad'
 
 export default {
-  name: 'async-scan',
+  name: 'async-channel',
   template: '<async-module></async-module>',
   components: {
     AsyncModule: () => ({
-      component: import('./Scan' /* webpackChunkName: 'scan' */),
+      component: import('./Channel' /* webpackChunkName: 'channel' */),
       ...asyncLoadConfig
     })
   }

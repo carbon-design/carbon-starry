@@ -4,7 +4,7 @@ import Redirect from '@/Redirect'
 
 import Home from '@/Home/Async'
 import Asset from '@/Asset/Async'
-import Scan from '@/Scan/Async'
+import Channel from '@/Channel/Async'
 
 import Chat from '@/Chat'
 import Bar from '@/Chat/Bar'
@@ -26,13 +26,13 @@ export default [{
   }, {
     path: 'asset',
     component: Asset
+  }, {
+    path: 'channel',
+    component: Channel
   }]
 }, {
   path: '/redirect',
   component: Redirect
-}, {
-  path: '/scan',
-  component: Scan
 }, {
   path: '/chat',
   component: Chat,

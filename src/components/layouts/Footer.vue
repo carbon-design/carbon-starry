@@ -9,9 +9,9 @@
         <i class="iconfont">&#xe645;</i>
         <div>我的资产</div>
       </router-link>
-      <router-link to="/chat/todo" active-class="active">
+      <router-link to="/main/channel" active-class="active">
         <i class="iconfont">&#xe61f;</i>
-        <div>我的投资</div>
+        <div>金融频道</div>
       </router-link>
       <router-link to="/chat/foo" active-class="active">
         <i class="iconfont">&#xe600;</i>
@@ -25,16 +25,6 @@
 
 <script>
 export default {
-  name: 'footer',
-  data () {
-    return {
-    }
-  },
-  computed: {
-  },
-  mounted () {
-  },
-  methods: {
-  }
+  name: 'footer'
 }
 </script>

@@ -16,11 +16,11 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
-Vue.use(device)
-Vue.use(toast)
-Vue.use(indicator)
-Vue.use(requester)
-Vue.use(swiper)
+const plugins = [device, toast, indicator, requester, swiper]
+
+plugins.forEach(plugin => {
+  Vue.use(plugin)
+})
 
 const app = new Vue({
   router,

@@ -8,16 +8,19 @@
 }
 
 .app-loading {
-  position: relative;
-  padding-top: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
 
   .triangle {
     width: 0.6rem;
     height: 0.6rem;
-    position: absolute;
-    top: 0.4rem;
-    left: 50%;
-    margin-left: -0.3rem;
+    margin: 0 auto;
     background: url(../../images/triangle.svg) center center no-repeat;
     background-size: 100% auto;
     animation: triangleRotate 3s infinite;

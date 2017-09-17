@@ -5,11 +5,7 @@ import Redirect from '@/Redirect'
 import Home from '@/Home/Async'
 import Asset from '@/Asset/Async'
 import Channel from '@/Channel/Async'
-
-import Chat from '@/Chat'
-import Bar from '@/Chat/Bar'
-import Todo from '@/Chat/Todo'
-import Foo from '@/Chat/Foo'
+import Center from '@/Center/Async'
 
 export default [{
   path: '/login',
@@ -29,23 +25,13 @@ export default [{
   }, {
     path: 'channel',
     component: Channel
+  }, {
+    path: 'center',
+    component: Center
   }]
 }, {
   path: '/redirect',
   component: Redirect
-}, {
-  path: '/chat',
-  component: Chat,
-  children: [{
-    path: 'bar',
-    component: Bar
-  }, {
-    path: 'todo',
-    component: Todo
-  }, {
-    path: 'foo',
-    component: Foo
-  }]
 }, {
   path: '*',
   redirect: '/redirect'

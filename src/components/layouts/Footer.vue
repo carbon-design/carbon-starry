@@ -13,7 +13,7 @@
         <i class="iconfont">&#xe61f;</i>
         <div>金融频道</div>
       </router-link>
-      <router-link to="/chat/foo" active-class="active">
+      <router-link to="/main/center" active-class="active">
         <i class="iconfont">&#xe600;</i>
         <div>用户中心</div>
       </router-link>

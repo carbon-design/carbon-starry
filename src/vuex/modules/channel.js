@@ -1,10 +1,10 @@
 const state = {
-  message: '暂无消息'
+  lessonList: []
 }
 
 const mutations = {
-  setMessage (state, value) {
-    state.message = value
+  setLessonList (state, value) {
+    state.lessonList = value
   }
 }
 

@@ -6,6 +6,6 @@ export const logout = ({ commit }) => {
   commit('logout')
 }
 
-export const setMessage = ({ commit }, value) => {
-  commit('setMessage', value)
+export const setLessonList = ({ commit }, value) => {
+  commit('setLessonList', value)
 }

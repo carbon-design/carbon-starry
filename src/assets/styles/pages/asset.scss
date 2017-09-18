@@ -236,6 +236,11 @@
       text-align: center;
       line-height: 0.9rem;
       background-image: -webkit-linear-gradient(135deg, #fb3353, #fe3eb2);
+      transition: all .3s;
+
+      &:active {
+        background-image: -webkit-linear-gradient(135deg, #fe3eb2, #fb3353);
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import createLogger from 'vuex/dist/logger'
 import { state, mutations } from './mutations'
 import * as actions from './actions'
 import * as getters from './getters'
-import chat from './modules/chat'
+import channel from './modules/channel'
 
 Vue.use(Vuex)
 
@@ -32,7 +32,7 @@ export default new Vuex.Store({
   getters,
   actions,
   modules: {
-    chat
+    channel
   },
   strict: debug
 })

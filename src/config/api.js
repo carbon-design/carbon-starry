@@ -1,10 +1,12 @@
 import { Axios } from '~/plugins/requester'
 
+// 测试代理服务接口
 const rq = name => `/WechatBank/fee/${name}`
 
 export const API = {
   queryCode: rq('queryAreaCode'),
-  login: '/mock/login.json'
+  login: '/mock/login.json',
+  channel: '/mock/channel.json'
 }
 
 export const getCode = () => Axios({
@@ -17,9 +19,15 @@ export const getCode = () => Axios({
 })
 
 export const getLogin = data => {
-  console.log(data)
   return Axios({
     method: 'get',
     url: API.login
+  })
+}
+
+export const getLessons = data => {
+  return Axios({
+    method: 'get',
+    url: API.channel
   })
 }

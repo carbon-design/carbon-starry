@@ -3,4 +3,4 @@ export const userInfo = state => state.userInfo
 
 export const routePath = state => state.route.fullPath
 
-export const chatMessage = state => state.chat.message
+export const lessonList = state => state.channel.lessonList

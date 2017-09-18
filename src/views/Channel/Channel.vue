@@ -52,13 +52,14 @@
 </template>
 
 <script>
+import { getLessons } from '~/config/api'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'channel',
   data () {
     return {
       editState: false,
-      listData: [],
       tempData: []
     }
   },
@@ -68,60 +69,22 @@ export default {
     this.bodyClass = document.documentElement.classList
     this.bodyClass.add('bg-light-white')
   },
-  beforeMount () {
-    const originData = [{
-      id: '001',
-      article: '金融理财基本小常识',
-      master: '柯银明',
-      time: '09/16 12:00',
-      lesson: [{
-        id: '001001',
-        title: '如何正确理解投资收益和回报',
-        length: '50',
-        level: '0',
-        join: '1'
-      }, {
-        id: '001002',
-        title: '如何准确判断投资风险',
-        length: '20',
-        level: '0',
-        join: '1'
-      }]
-    }, {
-      id: '002',
-      article: '金融理财中级进阶知识',
-      master: '谢发初',
-      time: '09/18 12:00',
-      lesson: [{
-        id: '002001',
-        title: '深入剖析资本流动与市场经济的关系',
-        length: '20',
-        level: '1',
-        join: '1'
-      }, {
-        id: '002002',
-        title: '浅析中国金融理财及货币基金的投资原理',
-        length: '30',
-        level: '1',
-        join: '0'
-      }, {
-        id: '002003',
-        title: '为实现稳定的投资收益模式打造投资模型',
-        length: '30',
-        level: '2',
-        join: '1'
-      }, {
-        id: '002004',
-        title: '如何面对投资风险及风险控制手段分析',
-        length: '40',
-        level: '2',
-        join: '1'
-      }]
-    }]
-    this.tempData = this.clone(originData)
-    this.listData = this.clone(originData)
+  async beforeMount () {
+    let vm = this
+    vm.indicator.open('正在加载...')
+    const resLesson = await getLessons()
+    vm.indicator.close()
+    vm.setList(resLesson.data.lessonData)
   },
   computed: {
+    ...mapGetters({
+      dataList: 'lessonList'
+    })
+  },
+  watch: {
+    dataList (val, oldVal) {
+      this.tempData = this.clone(val)
+    }
   },
   mounted () {
   },
@@ -129,6 +92,9 @@ export default {
     this.bodyClass.remove('bg-light-white')
   },
   methods: {
+    ...mapActions({
+      setList: 'setLessonList'
+    }),
     clone (obj) {
       return JSON.parse(JSON.stringify(obj))
     },
@@ -136,11 +102,11 @@ export default {
       this.editState = true
     },
     cancelModify () {
-      this.tempData = this.clone(this.listData)
+      this.tempData = this.clone(this.dataList)
       this.editState = false
     },
     saveModify () {
-      this.listData = this.clone(this.tempData)
+      this.setList(this.tempData)
       this.editState = false
     },
     checkGroup (index) {

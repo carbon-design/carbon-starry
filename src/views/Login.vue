@@ -43,7 +43,9 @@ export default {
   mounted () {
     const { loginPage } = this.$refs
     const { clientHeight } = document.documentElement
-    loginPage.style.cssText = `min-height: ${clientHeight}px; padding: ${clientHeight * 0.06}px 0 ${clientHeight * 0.42}px 0;`
+    loginPage.style.cssText = `
+      min-height: ${clientHeight}px;
+      padding: ${clientHeight * 0.06}px 0 ${clientHeight * 0.42}px 0;`
   },
   methods: {
     ...mapActions({

@@ -4,8 +4,6 @@
   </article>
 </template>
 
-<style lang="scss" src="#/styles/layouts/dot-loader.scss"></style>
-
 <script>
 import AppLoader from '^/DotLoader'
 

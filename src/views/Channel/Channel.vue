@@ -63,8 +63,6 @@ export default {
       tempData: []
     }
   },
-  components: {
-  },
   beforeCreate () {
     this.bodyClass = document.documentElement.classList
     this.bodyClass.add('bg-light-white')
@@ -85,8 +83,6 @@ export default {
     dataList (val, oldVal) {
       this.tempData = this.clone(val)
     }
-  },
-  mounted () {
   },
   beforeDestroy () {
     this.bodyClass.remove('bg-light-white')

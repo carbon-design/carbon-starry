@@ -3,12 +3,18 @@
 }
 
 html {
+  transition: all .2s;
+
   &.bg-white {
     background-color: #fff;
   }
 
   &.bg-light-white {
     background-color: #f9fafc;
+  }
+
+  &.app-theme-dark {
+    background-color: #252d4a;
   }
 }
 
@@ -118,5 +124,18 @@ html {
       line-height: 0.44rem;
     }
   }
+}
 
+.app-noresult {
+  width: 100%;
+  min-height: 3rem;
+  background: url(../images/noresult.svg) no-repeat center center/auto 2.4rem;
+
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
 }

@@ -18,6 +18,7 @@ footer {
   font-size: 0.2rem;
   box-shadow: 0 -0.02rem 0.4rem rgba(0, 0, 0, 0.08);
   color: #888;
+  transition: background-color .2s, bottom .3s;
 
   i.iconfont {
     font-size: 0.42rem;
@@ -29,5 +30,28 @@ footer {
   
   div {
     padding-top: 0.04rem;
+  }
+}
+
+.on-up {
+  .footer {
+    bottom: -0.94rem;
+  }
+}
+
+.app-theme-dark {
+  .footer {
+    background-color: #1d2644;
+    box-shadow: none;
+    color: #535e84;
+
+    .active {
+      color: #fff;
+    }
+
+    div {
+      display: none;
+    }
+
   }
 }

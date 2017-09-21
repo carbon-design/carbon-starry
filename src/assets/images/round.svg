@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 254 264" style="enable-background:new 0 0 254 264;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="84.183" y1="7.6504" x2="169.817" y2="256.3496">
+	<stop  offset="0" style="stop-color:#D07CF0"/>
+	<stop  offset="0.2004" style="stop-color:#BA92EC"/>
+	<stop  offset="0.5192" style="stop-color:#9EAEE8"/>
+	<stop  offset="0.7967" style="stop-color:#8CC0E5"/>
+	<stop  offset="1" style="stop-color:#86C6E4"/>
+</linearGradient>
+<ellipse class="st0" cx="127" cy="132" rx="127" ry="132"/>
+</svg>

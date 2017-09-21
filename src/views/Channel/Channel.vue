@@ -6,6 +6,7 @@
       <i class="iconfont" v-if="!editState" @click="doModify">&#xe6eb;</i>
       <i class="iconfont" v-if="editState" @click="saveModify">&#xe64b;</i>
     </div>
+    <div class="app-noresult fixed" v-if="emptyState"></div>
     <div
       class="list-group"
       v-for="(item, index) in tempData"
@@ -77,7 +78,18 @@ export default {
   computed: {
     ...mapGetters({
       dataList: 'lessonList'
-    })
+    }),
+    emptyState () {
+      let count = 0
+      this.dataList.forEach(el => {
+        el.lesson.forEach(sub => {
+          if (sub.join === '1') {
+            count++
+          }
+        })
+      })
+      return count === 0
+    }
   },
   watch: {
     dataList (val, oldVal) {

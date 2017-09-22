@@ -31,12 +31,13 @@
 import AppLoader from '^/DotLoader'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
+import Counter from '~/utils/counter'
 
 export default {
   name: 'center',
   data () {
     return {
-      percent: 68
+      percent: 0
     }
   },
   components: {
@@ -114,6 +115,15 @@ export default {
         data: [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12]
       }]
     })
+    const counter = new Counter({
+      numFrom: 0,
+      numTo: 68,
+      duration: 30,
+      callback: num => {
+        this.percent = num
+      }
+    })
+    counter.start()
   },
   beforeDestroy () {
     this.bodyClass.remove('app-theme-dark')

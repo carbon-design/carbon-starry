@@ -1,4 +1,5 @@
-﻿import Vue from 'vue'
+﻿import './utils/requestAnimationFrame'
+import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import swiper from 'vue-awesome-swiper'

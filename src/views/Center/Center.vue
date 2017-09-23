@@ -23,6 +23,9 @@
         </div>
       </div>
     </div>
+    <div class="trend">
+      <h1>理财收益走势</h1>
+    </div>
     <app-loader :isFixed="false"></app-loader>
   </article>
 </template>

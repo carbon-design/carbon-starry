@@ -2,6 +2,41 @@
 
 .page-center {
   background: url(../../images/round.svg) no-repeat -1rem -1rem / 6rem auto;
+  position: relative;
+
+  .radio {
+    height: 0.44rem;
+    width: 0.84rem;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    border: 0.08rem solid #fff;
+    border-radius: 0.22rem;
+    box-sizing: border-box;
+    transition: opacity .2s;
+
+    &:after {
+      height: 0.2rem;
+      width: 0.2rem;
+      border-radius: 100%;
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0.04rem;
+      top: 0.03rem;
+      background-color: #4CD960;
+      transition: all .2s;
+    }
+
+    &.checked {
+      opacity: .5;
+
+      &:after {
+        background-color: #fff;
+        left: 0.42rem;
+      }
+    }
+  }
 
   h1.title {
     font-size: 0.38rem;
@@ -28,10 +63,11 @@
         display: block;
         filter: blur(0.2rem);
         opacity: .4;
+        visibility: hidden;
       }
 
       .back, .info {
-        background-color: #364169;
+        background-color: #fff;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -56,10 +92,9 @@
         }
 
         h1 {
-          color: #fff;
+          color: #474d5f;
           margin-top: 0.6rem;
           font-size: 0.32rem;
-          opacity: .8;
         }
 
         h2 {
@@ -72,7 +107,7 @@
 
     .status {
       min-height: 2.4rem;
-      background-color: #2D375D;
+      background-color: #fff;
       border-bottom-left-radius: $cardRadius;
       border-bottom-right-radius: $cardRadius;
       position: relative;
@@ -82,8 +117,7 @@
 
       h1 {
         font-size: 0.24rem;
-        color: #fff;
-        opacity: .8;
+        color: #848a96;
         margin-bottom: 0.2rem;
       }
 
@@ -100,14 +134,14 @@
         left: 0.4rem;
         right: 0.4rem;
         height: 0.3rem;
-        background-color: #283150;
+        background-color: rgba(75, 81, 84, 0.04);
         border-bottom-left-radius: 0.12rem;
         border-bottom-right-radius: 0.12rem;
       }
     }
 
     .percent {
-      color: #fff;
+      color: #444c5d;
       opacity: .9;
       font-size: 0.3rem;
 
@@ -121,7 +155,7 @@
       width: 2.4rem;
       height: 0.08rem;
       margin-top: 0.3rem;
-      background-color: #243151;
+      background-color: #e2e9ec;
       border-radius: 0.04rem;
       overflow: hidden;
 
@@ -139,7 +173,7 @@
 
     h1 {
       font-size: 0.32rem;
-      color: #fff;
+      color: #4b5164;
     }
 
     .cnt {
@@ -160,7 +194,6 @@
 
       .info {
         flex-grow: 1;
-        color: #fff;
         padding: 0 0.3rem;
 
         h1 {
@@ -179,6 +212,65 @@
         height: 0.6rem;
       }
     }
+  }
+}
 
+.app-theme-dark {
+  .page-center {
+    .mainstay {
+      .card {
+        .blur {
+          visibility: visible;
+        }
+        .back, .info {
+          background-color: #364169;
+        }
+        .info {
+          background-color: transparent;
+
+          h1 {
+            color: #fff;
+            opacity: .8;
+          }
+        }
+      }
+
+      .status {
+        background-color: #2D375D;
+
+        h1 {
+          color: #fff;
+          opacity: .8;
+        }
+
+        &:after {
+          background-color: #283150;
+        }
+      }
+
+      .percent {
+        color: #fff;
+      }
+
+      .bar {
+        background-color: #243151;
+      }
+    }
+
+    .trend {
+      h1 {
+        color: #fff;
+      }
+
+      .cnt {
+        .info {
+          color: #fff;
+
+          h2 {
+            color: #bbc3d2;
+          }
+        }
+      }
+    }
   }
 }

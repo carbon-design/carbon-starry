@@ -13,6 +13,10 @@ html {
     background-color: #f9fafc;
   }
 
+  &.app-light-linear {
+    background-image: -webkit-linear-gradient(-90deg, #e7f0f6 50%, #f9fcfd 100%);
+  }
+
   &.app-theme-dark {
     background-color: #252d4a;
   }

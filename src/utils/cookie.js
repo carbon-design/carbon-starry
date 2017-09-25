@@ -33,7 +33,7 @@ export const setCookie = (name, value, delay) => {
     delayTime = delay
   }
   exp.setTime(exp.getTime() + delayTime)
-  window.document.cookie = `${name} = ${escape(value)}; expires=${exp.toGMTString()}; path=/`
+  window.document.cookie = `${name} = ${escape(JSON.stringify(value))}; expires=${exp.toGMTString()}; path=/`
 }
 
 export const delCookie = name => {

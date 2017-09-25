@@ -2,7 +2,7 @@
   <article class="page-asset">
     <div class="main-panel">
       <div class="user-avatar">
-        <div class="name">Annie</div>
+        <div class="name">{{ userName }}</div>
         <div class="app-avatar"><img src="~/#/images/avatar.jpg" alt="avatar"></div>
       </div>
       <div class="wait-swiper-wrapper">
@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
 import AppLoader from '^/DotLoader'
 import echarts from 'echarts/lib/echarts'
@@ -99,6 +100,7 @@ export default {
   name: 'asset',
   data () {
     return {
+      userName: '用户',
       currentCard: 0,
       waitData: true,
       chartData: {
@@ -127,6 +129,10 @@ export default {
   },
   components: {
     AppLoader
+  },
+  beforeMount () {
+    const userInfo = JSON.parse(getCookie('userinfo'))
+    this.userName = userInfo.name
   },
   async mounted () {
     const { $refs: { viewChart }, initChart, runChart } = this

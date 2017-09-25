@@ -1,5 +1,6 @@
 <template>
-  <article class="page-center" ref='main'>
+  <article class="page-center">
+    <div class="radio" :class="{ checked: themeDark }" @click="toogleTheme"></div>
     <h1 class="title">用户中心</h1>
     <div class="mainstay">
       <div class="card">
@@ -7,8 +8,8 @@
         <img src="~/#/images/round.svg" alt="" class="blur">
         <div class="info">
           <div class="app-avatar iconfont">&#xe645;</div>
-          <h1>钻石VIP高级用户</h1>
-          <h2>Annie Joe</h2>
+          <h1>{{ level }}</h1>
+          <h2>{{ userName }}</h2>
         </div>
       </div>
       <div class="status">
@@ -38,6 +39,7 @@
 </template>
 
 <script>
+import { getCookie } from '~/utils/cookie'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import Counter from '~/utils/counter'
@@ -46,24 +48,29 @@ export default {
   name: 'center',
   data () {
     return {
-      percent: 0
+      themeDark: false,
+      percent: 0,
+      userName: '用户',
+      level: '普通用户'
     }
   },
   beforeCreate () {
     this.docEl = document.documentElement
     this.bodyClass = this.docEl.classList
-    this.bodyClass.add('app-theme-dark')
   },
   beforeMount () {
-
+    const userInfo = JSON.parse(getCookie('userinfo'))
+    this.userName = userInfo.name
+    this.level = userInfo.level
+    this.themeDark ? this.setDark() : this.clearDark()
   },
-  computed: {
+  watch: {
+    themeDark (val, oldVal) {
+      val ? this.setDark() : this.clearDark()
+    }
   },
   mounted () {
-    const { $refs: { main, line, bill }, docEl } = this
-    main.style.minHeight = docEl.clientHeight - 0.94 * window.rootFontSize + 'px'
-    this.renderChart(line, [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12])
-    this.renderChart(bill, [3, 4, 5, 2, -1, -2, -3, -4, -3, 0, 1, 2], 2, '#98b0ed')
+    this.renderAllChart()
     const counter = new Counter({
       numFrom: 0,
       numTo: 68,
@@ -77,8 +84,20 @@ export default {
   },
   beforeDestroy () {
     this.bodyClass.remove('app-theme-dark')
+    this.bodyClass.remove('app-light-linear')
   },
   methods: {
+    setDark () {
+      this.bodyClass.remove('app-light-linear')
+      this.bodyClass.add('app-theme-dark')
+    },
+    clearDark () {
+      this.bodyClass.add('app-light-linear')
+      this.bodyClass.remove('app-theme-dark')
+    },
+    toogleTheme () {
+      this.themeDark ? this.themeDark = false : this.themeDark = true
+    },
     renderChart (el, data, lineWidth, lineColor) {
       el.style.cssText = `width: ${el.offsetWidth}px; height: ${el.offsetHeight}`
       const opts = {
@@ -140,6 +159,11 @@ export default {
         }]
       }
       echarts.init(el).setOption(opts)
+    },
+    renderAllChart () {
+      const { $refs: { line, bill } } = this
+      this.renderChart(line, [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12])
+      this.renderChart(bill, [3, 4, 5, 2, -1, -2, -3, -4, -3, 0, 1, 2], 2, '#98b0ed')
     }
   }
 }

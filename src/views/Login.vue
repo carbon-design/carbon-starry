@@ -34,8 +34,8 @@ export default {
   name: 'login',
   data () {
     return {
-      userName: '',
-      password: '',
+      userName: '鹿小葵',
+      password: '123456',
       idFocus: false,
       pswdFocus: false
     }
@@ -80,7 +80,7 @@ export default {
         indicator.close()
         if (resLogin.data) {
           $router.push('/redirect?path=/main/home')
-          setCookie('token', resLogin.data.token, 3 * 60 * 60 * 1000)
+          setCookie('userinfo', resLogin.data, 3 * 60 * 60 * 1000)
           login(resLogin.data)
         }
       }

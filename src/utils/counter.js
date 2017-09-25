@@ -32,8 +32,12 @@ class Counter {
     let { numFrom, numTo, gap, duration, callback } = opts
     const isAdd = numFrom < numTo
     countTimer && clearTimeout(countTimer)
-    if ((isAdd && (numTo - this.current < gap)) || (!isAdd && (numFrom - this.current < gap))) {
-      this.opts.gap--
+    let dist = numTo - this.current
+    if (!isAdd) {
+      dist = numFrom - this.current
+    }
+    if (dist < gap) {
+      this.opts.gap = dist
       this.opts.duration = duration * 1.02
       this.eachTime()
     } else {

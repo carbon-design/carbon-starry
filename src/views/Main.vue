@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main-view">
+  <div class="app-main-view" ref="main">
     <router-view></router-view>
     <app-footer></app-footer>
   </div>
@@ -12,6 +12,13 @@ export default {
   name: 'main',
   components: {
     AppFooter
+  },
+  beforeCreate () {
+    this.docEl = document.documentElement
+  },
+  mounted () {
+    const { docEl, $refs: { main } } = this
+    main.style.minHeight = docEl.clientHeight * 1.05 + 'px'
   }
 }
 </script>

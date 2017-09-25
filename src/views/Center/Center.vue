@@ -83,8 +83,7 @@ export default {
     counter.start()
   },
   beforeDestroy () {
-    this.bodyClass.remove('app-theme-dark')
-    this.bodyClass.remove('app-light-linear')
+    this.bodyClass.remove('app-theme-dark', 'app-light-linear')
   },
   methods: {
     setDark () {

@@ -5,38 +5,41 @@
         <div class="name">Annie</div>
         <div class="app-avatar"><img src="~/#/images/avatar.jpg" alt="avatar"></div>
       </div>
-      <swiper :options="swiperOption">
-        <swiper-slide>
-          <div class="card">
-            <div ref="deposit"></div>
-            <div class="circle" ref="depositCircle" data-num="0%"></div>
-            <div class="title">
-              <h1>定期存款</h1>
-              <p>截止至今日</p>
+      <div class="wait-swiper-wrapper">
+        <app-loader :isFixed="true" v-if="waitData"></app-loader>
+        <swiper :options="swiperOption" v-if="!waitData">
+          <swiper-slide>
+            <div class="card">
+              <div ref="deposit"></div>
+              <div class="circle" ref="depositCircle" data-num="0%"></div>
+              <div class="title">
+                <h1>定期存款</h1>
+                <p>截止至今日</p>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="card">
-            <div ref="bonds"></div>
-            <div class="circle" ref="bondsCircle" data-num="0%"></div>
-            <div class="title">
-              <h1>基金理财</h1>
-              <p>截止至今日</p>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="card">
+              <div ref="bonds"></div>
+              <div class="circle" ref="bondsCircle" data-num="0%"></div>
+              <div class="title">
+                <h1>基金理财</h1>
+                <p>截止至今日</p>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="card">
-            <div ref="fund"></div>
-            <div class="circle" ref="fundCircle" data-num="0%"></div>
-            <div class="title">
-              <h1>股票债券</h1>
-              <p>截止至今日</p>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="card">
+              <div ref="fund"></div>
+              <div class="circle" ref="fundCircle" data-num="0%"></div>
+              <div class="title">
+                <h1>股票债券</h1>
+                <p>截止至今日</p>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+      </div>
       <div class="app-grid-menu">
         <div class="cell">
           <i class="iconfont">&#xe67d;</i>
@@ -50,36 +53,32 @@
     </div>
     <div class="review">
       <div class="view-chart-wrap">
+        <app-loader :isFixed="true" v-if="waitData"></app-loader>
         <div class="view-chart" ref="viewChart"></div>
       </div>
       <div class="list-wrap">
         <div class="fund-list">
-          <div class="litem">
+          <div
+            class="litem"
+            v-for="(item, index) in chartData.fundList"
+            :key="index"
+          >
             <div class="time">
-              <h2>7月</h2>
-              <h1>20</h1>
+              <h2>{{ item.buyTime | mm }}月</h2>
+              <h1>{{ item.buyTime | dd }}</h1>
             </div>
             <div class="title">
-              <h1>博时基金</h1>
-              <p>由天宏基金有限公司提供</p>
+              <h1>{{ item.name }}</h1>
+              <p>{{ item.provide }}</p>
             </div>
             <div class="profit">
-              <h1 class="up">+9.27%</h1>
-              <p>2017/09/08 12:00</p>
-            </div>
-          </div>
-          <div class="litem">
-            <div class="time">
-              <h2>7月</h2>
-              <h1>21</h1>
-            </div>
-            <div class="title">
-              <h1>兴全货币基金</h1>
-              <p>由天宏基金有限公司提供</p>
-            </div>
-            <div class="profit">
-              <h1 class="down">-4.27%</h1>
-              <p>2017/09/08 12:00</p>
+              <h1
+                :class="{
+                  up: item.rally > 0,
+                  down: item.rally < 0
+                }"
+              >{{ item.rally > 0 ? '+' : '' }}{{ item.rally }}%</h1>
+              <p>{{ item.rateTime | yyyymmdd }} {{ item.rateTime | hhmm }}</p>
             </div>
           </div>
         </div>
@@ -90,6 +89,8 @@
 </template>
 
 <script>
+import { getAssets } from '~/config/api'
+import AppLoader from '^/DotLoader'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/pie'
@@ -99,27 +100,40 @@ export default {
   data () {
     return {
       currentCard: 0,
+      waitData: true,
+      chartData: {
+        circles: [0, 0, 0],
+        lines: [],
+        fund: [],
+        fundList: []
+      },
       swiperOption: {
         slidesPerView: 'auto',
         paginationClickable: true,
         onInit: swiper => {
-          const { $refs, runChart, initChart } = this
+          const { $refs, runChart, initChart, chartData: { circles, lines } } = this
           const { deposit, bonds, fund, depositCircle, bondsCircle, fundCircle } = $refs
           const width = swiper.size * 0.7
           const height = swiper.height
           this.triggerChart(swiper)
-          this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.5, [42, 23, 35])
-          runChart(initChart(width, height, deposit), [-6, -4, -8, 0, 3, 4, 6, 4, -1, -2, -3, -3])
-          runChart(initChart(width, height, bonds), [0, -1, -3, -2, -1, -2, -3, -4, -3, 0, 1, 2])
-          runChart(initChart(width, height, fund), [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12])
+          this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.5, circles)
+          runChart(initChart(width, height, deposit), lines[0])
+          runChart(initChart(width, height, bonds), lines[1])
+          runChart(initChart(width, height, fund), lines[2])
         },
         onTransitionEnd: this.triggerChart
       }
     }
   },
-  mounted () {
+  components: {
+    AppLoader
+  },
+  async mounted () {
     const { $refs: { viewChart }, initChart, runChart } = this
-    runChart(initChart(viewChart.offsetWidth, viewChart.offsetHeight, viewChart), [6, 11, 2, 0, 3, 4, 6, 4, -1, -2, -3, -3], '20%')
+    const resAssets = await getAssets()
+    this.chartData = resAssets.data
+    this.waitData = false
+    runChart(initChart(viewChart.offsetWidth, viewChart.offsetHeight, viewChart), resAssets.data.fund, '20%')
   },
   methods: {
     triggerChart (swiper) {

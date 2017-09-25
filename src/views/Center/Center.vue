@@ -25,13 +25,19 @@
     </div>
     <div class="trend">
       <h1>理财收益走势</h1>
+      <div class="cnt">
+        <div class="app-avatar iconfont">&#xe633;</div>
+        <div class="info">
+          <h1>金融债券</h1>
+          <h2>和讯网络技术股份有限公司</h2>
+        </div>
+        <div class="chart" ref="bill"></div>
+      </div>
     </div>
-    <app-loader :isFixed="false"></app-loader>
   </article>
 </template>
 
 <script>
-import AppLoader from '^/DotLoader'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import Counter from '~/utils/counter'
@@ -42,9 +48,6 @@ export default {
     return {
       percent: 0
     }
-  },
-  components: {
-    AppLoader
   },
   beforeCreate () {
     this.docEl = document.documentElement
@@ -57,67 +60,10 @@ export default {
   computed: {
   },
   mounted () {
-    const { $refs: { main, line }, docEl } = this
+    const { $refs: { main, line, bill }, docEl } = this
     main.style.minHeight = docEl.clientHeight - 0.94 * window.rootFontSize + 'px'
-    line.style.cssText = `width: ${line.offsetWidth}px; height: ${line.offsetHeight}`
-    echarts.init(line).setOption({
-      grid: {
-        show: true,
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        borderWidth: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0
-      },
-      xAxis: [{
-        axisLine: {
-          onZero: false,
-          show: false
-        },
-        splitLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        axisLabel: {
-          show: false
-        },
-        type: 'category',
-        boundaryGap: false,
-        data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
-      }],
-      yAxis: [{
-        scale: true,
-        type: 'value',
-        axisLine: {
-          show: false
-        },
-        splitLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        axisLabel: {
-          show: false
-        }
-      }],
-      series: [{
-        smooth: true,
-        name: '贷款',
-        type: 'line',
-        showSymbol: false,
-        lineStyle: {
-          normal: {
-            width: 3 * window.dpr,
-            color: '#6adaff'
-          }
-        },
-        data: [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12]
-      }]
-    })
+    this.renderChart(line, [0, 1, 3, 2, 2, 3, 2, 4, 5, 8, 9, 12])
+    this.renderChart(bill, [3, 4, 5, 2, -1, -2, -3, -4, -3, 0, 1, 2], 2, '#98b0ed')
     const counter = new Counter({
       numFrom: 0,
       numTo: 68,
@@ -132,6 +78,68 @@ export default {
     this.bodyClass.remove('app-theme-dark')
   },
   methods: {
+    renderChart (el, data, lineWidth, lineColor) {
+      el.style.cssText = `width: ${el.offsetWidth}px; height: ${el.offsetHeight}`
+      const opts = {
+        grid: {
+          show: true,
+          backgroundColor: 'rgba(255, 255, 255, 0)',
+          borderWidth: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0
+        },
+        xAxis: [{
+          axisLine: {
+            onZero: false,
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            show: false
+          },
+          type: 'category',
+          boundaryGap: false,
+          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        }],
+        yAxis: [{
+          scale: true,
+          type: 'value',
+          axisLine: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            show: false
+          }
+        }],
+        series: [{
+          smooth: true,
+          name: '贷款',
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            normal: {
+              width: (lineWidth || 3) * window.dpr,
+              color: lineColor || '#6adaff'
+            }
+          },
+          data: data
+        }]
+      }
+      echarts.init(el).setOption(opts)
+    }
   }
 }
 </script>

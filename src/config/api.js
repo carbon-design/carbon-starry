@@ -6,7 +6,8 @@ const rq = name => `/WechatBank/fee/${name}`
 export const API = {
   queryCode: rq('queryAreaCode'),
   login: '/mock/login.json',
-  channel: '/mock/channel.json'
+  channel: '/mock/channel.json',
+  assets: '/mock/assets.json',
 }
 
 export const getCode = () => Axios({
@@ -29,5 +30,12 @@ export const getLessons = data => {
   return Axios({
     method: 'get',
     url: API.channel
+  })
+}
+
+export const getAssets = data => {
+  return Axios({
+    method: 'get',
+    url: API.assets
   })
 }

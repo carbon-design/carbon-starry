@@ -141,5 +141,44 @@
       font-size: 0.32rem;
       color: #fff;
     }
+
+    .cnt {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3rem 0;
+
+      .app-avatar {
+        width: 1rem;
+        height: 1rem;
+        line-height: 1rem;
+        background-image: -webkit-linear-gradient(135deg, #abdeff, #a1a9ff);
+        text-align: center;
+        color: #fff;
+        font-size: 0.42rem;
+      }
+
+      .info {
+        flex-grow: 1;
+        color: #fff;
+        padding: 0 0.3rem;
+
+        h1 {
+          font-size: 0.32rem;
+        }
+
+        h2 {
+          font-size: 0.24rem;
+          margin-top: 0.2rem;
+          opacity: .6;
+        }
+      }
+      
+      .chart {
+        width: 1.1rem;
+        height: 0.6rem;
+      }
+    }
+
   }
 }

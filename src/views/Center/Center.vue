@@ -86,10 +86,10 @@ export default {
           show: true,
           backgroundColor: 'rgba(255, 255, 255, 0)',
           borderWidth: 0,
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0
+          left: 2 * window.dpr,
+          right: 2 * window.dpr,
+          top: 2 * window.dpr,
+          bottom: 2 * window.dpr
         },
         xAxis: [{
           axisLine: {

@@ -8,6 +8,7 @@ export const API = {
   login: '/mock/login.json',
   channel: '/mock/channel.json',
   assets: '/mock/assets.json',
+  home: '/mock/home.json'
 }
 
 export const getCode = () => Axios({
@@ -23,6 +24,13 @@ export const getLogin = data => {
   return Axios({
     method: 'get',
     url: API.login
+  })
+}
+
+export const getHome = data => {
+  return Axios({
+    method: 'get',
+    url: API.home
   })
 }
 

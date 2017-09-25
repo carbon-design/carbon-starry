@@ -8,7 +8,7 @@
             <p>扫码付款</p>
           </div>
           <div class="result">
-            <h1>643</h1>
+            <h1>{{ countScan }}</h1>
             <p>本周扫码次数</p>
           </div>
         </div>
@@ -24,8 +24,8 @@
       <div class="card">
         <div class="card-content">
           <div class="percent-title">
-            <h1>白条总额度 90,000</h1>
-            <p>截止2017年9月28日</p>
+            <h1>白条总额度 {{ homeData.quota | intMoney }}</h1>
+            <p>截止{{ homeData.endTime | yyyymmddZh }}</p>
           </div>
           <div class="circle">
             <div class="inner" data-surplus="0" ref="perCircle"></div>
@@ -59,7 +59,7 @@
             <p>理财投资指导</p>
           </div>
           <div class="result">
-            <h1>12,400</h1>
+            <h1>{{ countProfit | intMoney }}</h1>
             <p>本周理财投资收益</p>
           </div>
         </div>
@@ -79,7 +79,7 @@
             <p>信用贷款审批</p>
           </div>
           <div class="result">
-            <h1>1,031,400</h1>
+            <h1>{{ countCreditQuota | intMoney }}</h1>
             <p>当前拥有审批额度</p>
           </div>
         </div>
@@ -95,20 +95,70 @@
 </template>
 
 <script>
+import { getHome } from '~/config/api'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/pie'
 import { mapGetters } from 'vuex'
+import Counter from '~/utils/counter'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      countScan: 0,
+      countProfit: 0,
+      countCreditQuota: 0,
+      homeData: {
+        scan: 0,
+        quota: 0,
+        useQuota: 0,
+        endTime: Date.now(),
+        profit: 0,
+        creditQuota: 0
+      }
+    }
+  },
   computed: {
     ...mapGetters({
       route: 'routePath'
     })
   },
-  mounted () {
-    const use = 1200
-    const all = 9000
+  async mounted () {
+    const resHome = await getHome()
+    const resData = resHome.data
+    new Counter({
+      numFrom: 0,
+      gap: ~~(resData.scan / 30),
+      numTo: resData.scan,
+      duration: 30,
+      callback: num => {
+        this.countScan = num
+      }
+    }).start()
+
+    new Counter({
+      numFrom: 0,
+      gap: ~~(resData.creditQuota / 40),
+      numTo: resData.creditQuota,
+      duration: 30,
+      callback: num => {
+        this.countCreditQuota = num
+      }
+    }).start()
+
+    new Counter({
+      numFrom: 0,
+      gap: ~~(resData.profit / 50),
+      numTo: resData.profit,
+      duration: 30,
+      callback: num => {
+        this.countProfit = num
+      }
+    }).start()
+
+    this.homeData = resData
+    const use = resData.useQuota
+    const all = resData.quota
     const surplus = all - use
     const circleEl = this.$refs.perCircle
     circleEl.style.lineHeight = circleEl.style.height = circleEl.style.width = 2 * window.rootFontSize + 'px'

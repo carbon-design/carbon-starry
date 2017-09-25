@@ -1,6 +1,7 @@
 /*
  * @ param numFrom [number]
  * @ param numTo [number]
+ * @ param gap [number]
  * @ param duration [number]
  * @ param callback [function]
  */
@@ -10,6 +11,7 @@ class Counter {
     let opts = {
       numFrom: 0,
       numTo: 0,
+      gap: 1,
       duration: 30,
       callback: num => {}
     }
@@ -27,21 +29,27 @@ class Counter {
 
   eachTime () {
     let { opts, countTimer } = this
-    const { numFrom, numTo, duration, callback } = opts
+    let { numFrom, numTo, gap, duration, callback } = opts
     const isAdd = numFrom < numTo
     countTimer && clearTimeout(countTimer)
-    countTimer = setTimeout(() => {
-      if (numFrom === numTo) {
+    if ((isAdd && (numTo - this.current < gap)) || (!isAdd && (numFrom - this.current < gap))) {
+      this.opts.gap--
+      this.opts.duration = duration * 1.02
+      this.eachTime()
+    } else {
+      countTimer = setTimeout(() => {
+        if (numFrom === numTo) {
+          clearTimeout(countTimer)
+          return
+        }
+        isAdd ? (this.current += gap) : (this.current -= gap)
+        callback(this.current)
+        if (this.current !== numTo) {
+          this.eachTime()
+        }
         clearTimeout(countTimer)
-        return
-      }
-      isAdd ? this.current++ : this.current--
-      callback(this.current)
-      if (this.current !== numTo) {
-        this.eachTime()
-      }
-      clearTimeout(countTimer)
-    }, duration)
+      }, duration)
+    }
   }
 
   pause () {

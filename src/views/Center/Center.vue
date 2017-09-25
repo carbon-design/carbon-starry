@@ -67,7 +67,8 @@ export default {
     const counter = new Counter({
       numFrom: 0,
       numTo: 68,
-      duration: 30,
+      gap: 5,
+      duration: 40,
       callback: num => {
         this.percent = num
       }

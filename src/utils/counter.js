@@ -63,6 +63,10 @@ class Counter {
   continue () {
     this.eachTime()
   }
+
+  destroy () {
+    clearTimeout(this.countTimer)
+  }
 }
 
 export default Counter

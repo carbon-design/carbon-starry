@@ -3,7 +3,7 @@
     <div class="chassis">
       <div class="card">
         <div class="card-content">
-          <div class="action">
+          <div class="action" @click="toGyro">
             <i class="iconfont">&#xe68e;</i>
             <p>扫码付款</p>
           </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="app-grid-menu">
-        <div class="cell">
+        <div class="cell" @click="toGyro">
           <i class="iconfont">&#xe68e;</i>
           <span>扫码付款</span>
         </div>
@@ -190,6 +190,12 @@ export default {
         }]
       }]
     })
+  },
+
+  methods: {
+    toGyro () {
+      this.$router.push('/main/gyro')
+    }
   }
 }
 </script>

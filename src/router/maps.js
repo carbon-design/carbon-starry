@@ -7,6 +7,8 @@ import Asset from '@/Asset/Async'
 import Channel from '@/Channel/Async'
 import Center from '@/Center/Async'
 
+import Gyro from '@/Gyro/Async'
+
 export default [{
   path: '/login',
   component: Login
@@ -28,6 +30,9 @@ export default [{
   }, {
     path: 'center',
     component: Center
+  }, {
+    path: 'gyro',
+    component: Gyro
   }]
 }, {
   path: '/redirect',

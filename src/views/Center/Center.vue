@@ -60,8 +60,13 @@ export default {
   },
   beforeMount () {
     const userInfo = JSON.parse(getCookie('userinfo'))
-    this.userName = userInfo.name
-    this.level = userInfo.level
+    const { name, level } = userInfo
+    if (name) {
+      this.userName = name
+    }
+    if (level) {
+      this.level = level
+    }
     this.themeDark ? this.setDark() : this.clearDark()
   },
   watch: {

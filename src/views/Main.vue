@@ -18,7 +18,7 @@ export default {
   },
   mounted () {
     const { docEl, $refs: { main } } = this
-    main.style.minHeight = docEl.clientHeight * 1.05 + 'px'
+    main.style.minHeight = docEl.clientHeight + 40 + 'px'
   }
 }
 </script>

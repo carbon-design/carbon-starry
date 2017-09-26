@@ -143,3 +143,35 @@ html {
     right: 0;
   }
 }
+
+.app-wrap {
+  .amap-touch-toolbar .amap-zoomcontrol {
+    right: 0;
+    bottom: 0;
+    width: 0.7rem;
+    border-radius: 0.06rem;
+    box-shadow: 0.02rem 0.02rem 0.2rem 0 #ccc;
+    opacity: .8;
+  }
+
+  .amap-zoom-touch-minus, .amap-zoom-touch-plus {
+    height: 0.86rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .amap-zoom-touch-minus > div, .amap-zoom-touch-plus > div {
+    line-height: 0.86rem;
+    font-size: 0.52rem;
+  }
+
+  .amap-touch-toolbar .amap-zoomcontrol:after {
+    top: 0.96rem;
+  }
+
+  .amap-geolocation-con .amap-geo, .amap-touch-toolbar .amap-geo {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 0.06rem;
+    right: 0;
+  }
+}

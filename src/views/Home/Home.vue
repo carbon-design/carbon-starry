@@ -37,7 +37,7 @@
           <i class="iconfont">&#xe68e;</i>
           <span>扫码付款</span>
         </div>
-        <div class="cell">
+        <div class="cell" @click="toMap">
           <i class="iconfont">&#xe6f9;</i>
           <span>理财指导</span>
         </div>
@@ -195,6 +195,9 @@ export default {
   methods: {
     toGyro () {
       this.$router.push('/main/gyro')
+    },
+    toMap () {
+      this.$router.push('/main/map')
     }
   }
 }

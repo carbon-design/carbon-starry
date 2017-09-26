@@ -31,6 +31,10 @@ html {
 
 .app-wrap {
   font-size: 0.24rem;
+
+  article {
+    padding-bottom: 0.94rem;
+  }
 }
 
 // @font-face {
@@ -144,6 +148,7 @@ html {
   }
 }
 
+// 高德地图样式覆写
 .app-wrap {
   .amap-touch-toolbar .amap-zoomcontrol {
     right: 0;

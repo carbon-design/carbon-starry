@@ -12,13 +12,6 @@ export default {
   name: 'main',
   components: {
     AppFooter
-  },
-  beforeCreate () {
-    this.docEl = document.documentElement
-  },
-  mounted () {
-    const { docEl, $refs: { main } } = this
-    main.style.minHeight = docEl.clientHeight + 40 + 'px'
   }
 }
 </script>

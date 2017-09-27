@@ -1,12 +1,12 @@
 const ip = require('ip')
 const opn = require('opn')
-const path = require('path')
 const chalk = require('chalk')
 const express = require('express')
 const tools = require('./analyze-tools')
 const settings = require('../settings/core')
 const routes = require('../settings/routes')
 const devices = require('../settings/devices')
+const history = require('connect-history-api-fallback')
 const proxyMiddleware = require('http-proxy-middleware')
 const proxyTable = settings.dev.proxyTable
 
@@ -16,8 +16,17 @@ const publicPath = settings.build.assetsPublicPath
 const distServerPath = settings.build.distServerPath
 const uri = `http://${ip.address()}:${port}${publicPath}`
 
-app.use(publicPath, express.static(path.join(__dirname, '..', distServerPath)))
+const staticFileMiddleware = express.static(distServerPath)
+
+app.use(publicPath, staticFileMiddleware)
+
 app.use('/mock', express.static('./mock'))
+
+app.use(history({
+  index: `${publicPath}index.html`
+}))
+
+app.use(publicPath, staticFileMiddleware)
 
 app.listen(port, error => {
   if (error) {

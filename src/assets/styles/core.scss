@@ -3,6 +3,7 @@
 }
 
 html {
+  min-height: 100%;
   transition: all .2s;
 
   &.bg-white {
@@ -14,6 +15,7 @@ html {
   }
 
   &.app-light-linear {
+    background-color: #e7f0f6;
     background-image: -webkit-linear-gradient(-90deg, #e7f0f6 50%, #f9fcfd 100%);
   }
 

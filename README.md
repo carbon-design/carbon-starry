@@ -11,7 +11,7 @@
 [![GitHub followers](https://img.shields.io/github/followers/OwlAford.svg?style=social&label=Follow)](https://github.com/OwlAford)
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/Aford79872215)
 
->  ❤️A Vue Web Application
+>  ❤️ A Web Application Scaffolding
 
 ## Build Setup
 

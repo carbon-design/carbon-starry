@@ -7,7 +7,7 @@ const devices = require('puppeteer/DeviceDescriptors')
 const rootPath = path.resolve()
 const getFullPath = relPath => path.join(rootPath, relPath)
 
-const createDir = (path, islog) => {
+const createDir = path => {
   mkdirp(path, err => err && console.log(chalk.red(err)))
 }
 

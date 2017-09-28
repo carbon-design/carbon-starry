@@ -1,7 +1,6 @@
-<template>
-  <div class="app-main">
-    <router-view></router-view>
-  </div>
+<template lang="pug">
+  .app-main
+    router-view
 </template>
 
 <style src="#/styles/reset.css"></style>

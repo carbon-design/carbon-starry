@@ -1,21 +1,18 @@
-<template>
-  <article class="page-gyro">
-    <h1>陀螺仪检测</h1>
-    <div class="watcher">
-      <p>X轴旋转：{{ poz.x }}</p>
-      <p>Y轴旋转：{{ poz.y }}</p>
-      <p>Z轴旋转：{{ poz.z }}</p>
-      <p>Angle: {{ poz.rotate }}</p>
-    </div>
-    <ul class="cube" ref="box">
-      <li class="front"></li>
-      <li class="back"></li>
-      <li class="right"></li>
-      <li class="left"></li>
-      <li class="top"></li>
-      <li class="bottom"></li>
-    </ul>
-  </article>
+<template lang="pug">
+  .page-gyro
+    h1 陀螺仪检测
+    .watcher
+      p X轴旋转：{{ poz.x }}
+      p Y轴旋转：{{ poz.y }}
+      p Z轴旋转：{{ poz.z }}
+      p Angle: {{ poz.rotate }}
+    ul.cube(ref="box")
+      li.front
+      li.back
+      li.right
+      li.left
+      li.top
+      li.bottom
 </template>
 
 <script>

@@ -1,7 +1,6 @@
-<template>
-  <div class="app-dot-loader" :class="{ fixed: isFixed }">
-    <div class="app-dot-loading"></div>
-  </div>
+<template lang="pug">
+  .app-dot-loader(:class="{ fixed: isFixed }")
+    .app-dot-loading
 </template>
 
 <style lang="scss" src="#/styles/layouts/dot-loader.scss"></style>

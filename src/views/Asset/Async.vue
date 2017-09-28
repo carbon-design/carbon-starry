@@ -1,5 +1,5 @@
-<template>
-  <async-module></async-module>
+<template lang="pug">
+  async-module
 </template>
 
 <style lang="scss" src="#/styles/pages/asset.scss"></style>

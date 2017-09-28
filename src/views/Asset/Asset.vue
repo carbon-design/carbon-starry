@@ -1,91 +1,58 @@
-<template>
-  <article class="page-asset">
-    <div class="main-panel">
-      <div class="user-avatar">
-        <div class="name">{{ userName }}</div>
-        <div class="app-avatar"><img src="~/#/images/avatar.jpg" alt="avatar"></div>
-      </div>
-      <div class="wait-swiper-wrapper">
-        <app-loader :isFixed="true" v-if="waitData"></app-loader>
-        <swiper :options="swiperOption" v-if="!waitData">
-          <swiper-slide>
-            <div class="card">
-              <div ref="deposit"></div>
-              <div class="circle" ref="depositCircle" data-num="0%"></div>
-              <div class="title">
-                <h1>定期存款</h1>
-                <p>截止至今日</p>
-              </div>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="card">
-              <div ref="bonds"></div>
-              <div class="circle" ref="bondsCircle" data-num="0%"></div>
-              <div class="title">
-                <h1>基金理财</h1>
-                <p>截止至今日</p>
-              </div>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="card">
-              <div ref="fund"></div>
-              <div class="circle" ref="fundCircle" data-num="0%"></div>
-              <div class="title">
-                <h1>股票债券</h1>
-                <p>截止至今日</p>
-              </div>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-      <div class="app-grid-menu">
-        <div class="cell">
-          <i class="iconfont">&#xe67d;</i>
-          <span>收支明细</span>
-        </div>
-        <div class="cell">
-          <i class="iconfont">&#xe622;</i>
-          <span>资产优化</span>
-        </div>
-      </div>
-    </div>
-    <div class="review">
-      <div class="view-chart-wrap">
-        <app-loader :isFixed="true" v-if="waitData"></app-loader>
-        <div class="view-chart" ref="viewChart"></div>
-      </div>
-      <div class="list-wrap">
-        <div class="fund-list">
-          <div
-            class="litem"
-            v-for="(item, index) in chartData.fundList"
-            :key="index"
-          >
-            <div class="time">
-              <h2>{{ item.buyTime | mm }}月</h2>
-              <h1>{{ item.buyTime | dd }}</h1>
-            </div>
-            <div class="title">
-              <h1>{{ item.name }}</h1>
-              <p>{{ item.provide }}</p>
-            </div>
-            <div class="profit">
-              <h1
-                :class="{
-                  up: item.rally > 0,
-                  down: item.rally < 0
-                }"
-              >{{ item.rally > 0 ? '+' : '' }}{{ item.rally }}%</h1>
-              <p>{{ item.rateTime | yyyymmdd }} {{ item.rateTime | hhmm }}</p>
-            </div>
-          </div>
-        </div>
-        <button class="readAll">查看全部</button>
-      </div>
-    </div>
-  </article>
+<template lang="pug">
+  article.page-asset
+    .main-panel
+      .user-avatar
+        .name {{ userName }}
+        .app-avatar
+          img(src="~/#/images/avatar.jpg" alt="avatar")
+      .wait-swiper-wrapper
+        app-loader(:isFixed="true" v-if="waitData")
+        swiper(:options="swiperOption" v-if="!waitData")
+          swiper-slide
+            .card
+              div(ref="deposit")
+              .circle(ref="depositCircle" data-num="0%")
+              .title
+                h1 定期存款
+                p 截止至今日
+          swiper-slide
+            .card
+              div(ref="bonds")
+              .circle(ref="bondsCircle" data-num="0%")
+              .title
+                h1 基金理财
+                p 截止至今日
+          swiper-slide
+            .card
+              div(ref="fund")
+              .circle(ref="fundCircle" data-num="0%")
+              .title
+                h1 股票债券
+                p 截止至今日
+      .app-grid-menu
+        .cell
+          i.iconfont &#xe67d;
+          span 收支明细
+        .cell
+          i.iconfont &#xe622;
+          span 资产优化
+    .review
+      .view-chart-wrap
+        app-loader(:isFixed="true" v-if="waitData")
+        .view-chart(ref="viewChart")
+      .list-wrap
+        .fund-list
+          .litem(v-for="(item, index) in chartData.fundList" :key="index")
+            .time
+              h2 {{ item.buyTime | mm }}月
+              h1 {{ item.buyTime | dd }}
+            .title
+              h1 {{ item.name }}
+              p {{ item.provide }}
+            .profit
+              h1(:class="{ up: item.rally > 0, down: item.rally < 0 }") {{ item.rally > 0 ? '+' : '' }}{{ item.rally }}%
+              p {{ item.rateTime | yyyymmdd }} {{ item.rateTime | hhmm }}
+        button.readAll 查看全部
 </template>
 
 <script>

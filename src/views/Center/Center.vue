@@ -1,41 +1,34 @@
-<template>
-  <article class="page-center">
-    <div class="radio" :class="{ checked: themeDark }" @click="toogleTheme"></div>
-    <h1 class="title">用户中心</h1>
-    <div class="mainstay">
-      <div class="card">
-        <div class="back"></div>
-        <img src="~/#/images/round.svg" alt="" class="blur">
-        <div class="info">
-          <div class="app-avatar iconfont">&#xe645;</div>
-          <h1>{{ level }}</h1>
-          <h2>{{ userName }}</h2>
-        </div>
-      </div>
-      <div class="status">
-        <div class="chart">
-          <h1>积分走势</h1>
-          <div class="line" ref="line"></div>
-        </div>
-        <div class="progress">
-          <h1>升级进度</h1>
-          <div class="percent"><b>{{ percent }}</b> %</div>
-          <div class="bar"><i :style="{ width: percent + '%' }"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="trend">
-      <h1>理财收益走势</h1>
-      <div class="cnt">
-        <div class="app-avatar iconfont">&#xe633;</div>
-        <div class="info">
-          <h1>金融债券</h1>
-          <h2>和讯网络技术股份有限公司</h2>
-        </div>
-        <div class="chart" ref="bill"></div>
-      </div>
-    </div>
-  </article>
+<template lang="pug">
+  article.page-center
+    .radio(:class="{ checked: themeDark }" @click="toogleTheme")
+    h1.title 用户中心
+    .mainstay
+      .card
+        .back
+        img.blur(src="~/#/images/round.svg")
+        .info
+          .app-avatar.iconfont &#xe645;
+          h1 {{ level }}
+          h2 {{ userName }}
+      .status
+        .chart
+          h1 积分走势
+          .line(ref="line")
+        .progress
+          h1 升级进度
+          .percent
+            b {{ percent }}
+            span  %
+          .bar
+            i(:style="{ width: percent + '%' }")
+    .trend
+      h1 理财收益走势
+      .cnt
+        .app-avatar.iconfont &#xe633;
+        .info
+          h1 金融债券
+          h2 和讯网络技术股份有限公司
+        .chart(ref="bill")
 </template>
 
 <script>

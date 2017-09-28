@@ -1,7 +1,5 @@
-<template>
-  <article class="app-redirect">
-    {{ message }}
-  </article>
+<template lang="pug">
+  .app-redirect {{ message }}
 </template>
 
 <script>

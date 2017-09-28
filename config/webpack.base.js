@@ -26,6 +26,9 @@ let rules = [{
   loader: 'vue-loader',
   options: vueLoaderConfig
 }, {
+  test: /\.pug$/,
+  loader: 'pug'
+}, {
   test: /\.js$/,
   loader: 'babel-loader',
   include: [resolve('src'), resolve('test')]

@@ -1,24 +1,18 @@
-<template>
-  <footer>
-    <div class="footer">
-      <router-link to="/main/home" active-class="active">
-        <i class="iconfont">&#xe601;</i>
-        <div>首页</div>
-      </router-link>
-      <router-link to="/main/asset" active-class="active">
-        <i class="iconfont">&#xe645;</i>
-        <div>我的资产</div>
-      </router-link>
-      <router-link to="/main/channel" active-class="active">
-        <i class="iconfont">&#xe61f;</i>
-        <div>金融频道</div>
-      </router-link>
-      <router-link to="/main/center" active-class="active">
-        <i class="iconfont">&#xe600;</i>
-        <div>用户中心</div>
-      </router-link>
-    </div>
-  </footer>
+<template lang="pug">
+  footer
+    .footer
+      router-link(to="/main/home" active-class="active")
+        i.iconfont &#xe601;
+        div 首页
+      router-link(to="/main/asset" active-class="active")
+        i.iconfont &#xe645;
+        div 我的资产
+      router-link(to="/main/channel" active-class="active")
+        i.iconfont &#xe61f;
+        div 金融频道
+      router-link(to="/main/center" active-class="active")
+        i.iconfont &#xe600;
+        div 用户中心
 </template>
 
 <style lang="scss" src="#/styles/layouts/footer.scss"></style>

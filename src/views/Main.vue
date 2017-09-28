@@ -1,8 +1,7 @@
-<template>
-  <div class="app-main-view" ref="main">
-    <router-view></router-view>
-    <app-footer></app-footer>
-  </div>
+<template lang="pug">
+  .app-main-view(ref="main")
+    router-view
+    app-footer
 </template>
 
 <script>

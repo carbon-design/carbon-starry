@@ -1,6 +1,5 @@
-<template>
-  <article class='page-map' ref='main' id='mapContainer'>
-  </article>
+<template lang="pug">
+  article.page-map#mapContainer(ref='main')
 </template>
 
 <script>

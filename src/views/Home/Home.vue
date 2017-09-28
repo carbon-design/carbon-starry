@@ -1,97 +1,68 @@
-<template>
-  <article class="page-home">
-    <div class="chassis">
-      <div class="card">
-        <div class="card-content">
-          <div class="action" @click="toGyro">
-            <i class="iconfont">&#xe68e;</i>
-            <p>扫码付款</p>
-          </div>
-          <div class="result">
-            <h1>{{ countScan }}</h1>
-            <p>本周扫码次数</p>
-          </div>
-        </div>
-        <div class="sun"></div>
-        <div class="light">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-    </div>
-    <div class="chassis detail">
-      <div class="card">
-        <div class="card-content">
-          <div class="percent-title">
-            <h1>白条总额度 {{ homeData.quota | intMoney }}</h1>
-            <p>截止{{ homeData.endTime | yyyymmddZh }}</p>
-          </div>
-          <div class="circle">
-            <div class="inner" data-surplus="0" ref="perCircle"></div>
-          </div>
-        </div>
-      </div>
-      <div class="app-grid-menu">
-        <div class="cell" @click="toGyro">
-          <i class="iconfont">&#xe68e;</i>
-          <span>扫码付款</span>
-        </div>
-        <div class="cell" @click="toMap">
-          <i class="iconfont">&#xe6f9;</i>
-          <span>理财指导</span>
-        </div>
-        <div class="cell">
-          <i class="iconfont">&#xe624;</i>
-          <span>贷款申请</span>
-        </div>
-        <div class="cell">
-          <i class="iconfont">&#xe623;</i>
-          <span>信用提升</span>
-        </div>
-      </div>
-    </div>
-    <div class="chassis">
-      <div class="card type2">
-        <div class="card-content">
-          <div class="action">
-            <i class="iconfont">&#xe6f9;</i>
-            <p>理财投资指导</p>
-          </div>
-          <div class="result">
-            <h1>{{ countProfit | intMoney }}</h1>
-            <p>本周理财投资收益</p>
-          </div>
-        </div>
-        <div class="sun"></div>
-        <div class="light">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-    </div>
-    <div class="chassis">
-      <div class="card type3">
-        <div class="card-content">
-          <div class="action">
-            <i class="iconfont">&#xe623;</i>
-            <p>信用贷款审批</p>
-          </div>
-          <div class="result">
-            <h1>{{ countCreditQuota | intMoney }}</h1>
-            <p>当前拥有审批额度</p>
-          </div>
-        </div>
-        <div class="sun"></div>
-        <div class="light">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-    </div>
-  </article>
+<template lang="pug">
+  article.page-home
+    .chassis
+      .card
+        .card-content
+          .action(@click="toGyro")
+            i.iconfont &#xe68e;
+            p 扫码付款
+          .result
+            h1 {{ countScan }}
+            p 本周扫码次数
+          .sun
+          .light
+            .dot
+            .dot
+            .dot
+    .chassis.detail
+      .card
+        .card-content
+          .percent-title
+            h1 白条总额度 {{ homeData.quota | intMoney }}
+            p 截止{{ homeData.endTime | yyyymmddZh }}
+          .circle
+            .inner(data-surplus="0" ref="perCircle")
+      .app-grid-menu
+        .cell(@click="toGyro")
+          i.iconfont &#xe68e;
+          span 扫码付款
+        .cell(@click="toMap")
+          i.iconfont &#xe6f9;
+          span 理财指导
+        .cell
+          i.iconfont &#xe624;
+          span 贷款申请
+        .cell
+          i.iconfont &#xe623;
+          span 信用提升
+    .chassis
+      .card.type2
+        .card-content
+          .action
+            i.iconfont &#xe6f9;
+            p 理财投资指导
+          .result
+            h1 {{ countProfit | intMoney }}
+            p 本周理财投资收益
+        .sun
+          .light
+            .dot
+            .dot
+            .dot
+    .chassis
+      .card.type3
+        .card-content
+          .action
+            i.iconfont &#xe623;
+            p 信用贷款审批
+          .result
+            h1 {{ countCreditQuota | intMoney }}
+            p 当前拥有审批额度
+        .sun
+          .light
+            .dot
+            .dot
+            .dot
 </template>
 
 <script>

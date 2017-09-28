@@ -1,5 +1,5 @@
-<template>
-  <async-module></async-module>
+<template lang="pug">
+  async-module
 </template>
 
 <script>

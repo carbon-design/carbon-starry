@@ -10,6 +10,7 @@ import requester from './plugins/requester'
 import App from './App.vue'
 import store from './vuex/store'
 import * as filters from './filters'
+import LocalLoader from '^/LocalLoader'
 
 sync(store, router)
 
@@ -22,6 +23,8 @@ const plugins = [device, toast, indicator, requester, swiper]
 plugins.forEach(plugin => {
   Vue.use(plugin)
 })
+
+Vue.component(LocalLoader.name, LocalLoader)
 
 const app = new Vue({
   router,

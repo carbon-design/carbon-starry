@@ -31,10 +31,15 @@ export default {
     }
   },
   mounted () {
-    new Gyroscope(data => {
-      this.poz = data
-      this.deviceController(data)
-    }).bindEvent()
+    const vm = this
+    vm.gyro = new Gyroscope(data => {
+      vm.poz = data
+      vm.deviceController(data)
+    })
+    vm.gyro.bindEvent()
+  },
+  beforeDestroy () {
+    this.gyro.destroy()
   },
   methods: {
     deviceController (data) {

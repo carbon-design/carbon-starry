@@ -6,6 +6,7 @@ class Gyroscope {
   constructor (callback) {
     this.degtorad = Math.PI / 180
     this.fn = callback
+    this._eventHandler = this._eventHandler.bind(this)
   }
 
   // 官方求四元数方法
@@ -46,12 +47,20 @@ class Gyroscope {
     return rotate3d
   }
 
+  _eventHandler (e) {
+    let rotate3d = this._deviceMotionHandler(e)
+    this.fn && this.fn(rotate3d)
+  }
+
   bindEvent () {
     if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', e => {
-        let rotate3d = this._deviceMotionHandler(e)
-        this.fn && this.fn(rotate3d)
-      }, false)
+      window.addEventListener('deviceorientation', this._eventHandler, false)
+    }
+  }
+
+  destroy () {
+    if (window.DeviceOrientationEvent) {
+      window.removeEventListener('deviceorientation', this._eventHandler)
     }
   }
 }

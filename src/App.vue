@@ -9,8 +9,6 @@
 <style lang="scss" src="#/styles/plugins.scss"></style>
 
 <script>
-import '^/DotLoader'
-
 export default {
   name: 'app'
 }

@@ -6,7 +6,7 @@
         .app-avatar
           img(src="~/#/images/avatar.jpg" alt="avatar")
       .wait-swiper-wrapper
-        app-loader(:isFixed="true" v-if="waitData")
+        local-loader(:isFixed="true" v-if="waitData")
         swiper(:options="swiperOption" v-if="!waitData")
           swiper-slide
             .card
@@ -38,7 +38,7 @@
           span 资产优化
     .review
       .view-chart-wrap
-        app-loader(:isFixed="true" v-if="waitData")
+        local-loader(:isFixed="true" v-if="waitData")
         .view-chart(ref="viewChart")
       .list-wrap
         .fund-list
@@ -58,7 +58,6 @@
 <script>
 import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
-import AppLoader from '^/DotLoader'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/pie'
@@ -93,9 +92,6 @@ export default {
         onTransitionEnd: this.triggerChart
       }
     }
-  },
-  components: {
-    AppLoader
   },
   beforeMount () {
     const userInfo = JSON.parse(getCookie('userinfo'))

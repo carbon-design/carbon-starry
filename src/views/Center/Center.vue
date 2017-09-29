@@ -53,12 +53,11 @@ export default {
   },
   beforeMount () {
     const userInfo = JSON.parse(getCookie('userinfo'))
-    const { name, level } = userInfo
-    if (name) {
-      this.userName = name
-    }
-    if (level) {
-      this.level = level
+    if (userInfo) {
+      this.userName = userInfo.name
+      this.level = userInfo.level
+    } else {
+      this.$router.replace('/login')
     }
     this.themeDark ? this.setDark() : this.clearDark()
   },
@@ -72,8 +71,7 @@ export default {
     const counter = new Counter({
       numFrom: 0,
       numTo: 68,
-      gap: 5,
-      duration: 40,
+      duration: 1200,
       callback: num => {
         this.percent = num
       }

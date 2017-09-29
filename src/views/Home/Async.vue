@@ -5,15 +5,14 @@
 <style lang="scss" src="#/styles/pages/home.scss"></style>
 
 <script>
-import asyncLoadConfig from '~/config/asyncLoad'
+import config from '~/config/asyncLoad'
 
 export default {
   name: 'async-home',
-  template: '<async-module></async-module>',
   components: {
     AsyncModule: () => ({
       component: import('./Home' /* webpackChunkName: 'home' */),
-      ...asyncLoadConfig
+      ...config
     })
   }
 }

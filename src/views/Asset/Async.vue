@@ -5,17 +5,15 @@
 <style lang="scss" src="#/styles/pages/asset.scss"></style>
 
 <script>
-import asyncLoadConfig from '~/config/asyncLoad'
+import config from '~/config/asyncLoad'
 
 export default {
   name: 'async-asset',
   components: {
     AsyncModule: () => ({
       component: import('./Asset' /* webpackChunkName: 'asset' */),
-      ...asyncLoadConfig
+      ...config
     })
   }
 }
 </script>
-
-

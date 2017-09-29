@@ -15,7 +15,8 @@ class CircleProgress {
       },
       emptyFill: 'rgba(0, 0, 0, .1)',
       animation: {
-        duration: 1200
+        duration: 1200,
+        type: 'ease'
       },
       animationStartValue: 0.0,
       reverse: false,
@@ -219,7 +220,7 @@ class CircleProgress {
 
   drawAnimated (v) {
     let duration = this.animation.duration
-    let start = 0
+    let start = Date.now()
 
     const setStep = p => {
       let stepValue = this.animationStartValue * (1 - p) + v * p
@@ -227,22 +228,16 @@ class CircleProgress {
       this.callback(stepValue)
     }
 
-    this.animateTimer && clearTimeout(this.animateTimer)
     const run = () => {
-      this.animateTimer && clearTimeout(this.animateTimer)
-      this.animateTimer = setTimeout(() => {
-        let progress = this.circleProgressEasing(start / duration)
-        setStep(progress)
-        if (start !== duration) {
-          if (duration - start < 16) {
-            start = duration
-          } else {
-            start += 16
-          }
-          clearTimeout(this.animateTimer)
-          run()
-        }
-      }, 16)
+      let gapTime = Date.now() - start
+      let progress = gapTime / duration
+      if (this.animation.type === 'ease') {
+        progress = this.circleProgressEasing(progress)
+      }
+      setStep(progress)
+      if (duration !== gapTime && progress <= 1) {
+        this.circleRaf = window.requestAnimationFrame(run)
+      }
     }
     run()
   }
@@ -268,7 +263,7 @@ class CircleProgress {
   }
 
   destroy () {
-    this.animateTimer && clearTimeout(this.animateTimer)
+    window.cancelAnimationFrame(this.circleRaf)
   }
 }
 

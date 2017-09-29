@@ -136,9 +136,11 @@ export default {
           value: data,
           size: size,
           thickness: size * 0.1,
+          lineCap: 'round',
           fill: '#fff',
           animation: {
-            duration: 600 * (i + 1)
+            duration: 600 * (i + 1),
+            type: 'linear'
           },
           emptyFill: 'rgba(255, 255, 255, .3)',
           callback (num) {

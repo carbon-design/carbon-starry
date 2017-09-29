@@ -98,9 +98,8 @@ export default {
     const resData = resHome.data
     new Counter({
       numFrom: 0,
-      gap: ~~(resData.scan / 30),
       numTo: resData.scan,
-      duration: 30,
+      duration: 1200,
       callback: num => {
         this.countScan = num
       }
@@ -108,9 +107,8 @@ export default {
 
     new Counter({
       numFrom: 0,
-      gap: ~~(resData.creditQuota / 40),
       numTo: resData.creditQuota,
-      duration: 30,
+      duration: 1200,
       callback: num => {
         this.countCreditQuota = num
       }
@@ -118,9 +116,8 @@ export default {
 
     new Counter({
       numFrom: 0,
-      gap: ~~(resData.profit / 50),
       numTo: resData.profit,
-      duration: 30,
+      duration: 1200,
       callback: num => {
         this.countProfit = num
       }

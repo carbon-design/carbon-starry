@@ -1,5 +1,5 @@
 <template lang="pug">
-  .app-main-view(ref="main")
+  .app-main-view
     router-view
     app-footer
 </template>

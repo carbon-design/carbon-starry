@@ -60,7 +60,7 @@ import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
-import 'echarts/lib/chart/pie'
+import CircleProgress from '~/utils/CircleProgress'
 
 export default {
   name: 'asset',
@@ -84,7 +84,7 @@ export default {
           const width = swiper.size * 0.7
           const height = swiper.height
           this.triggerChart(swiper)
-          this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.5, circles)
+          this.initCircle([depositCircle, bondsCircle, fundCircle], height * 0.46, circles)
           runChart(initChart(width, height, deposit), lines[0])
           runChart(initChart(width, height, bonds), lines[1])
           runChart(initChart(width, height, fund), lines[2])
@@ -94,8 +94,13 @@ export default {
     }
   },
   beforeMount () {
+    // 未检测到cookie则返回登录页
     const userInfo = JSON.parse(getCookie('userinfo'))
-    this.userName = userInfo.name
+    if (userInfo) {
+      this.userName = userInfo.name
+    } else {
+      this.$router.replace('/login')
+    }
   },
   async mounted () {
     const { $refs: { viewChart }, initChart, runChart } = this
@@ -124,36 +129,23 @@ export default {
     },
     initCircle (els, size, datas) {
       Array.prototype.forEach.call(els, (el, i) => {
-        const data = datas[i]
+        const data = datas[i] / 100
         el.style.height = el.style.lineHeight = el.style.width = `${size}px`
-        el.setAttribute('data-num', `${data}%`)
-        echarts.init(el).setOption({
-          series: [{
-            type: 'pie',
-            color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, .3)'],
-            hoverAnimation: false,
-            radius: ['64%', '78%'],
-            avoidLabelOverlap: false,
-            label: {
-              normal: {
-                show: false,
-                position: 'center'
-              }
-            },
-            labelLine: {
-              normal: {
-                show: false
-              }
-            },
-            data: [{
-              value: data,
-              name: '已用'
-            }, {
-              value: 100 - data,
-              name: '剩余'
-            }]
-          }]
+        const circleProgress = new CircleProgress({
+          el: el,
+          value: data,
+          size: size,
+          thickness: size * 0.1,
+          fill: '#fff',
+          animation: {
+            duration: 600 * (i + 1)
+          },
+          emptyFill: 'rgba(255, 255, 255, .3)',
+          callback (num) {
+            el.setAttribute('data-num', `${~~(num * 100)}%`)
+          }
         })
+        circleProgress.init()
       })
     },
     runChart (tar, data, top) {

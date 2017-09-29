@@ -77,8 +77,8 @@
 
       .circle {
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 0.2rem;
+        top: 0.2rem;
 
         &:before {
           content: "所占比例";
@@ -96,7 +96,7 @@
           content: attr(data-num);
           height: 100%;
           position: absolute;
-          left: 102%;
+          left: 110%;
           top: 0;
           line-height: inherit;
           font-size: 0.42rem;

@@ -67,10 +67,9 @@
 
 <script>
 import { getHome } from '~/config/api'
-import echarts from 'echarts/lib/echarts'
-import 'echarts/lib/chart/pie'
 import { mapGetters } from 'vuex'
 import Counter from '~/utils/counter'
+import CircleProgress from '~/utils/CircleProgress'
 
 export default {
   name: 'home',
@@ -132,35 +131,29 @@ export default {
     const all = resData.quota
     const surplus = all - use
     const circleEl = this.$refs.perCircle
-    circleEl.style.lineHeight = circleEl.style.height = circleEl.style.width = 2 * window.rootFontSize + 'px'
-    circleEl.setAttribute('data-surplus', `￥${surplus}可用`)
-    echarts.init(circleEl).setOption({
-      series: [{
-        type: 'pie',
-        color: ['rgba(255, 255, 255, .3)', 'rgba(255, 255, 255, 1)'],
-        hoverAnimation: false,
-        radius: ['64%', '86%'],
-        avoidLabelOverlap: false,
-        label: {
-          normal: {
-            show: false,
-            position: 'center'
-          }
-        },
-        labelLine: {
-          normal: {
-            show: false
-          }
-        },
-        data: [{
-          value: use,
-          name: '已用额度'
-        }, {
-          value: surplus,
-          name: '剩余额度'
-        }]
-      }]
+    const size = 1.8 * window.rootFontSize
+    circleEl.style.lineHeight = circleEl.style.height = circleEl.style.width = size + 'px'
+    const circleProgress = new CircleProgress({
+      el: circleEl,
+      value: surplus / all,
+      size: size,
+      thickness: size * 0.12,
+      // lineCap: 'round',
+      // fill: {
+      //   gradient: ['#2a98ed', '#72ddf8']
+      // },
+      fill: '#fff',
+      emptyFill: 'rgba(255, 255, 255, .3)',
+      callback (num) {
+        circleEl.setAttribute('data-surplus', `￥${~~(num * all)}可用`)
+      }
     })
+    this.circleProgress = circleProgress
+    circleProgress.init()
+  },
+
+  beforeDestroy () {
+    this.circleProgress.destroy()
   },
 
   methods: {

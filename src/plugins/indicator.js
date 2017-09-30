@@ -65,6 +65,6 @@ export const indicator = new AppIndicator()
 
 export default {
   install (Vue, options) {
-    Object.defineProperty(Vue.prototype, 'indicator', { value: indicator })
+    Object.defineProperty(Vue.prototype, '$indicator', { value: indicator })
   }
 }

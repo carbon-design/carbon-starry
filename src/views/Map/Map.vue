@@ -14,7 +14,7 @@ export default {
     let docEl = document.documentElement
     el.style.height = docEl.clientHeight - 0.94 * window.rootFontSize + 'px'
 
-    const toast = this.toast
+    const $toast = this.$toast
     const AMap = window.AMap
     let map, geolocation
     // 加载地图，调用浏览器定位服务
@@ -58,11 +58,11 @@ export default {
       }
       // 如为IP精确定位结果则没有精度信息
       str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'))
-      toast(str.join('</br>'), 'bottom', 2000)
+      $toast(str.join('</br>'), 'bottom', 2000)
     }
     // 解析定位错误信息
     const onError = data => {
-      toast('定位失败', 'bottom', 2000)
+      $toast('定位失败', 'bottom', 2000)
     }
 
     map.plugin(['AMap.ToolBar'], () => {

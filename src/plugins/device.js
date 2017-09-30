@@ -22,6 +22,6 @@ export default {
     if (device.weixin) {
       docEl.classList.add('weixin')
     }
-    Object.defineProperty(Vue.prototype, 'getDevice', { value: () => device })
+    Object.defineProperty(Vue.prototype, '$getDevice', { value: () => device })
   }
 }

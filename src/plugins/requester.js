@@ -43,6 +43,6 @@ Axios.interceptors.response.use(res => {
 
 export default {
   install (Vue, options) {
-    Object.defineProperty(Vue.prototype, 'fetch', { value: Axios })
+    Object.defineProperty(Vue.prototype, '$axios', { value: Axios })
   }
 }

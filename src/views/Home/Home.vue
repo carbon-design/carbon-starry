@@ -68,8 +68,6 @@
 <script>
 import { getHome } from '~/config/api'
 import { mapGetters } from 'vuex'
-import Counter from '~/utils/counter'
-import CircleProgress from '~/utils/CircleProgress'
 
 export default {
   name: 'home',
@@ -96,7 +94,7 @@ export default {
   async mounted () {
     const resHome = await getHome()
     const resData = resHome.data
-    new Counter({
+    this.$counter({
       numFrom: 0,
       numTo: resData.scan,
       duration: 1200,
@@ -105,7 +103,7 @@ export default {
       }
     }).start()
 
-    new Counter({
+    this.$counter({
       numFrom: 0,
       numTo: resData.creditQuota,
       duration: 1200,
@@ -114,7 +112,7 @@ export default {
       }
     }).start()
 
-    new Counter({
+    this.$counter({
       numFrom: 0,
       numTo: resData.profit,
       duration: 1200,
@@ -130,7 +128,7 @@ export default {
     const circleEl = this.$refs.perCircle
     const size = 1.8 * window.rootFontSize
     circleEl.style.lineHeight = circleEl.style.height = circleEl.style.width = size + 'px'
-    const circleProgress = new CircleProgress({
+    const vmCircleProgress = this.$circleProgress({
       el: circleEl,
       value: surplus / all,
       size: size,
@@ -145,12 +143,12 @@ export default {
         circleEl.setAttribute('data-surplus', `￥${~~(num * all)}可用`)
       }
     })
-    this.circleProgress = circleProgress
-    circleProgress.init()
+    this.vmCircleProgress = vmCircleProgress
+    vmCircleProgress.init()
   },
 
   beforeDestroy () {
-    this.circleProgress.destroy()
+    this.vmCircleProgress.destroy()
   },
 
   methods: {

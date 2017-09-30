@@ -60,18 +60,18 @@ export default {
       this.pswdFocus = false
     },
     async submit () {
-      const { indicator, toast, userName, password, $router, login } = this
+      const { $indicator, $toast, userName, password, $router, login } = this
       if (!userName.trim()) {
-        toast('请输入用户名！', 'bottom', 2000)
+        $toast('请输入用户名！', 'bottom', 2000)
       } else if (!password.trim()) {
-        toast('请输入密码！', 'bottom', 2000)
+        $toast('请输入密码！', 'bottom', 2000)
       } else {
-        indicator.open('正在登录...')
+        $indicator.open('正在登录...')
         const resLogin = await getLogin({
           userName,
           password
         })
-        indicator.close()
+        $indicator.close()
         if (resLogin.data) {
           $router.push('/redirect?path=/main/home')
           setCookie('userinfo', resLogin.data, 3 * 60 * 60 * 1000)

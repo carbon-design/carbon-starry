@@ -60,7 +60,6 @@ import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
-import CircleProgress from '~/utils/CircleProgress'
 
 export default {
   name: 'asset',
@@ -131,7 +130,7 @@ export default {
       Array.prototype.forEach.call(els, (el, i) => {
         const data = datas[i] / 100
         el.style.height = el.style.lineHeight = el.style.width = `${size}px`
-        const circleProgress = new CircleProgress({
+        this.$circleProgress({
           el: el,
           value: data,
           size: size,
@@ -146,8 +145,7 @@ export default {
           callback (num) {
             el.setAttribute('data-num', `${~~(num * 100)}%`)
           }
-        })
-        circleProgress.init()
+        }).init()
       })
     },
     runChart (tar, data, top) {

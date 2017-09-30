@@ -40,9 +40,9 @@ export default {
   },
   async beforeMount () {
     let vm = this
-    vm.indicator.open('正在加载...')
+    vm.$indicator.open('正在加载...')
     const resLesson = await getLessons()
-    vm.indicator.close()
+    vm.$indicator.close()
     vm.setList(resLesson.data.lessonData)
   },
   computed: {

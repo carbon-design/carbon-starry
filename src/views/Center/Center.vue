@@ -35,7 +35,6 @@
 import { getCookie } from '~/utils/cookie'
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
-import Counter from '~/utils/counter'
 
 export default {
   name: 'center',
@@ -68,15 +67,14 @@ export default {
   },
   mounted () {
     this.renderAllChart()
-    const counter = new Counter({
+    this.$counter({
       numFrom: 0,
       numTo: 68,
       duration: 1200,
       callback: num => {
         this.percent = num
       }
-    })
-    counter.start()
+    }).start()
   },
   beforeDestroy () {
     this.bodyClass.remove('app-theme-dark', 'app-light-linear')

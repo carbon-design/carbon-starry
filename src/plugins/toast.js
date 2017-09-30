@@ -23,6 +23,6 @@ export const toast = (title, postion, delay) => {
 
 export default {
   install (Vue, options) {
-    Object.defineProperty(Vue.prototype, 'toast', { value: toast })
+    Object.defineProperty(Vue.prototype, '$toast', { value: toast })
   }
 }

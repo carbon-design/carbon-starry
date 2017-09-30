@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Gyroscope from '~/utils/gyroscope'
+import Gyroscope from '~/libs/gyroscope'
 
 export default {
   name: 'gyro',

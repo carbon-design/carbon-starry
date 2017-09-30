@@ -90,7 +90,10 @@ if (settings.gzip) {
 
 if (settings.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: `../data/reports/${Date.now()}.html`
+  }))
 }
 
 module.exports = webpackConfig

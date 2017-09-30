@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
+import createPersistedState from 'vuex-persistedstate'
 import { state, mutations } from './mutations'
 import * as actions from './actions'
 import * as getters from './getters'
@@ -10,7 +11,7 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
-let plugins = []
+let plugins = [createPersistedState()]
 
 if (debug && !window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
   const logger = createLogger({

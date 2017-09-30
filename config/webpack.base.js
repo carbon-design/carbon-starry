@@ -87,6 +87,7 @@ module.exports = {
       'vuex',
       'vue-router',
       'vuex-router-sync',
+      'vuex-persistedstate',
       'echarts/lib/echarts',
       // 'echarts/lib/chart/pie',
       'echarts/lib/chart/line'

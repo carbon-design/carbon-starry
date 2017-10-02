@@ -14,7 +14,6 @@ const proxyMiddleware = require('http-proxy-middleware')
 
 const isTest = process.env.NODE_ENV === 'testing'
 
-
 const webpackConfig = isTest ? require('../config/webpack.prod') : require('../config/webpack.dev')
 
 const port = process.env.PORT || settings.port

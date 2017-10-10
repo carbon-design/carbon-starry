@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="renderer" content="webkit"/>
-<title>Carbon Megatron</title>
+<title><%=htmlWebpackPlugin.options.title%></title>
+<%if(htmlWebpackPlugin.options.isMobile){%>
 <script>
   (function (baseFontSize, fontscale) {
     var _baseFontSize = baseFontSize || 100;
@@ -35,6 +36,7 @@
     doc.documentElement.style.fontSize = win.rootFontSize + 'px';
   })();
 </script>
+<%}%>
 <script src="http://webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac"></script>
 </head>
 <body>

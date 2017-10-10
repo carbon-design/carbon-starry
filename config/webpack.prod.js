@@ -46,9 +46,11 @@ let webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     new HtmlWebpackPlugin({
+      title: settings.projectName,
+      isMobile: settings.isMobile,
       filename: isTest ? 'index.html' : settings.index,
       favicon: resolve('static/favicon.ico'),
-      template: resolve(settings.entry),
+      template: resolve('static/index.ejs'),
       inject: true,
       minify: {
         removeComments: true,

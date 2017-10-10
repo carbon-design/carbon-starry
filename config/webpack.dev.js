@@ -25,9 +25,11 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
+      title: settings.projectName,
+      isMobile: settings.isMobile,
       filename: 'index.html',
       favicon: resolve('static/favicon.ico'),
-      template: resolve(settings.entry),
+      template: resolve('static/index.ejs'),
       inject: true
     }),
     new FriendlyErrorsPlugin()

@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { getLessons } from '~/config/api'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -38,12 +37,8 @@ export default {
     this.bodyClass = document.documentElement.classList
     this.bodyClass.add('bg-light-white')
   },
-  async beforeMount () {
-    let vm = this
-    vm.$indicator.open('正在加载...')
-    const resLesson = await getLessons()
-    vm.$indicator.close()
-    vm.setList(resLesson.data.lessonData)
+  beforeMount () {
+    this.getList()
   },
   computed: {
     ...mapGetters({
@@ -71,7 +66,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setList: 'setLessonList'
+      setList: 'setLessonList',
+      getList: 'getLessonList'
     }),
     clone (obj) {
       return JSON.parse(JSON.stringify(obj))

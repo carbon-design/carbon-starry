@@ -14,8 +14,9 @@ export const setLessonList = ({ commit }, value) => {
 }
 
 export const getLessonList = async handle => {
-  indicator.open('正在加载...')
+  const isFirst = handle.state.channel.lessonList.length === 0
+  isFirst && indicator.open('正在加载...')
   const resLesson = await getLessons()
-  indicator.close()
+  isFirst && indicator.close()
   setLessonList(handle, resLesson.data.lessonData)
 }

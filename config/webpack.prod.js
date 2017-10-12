@@ -46,6 +46,7 @@ let webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     new HtmlWebpackPlugin({
+      extJS: settings.extJS || [],
       title: settings.projectName,
       isMobile: settings.isMobile,
       filename: isTest ? 'index.html' : settings.index,

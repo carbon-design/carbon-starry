@@ -1,0 +1,10 @@
+﻿$ratio: 750 / 320;
+$containerHeight: 238px * $ratio;
+
+.page-scroll {
+  .scroller {
+    width: 100%;
+    height: $containerHeight;
+    background-color:#fff;
+  }
+}

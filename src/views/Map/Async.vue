@@ -6,7 +6,7 @@
 import config from '~/config/asyncLoad'
 
 export default {
-  name: 'async-center',
+  name: 'async-map',
   components: {
     AsyncModule: () => ({
       component: import('./Map' /* webpackChunkName: 'map' */),

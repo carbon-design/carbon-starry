@@ -2,16 +2,16 @@
   async-module
 </template>
 
-<style lang="scss" src="#/styles/pages/gyro.scss"></style>
+<style lang="scss" src="#/styles/pages/scroll.scss"></style>
 
 <script>
 import config from '~/config/asyncLoad'
 
 export default {
-  name: 'async-gyro',
+  name: 'async-scroll',
   components: {
     AsyncModule: () => ({
-      component: import('./Gyro' /* webpackChunkName: 'gyro' */),
+      component: import('./Scroll' /* webpackChunkName: 'scroll' */),
       ...config
     })
   }

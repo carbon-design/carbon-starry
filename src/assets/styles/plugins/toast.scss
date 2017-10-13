@@ -1,0 +1,26 @@
+.app-toast {
+  position: fixed;
+  max-width: 80%;
+  border-radius: 0.1rem;
+  background: rgba(0, 0, 0, .7);
+  opacity: 0;
+  color: #fff;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 1000;
+  font-size: 0.24rem;
+  transition: opacity .3s linear;
+  padding: 0.2rem;
+  line-height: 1.5;
+  transform: translate(-50%, -50%);
+
+  &.position-middle {
+    left: 50%;
+    top: 50%;
+  }
+  
+  &.position-bottom {
+    left: 50%;
+    bottom: 1rem;
+  }
+}

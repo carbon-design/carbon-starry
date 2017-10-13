@@ -29,7 +29,7 @@
         .cell(@click="toMap")
           i.iconfont &#xe6f9;
           span 理财指导
-        .cell
+        .cell(@click="toScroll")
           i.iconfont &#xe624;
           span 贷款申请
         .cell
@@ -157,6 +157,9 @@ export default {
     },
     toMap () {
       this.$router.push('/main/map')
+    },
+    toScroll () {
+      this.$router.push('/main/scroll')
     }
   }
 }

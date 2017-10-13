@@ -9,6 +9,7 @@ import Center from '@/Center/Async'
 
 import Gyro from '@/Gyro/Async'
 import Maps from '@/Map/Async'
+import Scroll from '@/Scroll/Async'
 
 export default [{
   path: '/login',
@@ -37,6 +38,9 @@ export default [{
   }, {
     path: 'map',
     component: Maps
+  }, {
+    path: 'scroll',
+    component: Scroll
   }]
 }, {
   path: '/redirect',

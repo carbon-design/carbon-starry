@@ -1,0 +1,58 @@
+$ratio: 750 / 320;
+$containerHeight: 238px * $ratio;
+$bgSizeY: 102px * $ratio;
+$rowCellHeight: 34px * $ratio;
+$rowCellFontSize: 0.28rem;
+
+.scroller-component {
+  display: block;
+  position: relative;
+  height: $containerHeight;
+  overflow: hidden;
+  width: 100%;
+  
+  .scroller-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .scroller-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 3;
+    background-image:
+      -webkit-linear-gradient(top, rgba(255,255,255,0.95), rgba(255,255,255,0.6)),
+      -webkit-linear-gradient(bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
+    background-image:
+      linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.6)),
+      linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
+    background-position: top, bottom;
+    background-size: 100% $bgSizeY;
+    background-repeat: no-repeat;
+  }
+
+  .scroller-indicator {
+    width: 100%;
+    height: $rowCellHeight;
+    position: absolute;
+    left: 0;
+    top: $bgSizeY;
+    z-index: 3;
+  }
+  
+  .scroller-item {
+    text-align: center;
+    font-size: $rowCellFontSize;
+    height: $rowCellHeight;
+    line-height: $rowCellHeight;
+    color: #000;
+    overflow:hidden;
+  }
+}

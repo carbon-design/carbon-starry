@@ -1,28 +1,13 @@
 import Animate from './animate' 
 
 class Scroller {
-  constructor (container, options) {
+  constructor (container) {
     this.$template = `
       <div class="scroller-component" data-role="component">
         <div class="scroller-mask" data-role="mask"></div>
         <div class="scroller-indicator" data-role="indicator"></div>
         <div class="scroller-content" data-role="content"></div>
       </div>`
-
-    options = options || {}
-
-    this.options = {
-      itemClass: 'scroller-item',
-      onSelect () {},
-      defaultValue: 0,
-      data: []
-    }
-
-    for (let key in options) {
-      if (options[key] !== undefined) {
-        this.options[key] = options[key]
-      }
-    }
 
     let params = {
       value: null,
@@ -57,11 +42,29 @@ class Scroller {
     this._container = this._getElement(container)
   }
 
-  init () {
-    const options = this.options
+  init (options) {
+    options = options || {}
+    
+    this.options = {
+      itemClass: 'scroller-item',
+      onSelect () {},
+      defaultValue: 0,
+      data: []
+    }
+
+    for (let key in options) {
+      if (options[key] !== undefined) {
+        this.options[key] = options[key]
+      }
+    }
+    
     let tempContainer = document.createElement('div')
     tempContainer.innerHTML = options.template || this.$template
-  
+
+    if (this._component) {
+      this.destroy()
+    }
+    
     let component = this._component = tempContainer.querySelector('[data-role=component]')
     let content = this._content = component.querySelector('[data-role=content]')
     let indicator = component.querySelector('[data-role=indicator]')

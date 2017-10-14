@@ -1,11 +1,15 @@
 <template lang="pug">
   .page-scroll
     .scroller(ref="scroller")
-    .btn(@click="selectRow") 选中第十个
+    .btn(@click="selectRow") 选中其中一项
+    .btn(@click="resetScroll") 重设选项列表
+    .btn(@click="multiSelect") 级联选择
 </template>
 
 <script>
+import { getAddress } from '~/config/api'
 import Scroller from '~/libs/scroller'
+import Poppicker from '~/libs/poppicker'
 
 export default {
   name: 'scroll',
@@ -13,9 +17,10 @@ export default {
     return {
     }
   },
-  mounted () {
-    const container = this.$refs.scroller
-    const scroller = this.scroller = new Scroller(container, {
+  async mounted () {
+    const $container = this.$refs.scroller
+    const scroller = this.scroller = new Scroller($container)
+    scroller.init({
       data: [{
         name: '金樽清酒斗十千，玉盘珍羞直万钱',
         value: 0
@@ -63,17 +68,53 @@ export default {
         value: 14
       }],
       onSelect: val => {
-        this.$toast(`你选择了第${val * 1 + 1}行诗句`, 'bottom')
+        this.$toast(`你选择了第${val * 1 + 1}行诗句`, 'bottom', 800)
       }
     })
-    scroller.init()
+    const res = await getAddress()
+    this.poppicker = new Poppicker({
+      data: res.data,
+      onInit (val) {
+        console.log(val)
+      }
+    })
   },
   beforeDestroy () {
     this.scroller.destroy()
   },
   methods: {
     selectRow () {
-      this.scroller.select('9')
+      this.scroller.select('5')
+    },
+    resetScroll () {
+      this.scroller.init({
+        data: [{
+          name: '脱了裤子打老虎——又不要脸又不要命',
+          value: 0
+        }, {
+          name: '女生寝室长水——泡妞',
+          value: 1
+        }, {
+          name: '做砖的坯子、插刀的鞘子——框框套套',
+          value: 2
+        }, {
+          name: '煎饼果子翻车——乱套了',
+          value: 3
+        }, {
+          name: '挑水的看大河——都是钱',
+          value: 4
+        }, {
+          name: '傻小子睡凉炕——全凭火力壮',
+          value: 5
+        }],
+        onSelect: val => {
+          this.$toast(`你选择了第${val * 1 + 1}行歇后语`, 'bottom', 800)
+        }
+      })
+    },
+    multiSelect () {
+      this.poppicker.init()
+      console.log(this.poppicker)
     }
   }
 }

@@ -44,7 +44,7 @@
           .result
             h1 {{ countProfit | intMoney }}
             p 本周理财投资收益
-        .sun
+          .sun
           .light
             .dot
             .dot
@@ -58,7 +58,7 @@
           .result
             h1 {{ countCreditQuota | intMoney }}
             p 当前拥有审批额度
-        .sun
+          .sun
           .light
             .dot
             .dot

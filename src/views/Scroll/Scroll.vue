@@ -72,10 +72,16 @@ export default {
       }
     })
     const res = await getAddress()
-    this.poppicker = new Poppicker({
+    this.addressPoppicker = new Poppicker({
       data: res.data,
       onInit (val) {
         console.log(val)
+      },
+      onSelect (vals) {
+        console.log(vals)
+      },
+      onConfirm: vals => {
+        this.$toast(vals.map(e => e.name).join('-'), 'bottom')
       }
     })
   },
@@ -113,8 +119,8 @@ export default {
       })
     },
     multiSelect () {
-      this.poppicker.init()
-      console.log(this.poppicker)
+      console.log(this.addressPoppicker)
+      this.addressPoppicker.show()
     }
   }
 }

@@ -166,16 +166,6 @@ class Scroller {
     this.value = selectedItem.dataset.value
   }
 
-  _scrollingComplete () {
-    let index = Math.round((this._scrollTop - this._minScrollTop - this._itemHeight / 2) / this._itemHeight)
-
-    this._selectItem(this._content.children[index])
-
-    if (this._prevValue !== null && this._prevValue !== this.value) {
-      this.options.onSelect(this.value)
-    }
-  }
-
   _publish (top, animationDuration) {
     let wasAnimating = this._isAnimating
     if (wasAnimating) {

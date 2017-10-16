@@ -75,7 +75,8 @@ class PopPicker {
     this._container.appendChild(header)
 
     if (!this._mask) {
-      this._mask = this._createEl('dp-mask')
+      let hasMask = document.getElementsByClassName('dp-mask')[0]
+      this._mask = hasMask || this._createEl('dp-mask')
     }
 
     this._scrollerColums = []

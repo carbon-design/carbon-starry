@@ -4,12 +4,14 @@
     .btn(@click="selectRow") 选中其中一项
     .btn(@click="resetScroll") 重设选项列表
     .btn(@click="multiSelect") 级联选择
+    .btn(@click="timeSelect") 日期时间选择
 </template>
 
 <script>
 import { getAddress } from '~/config/api'
 import Scroller from '~/libs/scroller'
 import Poppicker from '~/libs/poppicker'
+import DatetimePicker from '~/libs/datetimepicker'
 
 export default {
   name: 'scroll',
@@ -84,6 +86,15 @@ export default {
         this.$toast(vals.map(e => e.name).join('-'), 'bottom')
       }
     })
+
+    this.timePicker = new DatetimePicker({
+      format: 'YYYY-MM-DD HH:II',
+      minYear: 2000,
+      maxYear: 2020,
+      onConfirm: val => {
+        this.$toast(val, 'bottom')
+      }
+    })
   },
   beforeDestroy () {
     this.scroller.destroy()
@@ -118,9 +129,13 @@ export default {
         }
       })
     },
+
     multiSelect () {
-      console.log(this.addressPoppicker)
       this.addressPoppicker.show()
+    },
+
+    timeSelect () {
+      this.timePicker.show()
     }
   }
 }

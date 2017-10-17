@@ -8,7 +8,7 @@ class PopPicker {
       data: [],
       defaultValues: [],
       onSelect () {},
-      onInit () {},
+      onshow () {},
       onConfirm () {},
       onCancel () {}
     }
@@ -164,7 +164,6 @@ class PopPicker {
   
   _init () {
     this._createDOM()
-    this.options.onInit(this._values)
     this._installScroller()
     this._bindEventHandle()
   }
@@ -172,6 +171,7 @@ class PopPicker {
   show () {
     this._container.classList.add('show')
     this._mask.classList.add('show')
+    this.options.onShow(this._values)
   }
 
   hide () {

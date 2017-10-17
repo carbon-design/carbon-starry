@@ -76,7 +76,7 @@ export default {
     const res = await getAddress()
     this.addressPoppicker = new Poppicker({
       data: res.data,
-      onInit (val) {
+      onShow (val) {
         console.log(val)
       },
       onSelect (vals) {

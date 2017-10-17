@@ -6,6 +6,7 @@ const resolve = dir => path.join(__dirname, '..', dir)
 module.exports = {
   build: {
     env: env.prod,
+    cjsVendor: true,
     extJS: ['http://webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac'],
     index: resolve('dist/index.html'),
     assetsRoot: resolve('dist'),
@@ -24,6 +25,7 @@ module.exports = {
   },
   dev: {
     env: env.dev,
+    cjsVendor: false,
     extJS: ['http://webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac'],
     port: 3000,
     lint: true,

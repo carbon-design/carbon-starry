@@ -58,8 +58,7 @@
 <script>
 import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
-import echarts from 'echarts/lib/echarts'
-import 'echarts/lib/chart/line'
+import echarts from 'echarts'
 
 export default {
   name: 'asset',

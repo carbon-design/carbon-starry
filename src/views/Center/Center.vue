@@ -33,8 +33,7 @@
 
 <script>
 import { getCookie } from '~/utils/cookie'
-import echarts from 'echarts/lib/echarts'
-import 'echarts/lib/chart/line'
+import echarts from 'echarts'
 
 export default {
   name: 'center',

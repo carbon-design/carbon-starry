@@ -10,6 +10,8 @@ const env = isProd ? 'build' : 'dev'
 const assetsPublicPath = settings[env].assetsPublicPath
 const assetsSubDir = settings[env].assetsSubDir
 const assetJsPath = assetsSubDir ? `${assetsSubDir}/js` : 'js'
+const isShim = settings[env].esShim
+const isCjs = settings[env].cjsVendor
 
 const resolve = dir => path.join(__dirname, '..', dir)
 
@@ -71,27 +73,23 @@ let plugins = [
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
 
-if (settings[env].esShim) {
-  plugins.push(new AddAssetHtmlPlugin([
-    assetConfig('../shim/es5-shim.min.js'),
-    assetConfig('../shim/es6-shim.min.js')
-  ]))
+if (isShim || isCjs) {
+  let assetArr = []
+  if (isShim) {
+    assetArr = [
+      assetConfig('../shim/es5-shim.min.js'),
+      assetConfig('../shim/es6-shim.min.js')
+    ]
+  }
+  if (isCjs) {
+    assetArr.push(assetConfig('../externals/core.min.js'))
+  }
+  plugins.push(new AddAssetHtmlPlugin(assetArr))
 }
 
-module.exports = {
+let baseConfig = {
   entry: {
-    app: './src/main.js',
-    vendor: [
-      'axios',
-      'vue',
-      'vuex',
-      'vue-router',
-      'vuex-router-sync',
-      'vuex-persistedstate',
-      'echarts/lib/echarts',
-      // 'echarts/lib/chart/pie',
-      'echarts/lib/chart/line'
-    ]
+    app: './src/main.js'
   },
   output: {
     path: settings.build.assetsRoot,
@@ -102,6 +100,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      'echarts': 'echarts/dist/echarts.simple',
+      'throttle': 'lodash/throttle',
       '~': resolve('src'),
       '@': resolve('src/views'),
       '#': resolve('src/assets'),
@@ -113,3 +113,30 @@ module.exports = {
   },
   plugins: plugins
 }
+
+if (!isCjs) {
+  baseConfig.entry.vendor = [
+    'axios',
+    'vue',
+    'vuex',
+    'vue-router',
+    'lodash/throttle',
+    'vuex-router-sync',
+    'vuex-persistedstate',
+    'vue-awesome-swiper',
+    'echarts/dist/echarts.simple'
+  ]
+} else {
+  baseConfig.externals = {
+    'axios': 'window.axios',
+    'vue': 'window.vue',
+    'vuex': 'window.vuex',
+    'vue-router': 'window.vueRouter',
+    'vuex-router-sync': 'window.vuexRouterSync',
+    'vuex-persistedstate': 'window.vuexPersistedstate',
+    'echarts': 'window.echarts',
+    'throttle': 'window.throttle'
+  }
+}
+
+module.exports = baseConfig

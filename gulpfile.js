@@ -43,7 +43,6 @@ gulp.task('vendor', () => {
       rollupBabel({
         exclude: 'node_modules/**',
         plugins: ['transform-runtime', 'external-helpers'],
-
         runtimeHelpers: true,
         externalHelpers: true
       }),

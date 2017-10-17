@@ -1,4 +1,4 @@
-$ratio: 750 / 320;
+$ratio: 2;
 $containerHeight: 2.38rem * $ratio;
 $bgSizeY: 1.02rem * $ratio;
 $rowCellHeight: 0.34rem * $ratio;
@@ -39,11 +39,11 @@ $rowCellFontSize: 0.28rem;
 
 @keyframes popdown {
   0% {
-    transform:translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform:translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 }
 
@@ -128,7 +128,7 @@ $rowCellFontSize: 0.28rem;
     display: flex;
     width: 100%;
     align-items: center;
-    background-color:#f7f7f7;
+    background-color: #f7f7f7;
     
     .dp-item {
       color: #0095FF;
@@ -136,7 +136,7 @@ $rowCellFontSize: 0.28rem;
       height: $dpItemHeight;
       line-height: $dpItemHeight;
       cursor: pointer;
-      padding:0 $dpItemPadding;
+      padding: 0 $dpItemPadding;
       flex: 1;
       box-sizing: border-box;
       text-align: center;
@@ -170,13 +170,13 @@ $rowCellFontSize: 0.28rem;
   &.show {
     height: 100%;
     visibility: visible;
-    animation:fadeIn .3s ease;
+    animation: fadeIn .3s ease;
   }
   
   &.leave {
     height: 100%;
     visibility: visible;
-    animation:fadeOut .3s ease;
+    animation: fadeOut .3s ease;
   }
 }
 

@@ -119,7 +119,7 @@ class PopPicker {
             let vals = this._getChildsByValue(val, e)[0]
             this._getFullValues(vals, i)
             this._initScroller(i + 1)
-            this.options.onSelect(this._values)
+            this.options.onSelect(this._arrayFilter(this._values))
           }
         })
       }
@@ -154,7 +154,7 @@ class PopPicker {
     }, false)
 
     this._okBtn.addEventListener('click', () => {
-      this.options.onConfirm(this._values)
+      this.options.onConfirm(this._arrayFilter(this._values))
       this.hide()
     }, false)
   }
@@ -166,6 +166,10 @@ class PopPicker {
     }, delay)
   }
   
+  _arrayFilter (arr) {
+    return arr.filter(e => e)
+  }
+
   _init () {
     this._createDOM()
     this._installScroller()
@@ -175,7 +179,7 @@ class PopPicker {
   show () {
     this._container.classList.add('show')
     this._mask.classList.add('show')
-    this.options.onShow(this._values)
+    this.options.onShow(this._arrayFilter(this._values))
   }
 
   hide () {

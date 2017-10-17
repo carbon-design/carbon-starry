@@ -2,6 +2,9 @@ import Animate from './animate'
 
 class Scroller {
   constructor (container) {
+    this.destroy = this.destroy.bind(this)
+    this.getValue = this.getValue.bind(this)
+
     this.$template = `
       <div class="scroller-component" data-role="component">
         <div class="scroller-mask" data-role="mask"></div>

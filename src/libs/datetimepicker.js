@@ -3,6 +3,12 @@ import formater from './format'
 
 class DatetimePicker {
   constructor (options) {
+    this.show = this.show.bind(this)
+    this.hide = this.hide.bind(this)
+    this.destroy = this.destroy.bind(this)
+    this.confirm = this.confirm.bind(this)
+    this.getValue = this.getValue.bind(this)
+
     options = options || {}
 
     const $template = `
@@ -27,6 +33,7 @@ class DatetimePicker {
     
     this.options = {
       template: $template,
+      maskTemplate: $maskTemplate,
       output: null,
       currentYear: nowtime.getFullYear(),
       currentMonth: nowtime.getMonth() + 1,
@@ -163,8 +170,7 @@ class DatetimePicker {
 
   _initMask () {
     if (!this._mask) {
-      let hasMask = document.getElementsByClassName('dp-mask')[0]
-      this._mask = hasMask || this._toElement($maskTemplate)
+      this._mask = this._toElement(this.options.maskTemplate)
     }
     this._root = document.body
     this._root.appendChild(this._mask)
@@ -370,8 +376,8 @@ class DatetimePicker {
   }
 
   destroy () {
-    this._removeElement(this._mask)
-    this._removeElement(this._container)
+    this._container && this._root.removeChild(this._container)
+    this._mask && this._root.removeChild(this._mask)
   }
 
 }

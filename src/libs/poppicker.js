@@ -2,6 +2,10 @@ import Scroller from './scroller'
 
 class PopPicker {
   constructor (options) {
+    this.show = this.show.bind(this)
+    this.hide = this.hide.bind(this)
+    this.destroy = this.destroy.bind(this)
+
     options = options || {}
     
     this.options = {
@@ -188,8 +192,8 @@ class PopPicker {
   }
 
   destroy () {
-    this._removeEl(this._container)
-    this._removeEl(this._mask)
+    this._container && this._root.removeChild(this._container)
+    this._mask && this._root.removeChild(this._mask)
   }
 }
 

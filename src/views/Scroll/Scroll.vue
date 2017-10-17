@@ -98,6 +98,8 @@ export default {
   },
   beforeDestroy () {
     this.scroller.destroy()
+    this.addressPoppicker.destroy()
+    this.timePicker.destroy()
   },
   methods: {
     selectRow () {

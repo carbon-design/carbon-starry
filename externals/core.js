@@ -11,6 +11,8 @@ import Counter from '../src/libs/counter'
 import Scroller from '../src/libs/scroller'
 import DatetimePicker from '../src/libs/datetimepicker'
 import Poppicker from '../src/libs/poppicker'
+import Indicator from '../src/libs/indicator'
+import toast from '../src/libs/toast'
 
 window.axios = axios
 window.vue = vue
@@ -25,3 +27,5 @@ window.Counter = Counter
 window.Scroller = Scroller
 window.DatetimePicker = DatetimePicker
 window.Poppicker = Poppicker
+window.Indicator = Indicator
+window.toast = toast

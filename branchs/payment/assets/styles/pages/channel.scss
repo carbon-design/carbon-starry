@@ -1,0 +1,96 @@
+﻿.page-channel {
+  .page-header {
+    color: #2C2962;
+    text-align: center;
+    font-size: 0.3rem;
+    padding: 0.28rem 0.3rem;
+    position: relative;
+    // background-color: #fff;
+
+    i.iconfont {
+      font-size: 0.38rem;
+      height: 0.38rem;
+      width: 0.38rem;
+      line-height: 1;
+      display: block;
+      position: absolute;
+      right: 0.3rem;
+      top: 50%;
+      margin-top: -0.19rem;
+      color: #2f2b4e;
+
+      &.left {
+        right: auto;
+        left: 0.3rem;
+      }
+    }
+  }
+
+  .list-group {
+    & + .list-group {
+      margin-top: 0.3rem;
+    }
+  }
+
+  .list-title {
+    background-color: #6bd1c4;
+    color: #fff;
+    margin: 0 0.2rem 0.3rem;
+    border-radius: 0.08rem;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0.12rem 0.38rem -0.06rem rgba(120, 234, 220, 0.8);
+
+    .app-checkbox {
+      margin-right: 0.2rem;
+    }
+
+    .title {
+      flex-grow: 1;
+
+      h1 {
+        font-size: 0.32rem;
+        margin-bottom: 0.2rem;
+      }
+
+      p {
+        opacity: .8;
+      }
+    }
+  }
+
+  .lesson-list {
+    padding-left: 0.3rem;
+
+    .lesson-item {
+      padding: 0.3rem 0.3rem 0.3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & + .lesson-item {
+        border-top: 1px solid #e4e5e7;
+      }
+
+      .info {
+        padding: 0 0.2rem;
+        flex-grow: 1;
+
+        h1 {
+          font-size: 0.3rem;
+          margin-bottom: 0.2rem;
+        }
+
+        p {
+          opacity: .8;
+        }
+      }
+
+      .mode {
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "isAdmin": false,
+  "subProjectName": "payment",
+  "projectRoot": "branchs/payment",
+  "projectEntry": "branchs/payment/main.js",
+  "assetsRoot": "dist/payment",
+  "assetsIndex": "dist/payment/index.html",
+  "devPort": 3000,
+  "distPort": 3001
+}

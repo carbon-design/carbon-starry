@@ -15,7 +15,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "check": "npm-check -u",
     "ncu": "gulp ncu",
-    "vendor": "gulp vendor"
+    "vendor": "gulp vendor",
+    "vendorJS": "gulp vendorJS",
+    "vendorCSS": "gulp vendorCSS"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -29,7 +31,6 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "add-asset-html-webpack-plugin": "^2.1.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
@@ -37,11 +38,11 @@
     "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "chalk": "^2.1.0",
+    "chalk": "^2.2.0",
     "compression-webpack-plugin": "^1.0.1",
     "connect-history-api-fallback": "^1.4.0",
     "connect-livereload": "^0.6.0",
@@ -63,6 +64,10 @@
     "file-loader": "1.1.5",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
     "inject-loader": "^3.0.1",
@@ -112,7 +117,7 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.2",
-    "webpack": "^3.7.1",
+    "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0",

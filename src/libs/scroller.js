@@ -1,4 +1,4 @@
-import Animate from './animate' 
+import Animate from './animate'
 
 class Scroller {
   constructor (container) {
@@ -47,7 +47,7 @@ class Scroller {
 
   init (options) {
     options = options || {}
-    
+
     this.options = {
       itemClass: 'scroller-item',
       onSelect () {},
@@ -60,18 +60,18 @@ class Scroller {
         this.options[key] = options[key]
       }
     }
-    
+
     let tempContainer = document.createElement('div')
     tempContainer.innerHTML = options.template || this.$template
 
     if (this._component) {
       this.destroy()
     }
-    
+
     let component = this._component = tempContainer.querySelector('[data-role=component]')
     let content = this._content = component.querySelector('[data-role=content]')
     let indicator = component.querySelector('[data-role=indicator]')
-  
+
     let data = this.options.data
     let html = ''
     if (data.length && data[0].constructor === Object) {
@@ -86,25 +86,25 @@ class Scroller {
     content.innerHTML = html
 
     this._container.appendChild(component)
-  
+
     this._itemHeight = parseInt(this._getComputedStyle(indicator, 'height'), 10)
     const setTransform = top => {
       content.style.webkitTransform = `translate3d(0, ${-top}px, 0)`
     }
     this._callback = options.callback || setTransform
-  
+
     let rect = component.getBoundingClientRect()
-  
+
     this._clientTop = (rect.top + component.clientTop) || 0
-  
+
     this._setDimensions(component.clientHeight, content.offsetHeight)
-  
+
     if (component.clientHeight === 0) {
       this._setDimensions(238, 204)
     }
 
     this.select(this.options.defaultValue, false)
-  
+
     component.addEventListener('touchstart', e => {
       if (e.target.tagName.match(/input|textarea|select/i)) {
         return
@@ -112,11 +112,11 @@ class Scroller {
       e.preventDefault()
       this._doTouchStart(e.touches, e.timeStamp)
     }, false)
-  
+
     component.addEventListener('touchmove', e => {
       this._doTouchMove(e.touches, e.timeStamp)
     }, false)
-  
+
     component.addEventListener('touchend', e => {
       this._doTouchEnd(e.timeStamp)
     }, false)
@@ -125,17 +125,16 @@ class Scroller {
   _getElement (expr) {
     return (typeof expr === 'string') ? document.querySelector(expr) : expr
   }
-  
+
   _getComputedStyle (el, key) {
     var computedStyle = window.getComputedStyle(el)
     return computedStyle[key] || ''
   }
-  
-  
+
   _easeOutCubic (pos) {
     return (Math.pow((pos - 1), 3) + 1)
   }
-  
+
   _easeInOutCubic (pos) {
     if ((pos /= 0.5) < 1) {
       return 0.5 * Math.pow(pos, 3)
@@ -234,7 +233,7 @@ class Scroller {
     if (top === this._scrollTop || !animate) {
       this._publish(top)
       this._scrollingComplete()
-      return;
+      return
     }
     this._publish(top, 250)
   }
@@ -357,7 +356,6 @@ class Scroller {
   }
 
   _doTouchMove (touches, timeStamp, scale) {
-
     if (touches.length == null) {
       throw new Error('Invalid touch list: ' + touches)
     }
@@ -410,9 +408,7 @@ class Scroller {
       positions.push(scrollTop, timeStamp)
 
       this._publish(scrollTop)
-
     } else {
-
       let minimumTrackingForScroll = 0
       let minimumTrackingForDrag = 5
 
@@ -452,7 +448,6 @@ class Scroller {
       this._isDragging = false
 
       if (this._isSingleTouch && (timeStamp - this._lastTouchMove) <= 100) {
-
         let positions = this._positions
         let endPos = positions.length - 1
         let startPos = endPos
@@ -462,8 +457,8 @@ class Scroller {
         }
 
         if (startPos !== endPos) {
-          let timeOffset = positions[endPos] - positions[startPos];
-          let movedTop = this._scrollTop - positions[startPos - 1];
+          let timeOffset = positions[endPos] - positions[startPos]
+          let movedTop = this._scrollTop - positions[startPos - 1]
 
           this._decelerationVelocityY = movedTop / timeOffset * (1000 / 60)
 
@@ -481,7 +476,6 @@ class Scroller {
     }
 
     this._positions.length = 0
-
   }
 
   getValue () {
@@ -491,7 +485,6 @@ class Scroller {
   destroy () {
     this._component.parentNode.removeChild(this._component)
   }
-
 }
 
 export default Scroller

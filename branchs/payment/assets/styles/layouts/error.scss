@@ -1,0 +1,17 @@
+.app-error {
+  width: 100%;
+  padding: 0.4rem 0;
+
+  .title {
+    text-align: center;
+    padding: 0.3rem;
+    color: #aeb7c7;
+    font-size: 0.28rem;
+  }
+
+  .fail-icon {
+    height: 2.8rem;
+    background: url(../../images/fail-icon.svg) no-repeat center center;
+    background-size: auto 100%;
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 752 652" style="enable-background:new 0 0 752 652;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#FD);}
+</style>
+<linearGradient id="FD" gradientUnits="userSpaceOnUse" x1="0" y1="326" x2="752" y2="326">
+	<stop  offset="0" style="stop-color:#E6E1FF"/>
+	<stop  offset="1" style="stop-color:#EBEBFF"/>
+</linearGradient>
+<polygon class="st0" points="0,258 752,0 752,652 0,652 "/>
+</svg>

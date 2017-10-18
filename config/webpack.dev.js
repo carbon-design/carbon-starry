@@ -26,6 +26,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       extJS: settings.extJS || [],
+      extCSS: settings.extCSS || [],
       title: settings.projectName,
       isMobile: settings.isMobile,
       filename: 'index.html',

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { indicator } from './indicator'
-import { toast } from './toast'
+import toast from '~/libs/toast'
 
 export const Axios = axios.create({
   baseURL: '/',

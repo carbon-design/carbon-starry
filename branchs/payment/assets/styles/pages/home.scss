@@ -1,0 +1,237 @@
+﻿@mixin dot($opacity) {
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, $opacity);
+  position: absolute;
+}
+
+@keyframes shine1 {
+  0%, 100% {
+    right: 0.2rem;
+    top: 0.2rem;
+    opacity: .6;
+  }
+
+  40% {
+    right: 0.4rem;
+    top: 0.4rem;
+    opacity: 1;
+  }
+}
+
+@keyframes shine2 {
+  0%, 100% {
+    right: -0.18rem;
+    top: -0.1rem;
+  }
+
+  40% {
+    right: -0.28rem;
+    top: -0.2rem;
+  }
+}
+
+.page-home {
+  padding: 0.3rem 0.4rem;
+
+  .chassis {
+    width: 100%;
+    min-height: 2.3rem;
+    background-color: #fff;
+    border-radius: 0.08rem;
+    padding-top: 2rem;
+    box-sizing: border-box;
+    box-shadow: 0 0.06rem 0.24rem -0.02rem rgba(0, 0, 0, .04);
+    position: relative;
+
+    & + .chassis {
+      margin-top: 0.3rem;
+    }
+
+    .card {
+      position: absolute;
+      left: -0.2rem;
+      right: -0.2rem;
+      top: 0;
+      height: 2rem;
+      background-color: #49aaff;
+      border-radius: 0.1rem;
+      background-image: -webkit-linear-gradient(180deg,#3884ff,#5dd4ff);
+      box-shadow: 0 0.36rem 0.52rem -0.16rem rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      color: #fff;
+      
+      &.type2 {
+        background-image: -webkit-linear-gradient(180deg,#fdc344,#fde591);
+      }
+
+      &.type3 {
+        background-image: -webkit-linear-gradient(180deg,#4cd9d9,#5aeccd);
+      }
+    }
+
+    .sun {
+      height: 0.8rem;
+      width: 0.8rem;
+      background-color: #fff;
+      border-radius: 100%;
+      position: absolute;
+      left: -0.6rem;
+      top: 50%;
+      margin-top: -0.4rem;
+
+      &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 1.16rem;
+        width: 1.16rem;
+        margin: -0.58rem 0 0 -0.58rem;
+        border-radius: 100%;
+        background-color: rgba(255, 255, 255, 0.15);
+        top: 50%;
+        left: 50%;
+      }
+
+      &:before {
+        height: 1.58rem;
+        width: 1.58rem;
+        margin: -0.79rem 0 0 -0.79rem;
+      }
+    }
+
+    .light {
+      height: 0.6rem;
+      width: 0.6rem;
+      right: 0.4rem;
+      top: 0.4rem;
+      @include dot(0.2);
+      animation: shine1 5s ease 3s infinite both;
+      
+      &:after {
+        content: '';
+        display: block;
+        height: 0.5rem;
+        width: 0.5rem;
+        position: absolute;
+        right: -0.28rem;
+        top: -0.2rem;
+        @include dot(0.16);
+        animation: shine2 5s ease 3s infinite both;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        height: 0.6rem;
+        width: 0.6rem;
+        right: -0.4rem;
+        top: -0.4rem;
+        background-color: #fff;
+        position: absolute;
+        filter: blur(20px);
+        -webkit-filter: blur(20px);
+        opacity: .4;
+      }
+
+      .dot {
+        height: 0.26rem;
+        width: 0.26rem;
+        @include dot(0.08);
+        position: absolute;
+        left: 0.2rem;
+        top: -0.4rem;
+
+        &:nth-child(2) {
+          height: 0.28rem;
+          width: 0.28rem;
+          left: 0.6rem;
+          top: 0.5rem;
+        }
+
+        &:nth-child(3) {
+          height: 0.32rem;
+          width: 0.32rem;
+          left: 0.68rem;
+          top: -0.36rem;
+        }
+      }
+    }
+
+    .card-content {
+      display: flex;
+      padding-left: 0.58rem;
+      text-align: center;
+      align-items: center;
+      height: 100%;
+      justify-content: space-between;
+
+      .action {
+        width: 2rem;
+
+        .iconfont {
+          font-size: 0.6rem;
+        }
+
+        p {
+          font-size: 0.28rem;
+          margin-top: 0.1rem;
+        }
+      }
+
+      .result {
+        width: 4rem;
+
+        h1 {
+          font-size: 0.52rem;
+          padding: 0.1rem 0;
+        }
+
+        p {
+          opacity: .8;
+        }
+      }
+    }
+
+    &.detail {
+      min-height: 2.7rem;
+      padding-top: 2.4rem;
+
+      .circle {
+        height: 1.8rem;
+        width: 1.8rem;
+      }
+
+      .card {
+        height: 2.4rem;
+        background-image: -webkit-linear-gradient(180deg,#f738a6,#f78e77);
+        
+        .card-content {
+          padding: 0 0.3rem;
+        }
+
+        .percent-title {
+          p {
+            font-size: 0.28rem;
+            margin-top: 0.2rem;
+          }
+        }
+
+        .circle .inner{
+          position: relative;
+
+          &:after {
+            content: attr(data-surplus);
+            display: block;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            font-size: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+}

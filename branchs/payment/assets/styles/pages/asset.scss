@@ -1,0 +1,252 @@
+﻿.page-asset {
+  .main-panel {
+    min-height: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0.08rem 0.36rem -0.04rem rgba(0, 0, 0, 0.04);
+
+    .app-grid-menu {
+      padding: 0.2rem 0.3rem 0.1rem;
+    }
+  }
+
+  .user-avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.3rem;
+
+    .name {
+      font-size: 0.38rem;
+    }
+
+    .app-avatar {
+      width: .9rem;
+      height: .9rem;
+    }
+  }
+
+  .wait-swiper-wrapper {
+    height: 2.6rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .swiper-container {
+    height: 2.6rem;
+    padding: 0 0.1rem;
+    overflow: inherit;
+  }
+
+  .swiper-slide {
+    width: 70%;
+    height: 2.6rem;
+    border-radius: 0.08rem;
+    padding: 0 2%;
+
+    &.card-active {
+      .card {
+        box-shadow: 0 0.16rem 0.64rem -0.16rem rgb(108, 177, 236);
+      }
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.08rem;
+      color: #fff;
+      position: relative;
+      background-image: -webkit-linear-gradient(160deg, #1389ff, #74deff);
+      transition: box-shadow .2s linear;
+      
+      .title {
+        position: absolute;
+        right: 0.2rem;
+        top: 0.2rem;
+        text-align: right;
+        
+        h1 {
+          font-size: 0.36rem;
+          margin-bottom: 0.14rem;
+        }
+        
+        p {
+          font-size: 0.2rem;
+          opacity: .8;
+        }
+      }
+
+      .circle {
+        position: absolute;
+        left: 0.2rem;
+        top: 0.2rem;
+
+        &:before {
+          content: "所占比例";
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          font-size: 0.16rem;
+        }
+
+        &:after {
+          content: attr(data-num);
+          height: 100%;
+          position: absolute;
+          left: 110%;
+          top: 0;
+          line-height: inherit;
+          font-size: 0.42rem;
+          opacity: .8;
+        }
+      }
+    }
+
+    &:nth-child(2n) {
+      .card {
+        background-image: -webkit-linear-gradient(160deg, #fabd36, #ffe379);
+      }
+
+      &.card-active {
+        .card {
+          box-shadow: 0 0.16rem 0.64rem -0.16rem rgba(255, 210, 67, 0.92);
+        }
+      }
+    }
+
+    &:nth-child(3n) {
+      .card {
+        background-image: -webkit-linear-gradient(160deg, #48d5d5, #7af8de);
+      }
+
+      &.card-active {
+        .card {
+          box-shadow: 0 0.16rem 0.64rem -0.16rem rgba(99, 255, 228, 0.92);
+        }
+      }
+    }
+  }
+
+  .review {
+    margin-top: 0.3rem;
+
+    .view-chart-wrap {
+      height: 2.6rem;
+      width: 100%;
+      background-image: -webkit-linear-gradient(160deg, #f73aa4, #f68d77);
+      position: relative;
+
+      &:after {
+        content: '您的基金收益季度走势';
+        color: #fff;
+        position: absolute;
+        right: 0.3rem;
+        top: 0.3rem;
+        font-size: 0.32rem;
+      }
+    }
+
+    .view-chart {
+      width: 100%;
+      height: 100%;
+    }
+
+    .list-wrap {
+      margin: 0 0.2rem 0.4rem;
+      background-color: #fff;
+      padding-bottom: 0.4rem;
+      box-shadow: 0 0.08rem 0.36rem -0.04rem rgba(0, 0, 0, 0.04);
+    }
+
+    .fund-list {
+      min-height: 2rem;
+
+      .litem {
+        display: flex;
+        align-items: center;
+        padding: 0.3rem 0.3rem 0.3rem 0.6rem;
+        position: relative;
+
+        &:after {
+          content: '';
+          display: block;
+          height: 0.2rem;
+          width: 0.2rem;
+          border-radius: 50%;
+          position: absolute;
+          left: 0.2rem;
+          top: 50%;
+          margin-top: -0.1rem;
+          background-color: #7ed321;
+        }
+
+        &:nth-last-child(2n):after {
+          background-color: #bd10e0;
+        }
+
+        h1 {
+          font-size: 0.32rem;
+
+          &.up {
+            color: #ff4c55;
+          }
+
+          &.down {
+            color: #58b514;
+          }
+        }
+
+        h2 {
+          font-size: 0.28rem;
+        }
+
+        p {
+          margin-top: 0.1rem;
+          color: #bbb;
+        }
+
+        .time {
+          text-align: center;
+          margin-right: 0.2rem;
+
+          h1 {
+            font-size: 0.36rem;
+          }
+
+          h2 {
+            color: #999;
+          }
+        }
+
+        .profit {
+          text-align: right;
+        }
+
+        .title {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .readAll {
+      display: block;
+      margin: 0.3rem auto 0;
+      width: 3.8rem;
+      height: 0.9rem;
+      border-radius: 0.48rem;
+      font-size: 0.28rem;
+      color: #fff;
+      text-align: center;
+      line-height: 0.9rem;
+      background-image: -webkit-linear-gradient(135deg, #fb3353, #fe3eb2);
+      transition: all .3s;
+
+      &:active {
+        background-image: -webkit-linear-gradient(135deg, #fe3eb2, #fb3353);
+      }
+    }
+  }
+}

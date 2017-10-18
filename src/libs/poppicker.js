@@ -7,7 +7,7 @@ class PopPicker {
     this.destroy = this.destroy.bind(this)
 
     options = options || {}
-    
+
     this.options = {
       data: [],
       defaultValues: [],
@@ -85,7 +85,7 @@ class PopPicker {
 
     this._scrollerColums = []
     let scrollerRow = this._createEl('dp-row')
-    for (let i = 0; i < this._scrollSize; i++){
+    for (let i = 0; i < this._scrollSize; i++) {
       const colums = this._scrollerColums[i] = this._createEl('dp-cell')
       scrollerRow.appendChild(colums)
     }
@@ -138,7 +138,6 @@ class PopPicker {
   }
 
   _installScroller () {
-    const data = this.options.data
     this._scrollers = []
     this._scrollerColums.forEach((item, i) => {
       const scroller = new Scroller(item)
@@ -165,7 +164,7 @@ class PopPicker {
       clearTimeout(this._timer)
     }, delay)
   }
-  
+
   _arrayFilter (arr) {
     return arr.filter(e => e)
   }

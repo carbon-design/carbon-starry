@@ -3,25 +3,16 @@ const webpack = require('webpack')
 const utils = require('./util-tools')
 const vueLoaderConfig = require('./vue-loader')
 const settings = require('../settings/core')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 const env = isProd ? 'build' : 'dev'
 const assetsPublicPath = settings[env].assetsPublicPath
 const assetsSubDir = settings[env].assetsSubDir
 const assetJsPath = assetsSubDir ? `${assetsSubDir}/js` : 'js'
-const isShim = settings[env].esShim
 const isCjs = settings[env].cjsVendor
+const root = settings[env].root
 
 const resolve = dir => path.join(__dirname, '..', dir)
-
-const assetConfig = (filename, hash) => ({
-  filepath: require.resolve(filename),
-  outputPath: assetJsPath,
-  publicPath: assetsPublicPath + assetJsPath,
-  includeSourcemap: false,
-  hash: hash || false
-})
 
 let rules = [{
   test: /\.vue$/,
@@ -33,7 +24,7 @@ let rules = [{
 }, {
   test: /\.js$/,
   loader: 'babel-loader',
-  include: [resolve('src'), resolve('test')]
+  include: [resolve('src'), resolve('branchs'), resolve('test')]
 }, {
   test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
   loader: 'url-loader',
@@ -62,7 +53,7 @@ if (settings[env].lint && !isProd) {
     test: /\.(js|vue)$/,
     loader: 'eslint-loader',
     enforce: 'pre',
-    include: [resolve('src'), resolve('test')],
+    include: [resolve('src'), resolve('branchs'), resolve('test')],
     options: {
       formatter: require('eslint-friendly-formatter')
     }
@@ -73,23 +64,9 @@ let plugins = [
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
 
-if (isShim || isCjs) {
-  let assetArr = []
-  if (isShim) {
-    assetArr = [
-      assetConfig('../shim/es5-shim.min.js'),
-      assetConfig('../shim/es6-shim.min.js')
-    ]
-  }
-  if (isCjs) {
-    assetArr.push(assetConfig('../externals/core.min.js'))
-  }
-  plugins.push(new AddAssetHtmlPlugin(assetArr))
-}
-
 let baseConfig = {
   entry: {
-    app: './src/main.js'
+    app: settings[env].entry
   },
   output: {
     path: settings.build.assetsRoot,
@@ -99,10 +76,10 @@ let baseConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      '~': resolve('src'),
-      '@': resolve('src/views'),
-      '#': resolve('src/assets'),
-      '^': resolve('src/components')
+      '~': resolve(root),
+      '@': resolve(root + '/views'),
+      '#': resolve(root + '/assets'),
+      '^': resolve(root + '/components')
     }
   },
   module: {

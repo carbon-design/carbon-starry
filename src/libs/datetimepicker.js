@@ -30,7 +30,6 @@ class DatetimePicker {
     const $maskTemplate = '<div class="dp-mask"></div>'
 
     const nowtime = new Date()
-    
     this.options = {
       template: $template,
       maskTemplate: $maskTemplate,
@@ -59,7 +58,7 @@ class DatetimePicker {
         this.options[key] = options[key]
       }
     }
-    
+
     this.value = this.options.value || ''
 
     this._SHOW_ANIMATION_TIME = 100
@@ -99,25 +98,25 @@ class DatetimePicker {
     val = val + ''
     return val
   }
-  
+
   _addZero (val) {
     val = String(val)
     return val.length < 2 ? '0' + val : val
   }
-  
+
   _isLeapYear (year) {
-    return year % 100 != 0 && year % 4 == 0 || year % 400 == 0
+    return (year % 100 !== 0 && year % 4 === 0) || year % 400 === 0
   }
-  
+
   _getMaxDay (year, month) {
     year = parseFloat(year)
     month = parseFloat(month)
-    if (month == 2) {
+    if (month === 2) {
       return this._isLeapYear(year) ? 29 : 28
     }
     return [4, 6, 9, 11].indexOf(month) >= 0 ? 30 : 31
   }
-  
+
   _parseRow (tmpl, value) {
     return tmpl.replace(/\{value\}/g, value)
   }
@@ -151,14 +150,14 @@ class DatetimePicker {
   }
 
   _getElement (expr) {
-    return (typeof expr == 'string') ? document.querySelector(expr) : expr
+    return (typeof expr === 'string') ? document.querySelector(expr) : expr
   }
 
   _removeElement (el) {
     el && el.parentNode.removeChild(el)
   }
 
-  _renderScroller(el, data, value, fn) {
+  _renderScroller (el, data, value, fn) {
     const scroller = new Scroller(el)
     scroller.init({
       data: data,
@@ -205,12 +204,12 @@ class DatetimePicker {
       max = 23
     } else if (type === 'minute') {
       min = 0
-      max = 59;
+      max = 59
     }
 
     for (let i = min; i <= max; i++) {
       let name
-      if (type == 'year') {
+      if (type === 'year') {
         name = this._parseRow(opts.yearRow, i)
       } else {
         let val = valueMap[list[0]] ? this._addZero(i) : i
@@ -255,7 +254,7 @@ class DatetimePicker {
     let newValueMap = {}
 
     this._each(this.TYPE_MAP, (type, list) => {
-      newValueMap[type] = list.length == 1 ? valueMap[list[0]] : (valueMap[list[0]] || valueMap[list[1]])
+      newValueMap[type] = list.length === 1 ? valueMap[list[0]] : (valueMap[list[0]] || valueMap[list[1]])
     })
 
     if (this._container) {
@@ -264,7 +263,6 @@ class DatetimePicker {
       this._each(this.TYPE_MAP, type => {
         this[type + 'Scroller'] && this[type + 'Scroller'].select(this._trimZero(newValueMap[type]), false)
       })
-
     } else {
       let $container = this._container = this._toElement(opts.template)
       this._root.appendChild($container)
@@ -276,7 +274,7 @@ class DatetimePicker {
           this._removeElement(div)
           return
         }
-        
+
         let data
         if (type === 'day') {
           data = this._makeData(type, this._trimZero(newValueMap.year), this._trimZero(newValueMap.month))
@@ -290,7 +288,10 @@ class DatetimePicker {
             return
           }
           if (type === 'year') {
-            let currentMonth = this.monthScroller ? this.monthScroller.value :opts.currentMonth
+            let currentMonth = this.monthScroller
+              ? this.monthScroller.value
+              : opts.currentMonth
+
             if (currentMonth === 2) {
               let currentDay = this.dayScroller.value
               this._setDayScroller(currentValue, currentMonth, currentDay)
@@ -303,14 +304,14 @@ class DatetimePicker {
         })
       })
 
-      if(!this._renderText) {
+      if (!this._renderText) {
         const confirmText = this.options.confirmText
         const cancelText = this.options.cancelText
-        if(confirmText) {
+        if (confirmText) {
           this._confirmBtn = this._find('[data-role=confirm]')
           this._confirmBtn.innerHTML = confirmText
         }
-        if(cancelText) {
+        if (cancelText) {
           this._cancelBtn = this._find('[data-role=cancel]')
           this._cancelBtn.innerHTML = cancelText
         }
@@ -318,7 +319,7 @@ class DatetimePicker {
       }
 
       this.show(value)
-      
+
       this._bindEventHandle()
     }
 
@@ -364,8 +365,6 @@ class DatetimePicker {
   }
 
   confirm () {
-    let output = this.output
-
     let value = this.getValue()
 
     this.value = value
@@ -379,7 +378,6 @@ class DatetimePicker {
     this._container && this._root.removeChild(this._container)
     this._mask && this._root.removeChild(this._mask)
   }
-
 }
 
 export default DatetimePicker

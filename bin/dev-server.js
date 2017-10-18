@@ -57,9 +57,11 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 const staticPath = path.posix.join(settings.assetsPublicPath, settings.assetsSubDir)
+const resourcePath = path.posix.join(settings.assetsPublicPath, 'resource')
 const mockPath = path.posix.join(settings.assetsPublicPath, 'mock')
 
 app.use(staticPath, express.static('./static'))
+app.use(resourcePath, express.static('./common/resource'))
 app.use(mockPath, express.static('./mock'))
 
 const uri = `http://${ip.address()}:${port}`

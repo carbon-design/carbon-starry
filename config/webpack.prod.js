@@ -91,7 +91,7 @@ if (settings.gzip) {
   )
 }
 
-if (settings.bundleAnalyzerReport) {
+if (process.env.npm_config_report) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'static',

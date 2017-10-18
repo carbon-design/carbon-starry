@@ -99,9 +99,6 @@ let baseConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      'echarts': 'echarts/dist/echarts.simple',
-      'throttle': 'lodash/throttle',
       '~': resolve('src'),
       '@': resolve('src/views'),
       '#': resolve('src/assets'),
@@ -114,29 +111,8 @@ let baseConfig = {
   plugins: plugins
 }
 
-if (!isCjs) {
-  baseConfig.entry.vendor = [
-    'axios',
-    'vue',
-    'vuex',
-    'vue-router',
-    'lodash/throttle',
-    'vuex-router-sync',
-    'vuex-persistedstate',
-    'vue-awesome-swiper',
-    'echarts/dist/echarts.simple'
-  ]
-} else {
-  baseConfig.externals = {
-    'axios': 'window.axios',
-    'vue': 'window.vue',
-    'vuex': 'window.vuex',
-    'vue-router': 'window.vueRouter',
-    'vuex-router-sync': 'window.vuexRouterSync',
-    'vuex-persistedstate': 'window.vuexPersistedstate',
-    'echarts': 'window.echarts',
-    'throttle': 'window.throttle'
-  }
-}
+isCjs
+  ? baseConfig.externals = settings[env].externals 
+  : baseConfig.entry.vendor = settings[env].vendor
 
 module.exports = baseConfig

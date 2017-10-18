@@ -26,6 +26,10 @@ rm(path.join(settings.assetsRoot, settings.assetsSubDir), err => {
     }) + '\n\n')
 
     console.log(chalk.cyan('Build complete.\n'))
-    console.log(chalk.yellow('Tip: built files are meant to be served over an HTTP server.\n'))
+    if (process.env.npm_config_server) {
+      require('./dist-server')
+    } else {
+      console.log(chalk.yellow('Tip: built files are meant to be served over an HTTP server.\n'))
+    }
   })
 })

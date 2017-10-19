@@ -1,4 +1,4 @@
-const Indicator = window.Indicator
+/* global Indicator:false */
 
 export const indicator = new Indicator()
 

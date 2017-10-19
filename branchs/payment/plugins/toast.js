@@ -1,4 +1,4 @@
-const toast = window.toast
+/* global toast:false */
 
 export default {
   install (Vue, options) {

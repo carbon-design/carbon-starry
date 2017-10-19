@@ -1,4 +1,4 @@
-const Counter = window.Counter
+/* global Counter:false */
 
 const counter = opts => new Counter(opts)
 

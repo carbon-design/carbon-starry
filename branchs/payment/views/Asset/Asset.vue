@@ -56,9 +56,9 @@
 </template>
 
 <script>
+/* global echarts:false */
 import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
-import echarts from 'echarts/dist/echarts.simple'
 
 export default {
   name: 'asset',

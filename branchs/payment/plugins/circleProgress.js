@@ -1,4 +1,4 @@
-const CircleProgress = window.CircleProgress
+/* global CircleProgress:false */
 
 const circleProgress = opts => new CircleProgress(opts)
 

@@ -1,6 +1,6 @@
+/* global Indicator:false, toast:false */
+
 import axios from 'axios'
-const Indicator = window.Indicator
-const toast = window.toast
 const indicator = new Indicator()
 
 export const Axios = axios.create({

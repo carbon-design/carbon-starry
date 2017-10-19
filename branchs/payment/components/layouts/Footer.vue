@@ -18,7 +18,7 @@
 <style lang="scss" src="#/styles/layouts/footer.scss"></style>
 
 <script>
-import throttle from 'lodash/throttle'
+/* global throttle:false */
 
 export default {
   name: 'footer',

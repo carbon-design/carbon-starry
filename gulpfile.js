@@ -59,18 +59,17 @@ gulp.task('vendorJS', () => {
       }),
       rollupUglify()
     ]
-  }).then(bundle =>
+  }).then(bundle => {
     bundle.write({
       format: 'cjs',
-      name: 'main',
       file: './common/resource/js/core.min.js',
       sourcemap: false
     })
-  )
+  })
 })
 
 gulp.task('vendorCSS', () => {
-  gulp.src(['./externals/core.scss'])
+  gulp.src(['./externals/*.scss'])
     .pipe(sass({
       outputStyle: 'expanded'
     }).on('error', sass.logError))

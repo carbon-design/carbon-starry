@@ -1,49 +1,33 @@
 const path = require('path')
 const env = require('./env')
+const defaultCfg = require('../default.json')
 const developer = require('../developer.json')
 
 const resolve = dir => path.join(__dirname, '..', dir)
 
-const vendor = [
-  'axios',
-  'vue',
-  'vuex',
-  'vue-router',
-  'lodash/throttle',
-  'vuex-router-sync',
-  'vue-awesome-swiper',
-  'vuex-persistedstate',
-  'echarts/dist/echarts.simple'
-]
+const vendor = defaultCfg.vendor
+const externals = defaultCfg.external.mapping
 
-const externals = {
-  'axios': 'window.axios',
-  'vue': 'window.vue',
-  'vuex': 'window.vuex',
-  'vue-router': 'window.vueRouter',
-  'vuex-router-sync': 'window.vuexRouterSync',
-  'vuex-persistedstate': 'window.vuexPersistedstate',
-  'echarts/dist/echarts.simple': 'window.echarts',
-  'lodash/throttle': 'window.throttle',
-  '~/libs/CircleProgress': 'window.CircleProgress',
-  '~/libs/Counter': 'window.Counter',
-  '~/libs/Scroller': 'window.Scroller',
-  '~/libs/DatetimePicker': 'window.DatetimePicker',
-  '~/libs/Poppicker': 'window.Poppicker'
-}
+const extJS = defaultCfg.external.JSlinks
+const extCSS = defaultCfg.external.CSSlinks
 
-let extJS = ['//webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac']
-let devExtJS = []
-let buildExtJS = []
-let devExtCSS = []
-let buildExtCSS = []
+let devExtJS = extJS
+let buildExtJS = extJS
 
-let entry = 'src/main.js'
-let assetsRoot = 'dist/example'
-let assetsIndex = 'dist/example/index.html'
+let devExtCSS = extCSS
+let buildExtCSS = extCSS
+
+let entry = defaultCfg.project.entry
+
+const assetsRootName = defaultCfg.project.assets.rootName
+let assetsRoot = `dist/${assetsRootName}`
+let assetsIndex = `dist/${assetsRootName}/index.html`
+
+const projectName = defaultCfg.project.projectName
 let projectRoot = 'src'
-let devPort = 3000
-let distPort = 3001
+
+let devServerPort = defaultCfg.project.devServerPort
+let distServerPort = defaultCfg.project.distServerPort
 
 let buildCjsVendor = false
 let devCjsVendor = false
@@ -53,22 +37,11 @@ if (!developer.isAdmin) {
   assetsRoot = developer.assetsRoot
   assetsIndex = developer.assetsIndex
   projectRoot = developer.projectRoot
-  devPort = developer.devPort
-  distPort = developer.distPort
+  devServerPort = developer.devServerPort
+  distServerPort = developer.distServerPort
   buildCjsVendor = devCjsVendor = true
-  buildExtCSS = devExtCSS = ['resource/css/core.min.css']
-}
-
-if (buildCjsVendor) {
-  buildExtJS = extJS.concat([
-    'resource/js/core.min.js'
-  ])
-}
-
-if (devCjsVendor) {
-  devExtJS = extJS.concat([
-    'resource/js/core.min.js'
-  ])
+  buildExtCSS = devExtCSS = extCSS.concat(defaultCfg.external.compressed.vendorCSS)
+  buildExtJS = devExtJS = extJS.concat(defaultCfg.external.compressed.vendorJS)
 }
 
 module.exports = {
@@ -84,12 +57,12 @@ module.exports = {
     index: resolve(assetsIndex),
     assetsRoot: resolve(assetsRoot),
     assetsSubDir: '',
-    assetsPublicPath: '/carbon/',
-    projectName: 'Carbon Megatron',
+    assetsPublicPath: `/${defaultCfg.project.publicPathName}/`,
+    projectName: projectName,
     productionSourceMap: false,
     lint: false,
     gzip: false,
-    distServerPort: distPort,
+    distServerPort: distServerPort,
     distServerPath: assetsRoot,
     gzipExtensions: ['js', 'css'],
     isMobile: true
@@ -103,18 +76,13 @@ module.exports = {
     externals: externals,
     extJS: devExtJS,
     extCSS: devExtCSS,
-    port: devPort,
+    port: devServerPort,
     lint: true,
     autoOpenBrowser: true,
-    projectName: 'Carbon Megatron',
-    assetsSubDir: 'static',
+    projectName: projectName,
+    assetsSubDir: '',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/WechatBank': {
-        target: '//test.hccb.cc',
-        changeOrigin: true
-      }
-    },
+    proxyTable: defaultCfg.project.proxy,
     isMobile: true,
     cssSourceMap: true
   }

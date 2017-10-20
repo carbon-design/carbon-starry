@@ -1,0 +1,46 @@
+{
+  "vendor": [
+    "axios",
+    "vue",
+    "vuex",
+    "vue-router",
+    "lodash/throttle",
+    "vuex-router-sync",
+    "vue-awesome-swiper",
+    "vuex-persistedstate",
+    "echarts/dist/echarts.simple"
+  ],
+  "project": {
+    "projectName": "Carbon Megatron",
+    "isMobile": true,
+    "entry": "src/main.js",
+    "publicPathName": "carbon",
+    "assets": {
+      "rootName": "example"
+    },
+    "devServerPort": 3000,
+    "distServerPort": 3001,
+    "proxy": {
+      "/WechatBank": {
+        "target": "//test.hccb.cc",
+        "changeOrigin": true
+      }
+    }
+  },
+  "external": {
+    "mapping": {
+      "axios": "window.axios",
+      "vue": "window.vue",
+      "vuex": "window.vuex",
+      "vue-router": "window.vueRouter",
+      "vuex-router-sync": "window.vuexRouterSync",
+      "vuex-persistedstate": "window.vuexPersistedstate"
+    },
+    "JSlinks": ["//webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac"],
+    "CSSlinks": [],
+    "compressed": {
+      "vendorJS": ["resource/js/core.min.js"],
+      "vendorCSS": ["resource/css/core.min.css"]
+    }
+  }
+}

@@ -16,7 +16,7 @@
     "entry": "src/main.js",
     "publicPathName": "carbon",
     "assets": {
-      "rootName": "example"
+      "rootName": "demonstration"
     },
     "devServerPort": 3000,
     "distServerPort": 3001,

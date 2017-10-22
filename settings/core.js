@@ -1,5 +1,6 @@
 const path = require('path')
 const env = require('./env')
+const chalk = require('chalk')
 const defaultCfg = require('../default.json')
 const developer = require('../developer.json')
 
@@ -42,6 +43,9 @@ if (!developer.isAdmin) {
   buildCjsVendor = devCjsVendor = true
   buildExtCSS = devExtCSS = extCSS.concat(defaultCfg.external.compressed.vendorCSS)
   buildExtJS = devExtJS = extJS.concat(defaultCfg.external.compressed.vendorJS)
+  console.log(chalk.cyan('\n ====== DEVELOPER MODE ====== \n'))
+} else {
+  console.log(chalk.cyan('\n ====== ADMINISTRATOR MODE ====== \n'))
 }
 
 module.exports = {

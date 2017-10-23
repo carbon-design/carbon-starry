@@ -16,13 +16,13 @@ const publicPath = settings.build.assetsPublicPath
 const distServerPath = settings.build.distServerPath
 const uri = `http://${ip.address()}:${port}${publicPath}`
 
-app.use(publicPath, express.static(distServerPath))
-
 app.use('/mock', express.static('./mock'))
 
 app.use(history({
   index: `${publicPath}index.html`
 }))
+
+app.use(publicPath, express.static(distServerPath))
 
 app.listen(port, error => {
   if (error) {

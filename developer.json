@@ -1,5 +1,5 @@
 {
-  "isAdmin": false,
+  "isAdmin": true,
   "subProjectName": "example",
   "projectRoot": "branchs/example",
   "projectEntry": "branchs/example/main.js",

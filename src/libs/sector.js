@@ -3,9 +3,9 @@ class Sector {
     options = options || {}
 
     this.options = {
-      sectorColor: 'rgba(255, 255, 255, .4)',
+      sectorColor: 'rgba(255, 255, 255, .6)',
       sectorRadius: 76,
-      circleColor: 'rgba(255, 255, 255, .4)',
+      circleColor: 'rgba(255, 255, 255, .6)',
       circleRadius: [100, 90]
     }
 
@@ -17,6 +17,7 @@ class Sector {
 
     this.$el = el
     this._initContainer()
+    this.setProgress(0)
   }
 
   _initContainer () {

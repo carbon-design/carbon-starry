@@ -69,7 +69,42 @@ class Sector {
     return ctx
   }
 
+  animateFromTo (start, end, duration, isEase, callback) {
+    const dist = end - start
+    const frame = duration / 1000 * 60
+    const gap = dist / frame
+
+    const easing = x => {
+      if (x < 0.5) {
+        x = 2 * x
+        return 0.5 * x * x * x
+      } else {
+        x = 2 - 2 * x
+        return 1 - 0.5 * x * x * x
+      }
+    }
+
+    const atom = () => {
+      this.setProgress(isEase ? easing(start / end) * start : start)
+      start += gap
+      if (Math.abs(end - start) > Math.abs(gap)) {
+        this.animateRaf = window.requestAnimationFrame(atom)
+      } else {
+        this.setProgress(end)
+        window.cancelAnimationFrame(this.animateRaf)
+        callback && callback()
+      }
+    }
+    atom()
+  }
+
+  done (endTime, callback) {
+    window.cancelAnimationFrame(this.animateRaf)
+    this.animateFromTo(this.progressStatus, 100, endTime || 600, false, callback)
+  }
+
   setProgress (progress) {
+    this.progressStatus = progress
     this.ctx.restore()
     this._clear()
     this._drawCircle()
@@ -81,6 +116,11 @@ class Sector {
     const sa = pie * -90
     const ea = pie * (360 * progress / 100) + sa
     this._drawSec(this.radius, this.radius, r, sa, ea, false).fill()
+  }
+
+  destroy () {
+    this.progressStatus = 0
+    window.cancelAnimationFrame(this.animateRaf)
   }
 }
 

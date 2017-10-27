@@ -1,9 +1,11 @@
 <template lang="pug">
   .page-sector
-    .imgcontainer
-      img.thumb(src="~/#/images/thumb.jpg" ref="thumb")
-      img.origin(src="~/#/images/origin.jpg" ref="origin")
-      .progress(ref="progress")
+    lazy-image(
+      thumb="resource/images/thumb.jpg"
+      origin="resource/images/origin.jpg"
+      width="1920"
+      height="1080"
+    )
     .box(ref="box")
     .btn(@click="increase") 点击增加进度
     .btn(@click="decrease") 点击减去进度
@@ -11,13 +13,12 @@
 
 <script>
 import Sector from '~/libs/sector'
-import ImageBlur from '~/libs/imageBlur'
 
 export default {
   name: 'sector',
   data () {
     return {
-      progress: 5
+      progress: 60
     }
   },
   mounted () {
@@ -26,39 +27,13 @@ export default {
       sectorColor: '#dcdcdc',
       sectorRadius: 80,
       circleColor: '#dcdcdc',
-      circleRadius: [100, 90]
+      circleRadius: [100, 90],
+      animateType: 'easeInOut'
     })
-    sector.setProgress(this.progress)
-
-    const $thumb = this.$refs.thumb
-    const $origin = this.$refs.origin
-    const $progress = this.$refs.progress
-
-    this.blurImg = new ImageBlur($thumb, {
-      classname: 'thumb'
-    })
-
-    let timer
-    let status = 0
-    const imgProgress = this.imgProgress = new Sector($progress)
-
-    const infinite = () => {
-      timer && clearTimeout(timer)
-      timer = setTimeout(() => {
-        imgProgress.setProgress(status)
-        status += 5
-        infinite()
-      }, 300)
-    }
-
-    infinite()
-
-    $origin.onload = () => {
-      imgProgress.setProgress(100)
-      $origin.parentNode.classList.add('done')
-    }
+    sector.animateFromTo(0, this.progress, 3000, true)
   },
   beforeDestroy () {
+    this.sector.destroy()
   },
   methods: {
     increase () {

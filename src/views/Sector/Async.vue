@@ -10,6 +10,14 @@
       margin: 1rem auto;
       border-radius: 50%;
     }
+
+    .gallary {
+      margin: 0.2rem;
+
+      .app-lazy-image {
+        margin-bottom: 0.2rem;
+      }
+    }
     
     .btn {
       padding: 0.3rem;

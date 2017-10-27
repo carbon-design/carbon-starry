@@ -17,7 +17,6 @@ class Sector {
 
     this.$el = el
     this._initContainer()
-    this.setProgress(0)
   }
 
   _initContainer () {

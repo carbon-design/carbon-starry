@@ -83,16 +83,6 @@ let webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-if (settings.cjsVendor) {
-  webpackConfig.plugins.push(
-    new CopyWebpackPlugin([{
-      from: resolve('common'),
-      to: settings.assetsSubDir,
-      ignore: ['.*']
-    }])
-  )
-}
-
 if (settings.gzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
   webpackConfig.plugins.push(

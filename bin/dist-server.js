@@ -23,6 +23,7 @@ app.use(history({
 }))
 
 app.use(publicPath, express.static(distServerPath))
+app.use(publicPath, express.static('common'))
 
 app.listen(port, error => {
   if (error) {

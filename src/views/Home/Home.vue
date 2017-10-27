@@ -21,7 +21,7 @@
             h1 白条总额度 {{ homeData.quota | intMoney }}
             p 截止{{ homeData.endTime | yyyymmddZh }}
           .circle
-            .inner(data-surplus="0" ref="perCircle")
+            .inner(data-surplus="￥0.00可用" ref="perCircle")
       .app-grid-menu
         .cell(@click="toGyro")
           i.iconfont &#xe68e;

@@ -19,10 +19,20 @@ export default {
       loading: false
     }
   },
-  props: ['width', 'height', 'thumb', 'origin', 'placeholder', 'clickable'],
+  props: ['width', 'height', 'thumb', 'origin', 'placeholder', 'clickable', 'trigger'],
+  watch: {
+    trigger (val) {
+      if (val) {
+        if (!this.loading) {
+          this.start()
+          this.loading = true
+        }
+      }
+    }
+  },
   mounted () {
     this.initContainer()
-    !this.clickable && this.start()
+    this.trigger && this.start()
   },
   beforeDestroy () {
     this.imgProgress.destroy()
@@ -71,8 +81,10 @@ export default {
     },
 
     startLoad () {
-      !this.loading && this.clickable && this.start()
-      this.loading = true
+      if (!this.loading && this.clickable) {
+        this.start()
+        this.loading = true
+      }
     }
   }
 }

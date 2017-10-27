@@ -41,7 +41,7 @@ export default {
       })
     },
     start () {
-      const { container, origin } = this.$refs
+      const { container, origin, progress } = this.$refs
 
       origin.src = origin.dataset.src
       this.imgProgress.animateFromTo(0, 95, 6000, true)
@@ -49,6 +49,11 @@ export default {
       origin.onload = () => {
         this.imgProgress.done(300, () => {
           this.loaded = true
+        })
+        progress.addEventListener('transitionend', () => {
+          const thumbCanvas = container.getElementsByClassName('thumb')[0]
+          container.removeChild(thumbCanvas)
+          container.removeChild(progress)
         })
       }
 

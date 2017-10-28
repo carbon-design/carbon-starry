@@ -23,5 +23,11 @@
   }, {
     "origin": "resource/images/origin8.jpg",
     "thumb": "resource/images/thumb8.jpg"
+  }, {
+    "origin": "resource/images/origin9.jpg",
+    "thumb": "resource/images/thumb9.jpg"
+  }, {
+    "origin": "resource/images/origin10.jpg",
+    "thumb": "resource/images/thumb10.jpg"
   }]
 }

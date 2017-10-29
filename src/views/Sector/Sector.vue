@@ -5,8 +5,8 @@
         :thumb="item.thumb"
         :origin="item.origin"
         placeholder="resource/images/placeholder.gif"
-        width="1920"
-        height="1080"
+        :width="item.width"
+        :height="item.height"
         :clickable="true"
         :trigger="item.trigger"
       )
@@ -18,7 +18,7 @@
 <script>
 import { getImages } from '~/config/api'
 import Sector from '~/libs/sector'
-import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 export default {
   name: 'sector',
@@ -32,10 +32,10 @@ export default {
   async mounted () {
     const resImg = await getImages()
     let imgData = resImg.data.imgData
-    imgData = imgData.map(e => {
-      e.trigger = false
-      return e
-    })
+    imgData = imgData.map(item => ({
+      ...item,
+      trigger: false
+    }))
     this.imgData = imgData
 
     const $box = this.$refs.box
@@ -52,7 +52,7 @@ export default {
       this.getPosInfo()
       clearTimeout(firstLoaderTimer)
     }, 600)
-    window.addEventListener('scroll', throttle(this.getPosInfo, 60), false)
+    window.addEventListener('scroll', debounce(this.getPosInfo, 60), false)
   },
   beforeDestroy () {
     this.sector.destroy()
@@ -63,7 +63,7 @@ export default {
         const allImgs = this.$refs.group.getElementsByClassName('app-lazy-image')
         if (allImgs.length === this.imgData.length) {
           Array.prototype.forEach.call(allImgs, e => {
-            this.posArr.push(e.offsetTop)
+            this.posArr.push(e.offsetHeight / 2 + e.offsetTop)
           })
           this.getPosInfo()
         }
@@ -73,7 +73,7 @@ export default {
         const scrollTop = document.body.scrollTop || docEl.scrollTop
 
         this.posArr.forEach((e, i) => {
-          if (scrollTop + clientHeight - clientHeight * 0.25 > e) {
+          if (e < scrollTop + clientHeight && e > scrollTop) {
             this.imgData[i].trigger = true
           }
         })

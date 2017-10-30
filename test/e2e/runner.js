@@ -5,12 +5,12 @@ const settings = require('../../settings/core')
 
 const env = Object.create(process.env)
 env.BROWSER = 'none'
-const startServer = execa.shell('npm run dist-server', {
+const startServer = execa.shell('npm run dist-server -s', {
   env
 })
 
 startServer.on('exit', () => {
-  kill(settings.build.distServerPort || process.env.PORT)
+  kill(process.env.PORT || settings.build.distServerPort)
 })
 
 startServer.stdout.on('data', data => {

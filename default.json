@@ -22,7 +22,7 @@
     "distServerPort": 3001,
     "proxy": {
       "/WechatBank": {
-        "target": "//test.hccb.cc",
+        "target": "http://test.hccb.cc",
         "changeOrigin": true
       }
     }

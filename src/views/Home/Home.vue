@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { getHome } from '~/config/api'
+import { getHome, getCode } from '~/config/api'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -92,6 +92,10 @@ export default {
     })
   },
   async mounted () {
+    // 代理转发接口测试
+    const resCode = await getCode()
+    console.log(resCode.data)
+
     const resHome = await getHome()
     const resData = resHome.data
     this.$counter({

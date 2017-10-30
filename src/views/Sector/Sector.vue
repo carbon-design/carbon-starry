@@ -52,7 +52,7 @@ export default {
       this.getPosInfo()
       clearTimeout(firstLoaderTimer)
     }, 600)
-    window.addEventListener('scroll', debounce(this.getPosInfo, 60), false)
+    window.addEventListener('scroll', debounce(this.getPosInfo, 30), false)
   },
   beforeDestroy () {
     this.sector.destroy()

@@ -28,7 +28,7 @@ class Indicator {
     }
     this.text = this.container.getElementsByClassName('app-indicator-text')[0]
   }
-  /* 
+  /*
    * @param [string] : text
    * @param [number] : timeout
    */

@@ -5,6 +5,7 @@
     "vuex",
     "vue-router",
     "lodash/throttle",
+    "lodash/debounce",
     "vuex-router-sync",
     "vue-awesome-swiper",
     "vuex-persistedstate",

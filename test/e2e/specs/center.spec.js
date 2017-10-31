@@ -1,4 +1,4 @@
-/* global describe:false it:false */
+/* global describe:false beforeEach:false it:false */
 const expect = require('chai').expect
 const Nightmare = require('nightmare')
 
@@ -11,15 +11,15 @@ describe('Center Page', function () {
       gotoTimeout: 3000,
       loadTimeout: 30000
     })
-    .goto('http://localhost:3001/carbon/#/login')
-    .type('.fm-item:first-child input', '柯银明')
-    .type('.fm-item:last-child input', '123456')
-    .click('button.loginBtn')
-    .wait('article.page-home')
-    .goto('http://localhost:3001/carbon/#/main/center')
-    .wait('article.page-center')
-    .evaluate(() => document.body.innerHTML)
-    .end()
+      .goto('http://localhost:3001/carbon/#/login')
+      .type('.fm-item:first-child input', '柯银明')
+      .type('.fm-item:last-child input', '123456')
+      .click('button.loginBtn')
+      .wait('article.page-home')
+      .goto('http://localhost:3001/carbon/#/main/center')
+      .wait('article.page-center')
+      .evaluate(() => document.body.innerHTML)
+      .end()
   })
 
   it('should get center page level information', () => {

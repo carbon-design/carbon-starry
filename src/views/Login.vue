@@ -28,8 +28,8 @@ export default {
   name: 'login',
   data () {
     return {
-      userName: '鹿小葵',
-      password: '123456',
+      userName: '',
+      password: '',
       idFocus: false,
       pswdFocus: false
     }

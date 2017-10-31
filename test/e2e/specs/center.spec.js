@@ -2,18 +2,31 @@
 const expect = require('chai').expect
 const Nightmare = require('nightmare')
 
-describe('center', function () {
+describe('Center Page', function () {
   this.timeout('30s')
+  let text
+  beforeEach(async function () {
+    text = await Nightmare({
+      waitTimeout: 3000,
+      gotoTimeout: 3000,
+      loadTimeout: 30000
+    })
+    .goto('http://localhost:3001/carbon/#/login')
+    .type('.fm-item:first-child input', '柯银明')
+    .type('.fm-item:last-child input', '123456')
+    .click('button.loginBtn')
+    .wait('article.page-home')
+    .goto('http://localhost:3001/carbon/#/main/center')
+    .wait('article.page-center')
+    .evaluate(() => document.body.innerHTML)
+    .end()
+  })
 
-  it('should get center page information', async () => {
-    const text = await Nightmare()
-      .goto('http://localhost:3001/carbon/#/login')
-      .click('button.loginBtn')
-      .wait('article.page-home')
-      .goto('http://localhost:3001/carbon/#/center')
-      .evaluate(() => document.body.innerHTML)
-      .end()
+  it('should get center page level information', () => {
+    expect(text).contain('钻石VIP高级用户')
+  })
 
-    expect(text).contain('用户中心')
+  it('should get center page username information', () => {
+    expect(text).contain('柯银明')
   })
 })

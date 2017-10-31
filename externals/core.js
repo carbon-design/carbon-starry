@@ -23,6 +23,7 @@ window.vuexRouterSync = vuexRouterSync
 window.vuexPersistedstate = vuexPersistedstate
 window.echarts = echarts
 window.throttle = throttle
+window.debounce = debounce
 window.CircleProgress = CircleProgress
 window.Counter = Counter
 window.Scroller = Scroller

@@ -10,9 +10,11 @@ import debounce from 'lodash/debounce'
 import CircleProgress from '../src/libs/circleProgress'
 import Counter from '../src/libs/counter'
 import Scroller from '../src/libs/scroller'
+import Sector from '../src/libs/sector'
 import DatetimePicker from '../src/libs/datetimepicker'
 import Poppicker from '../src/libs/poppicker'
 import Indicator from '../src/libs/indicator'
+import ImageBlur from '../src/libs/imageBlur'
 import toast from '../src/libs/toast'
 
 window.axios = axios
@@ -27,7 +29,9 @@ window.debounce = debounce
 window.CircleProgress = CircleProgress
 window.Counter = Counter
 window.Scroller = Scroller
+window.Sector = Sector
 window.DatetimePicker = DatetimePicker
 window.Poppicker = Poppicker
 window.Indicator = Indicator
+window.ImageBlur = ImageBlur
 window.toast = toast

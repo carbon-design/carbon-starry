@@ -13,6 +13,7 @@ import App from './App.vue'
 import store from './vuex/store'
 import * as filters from './filters'
 import LocalLoader from '^/LocalLoader'
+import LazyImage from '^/LazyImage'
 
 sync(store, router)
 
@@ -27,6 +28,7 @@ plugins.forEach(plugin => {
 })
 
 Vue.component(LocalLoader.name, LocalLoader)
+Vue.component(LazyImage.name, LazyImage)
 
 const app = new Vue({
   router,

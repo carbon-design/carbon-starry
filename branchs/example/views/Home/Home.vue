@@ -32,7 +32,7 @@
         .cell(@click="toScroll")
           i.iconfont &#xe624;
           span 贷款申请
-        .cell
+        .cell(@click="toSector")
           i.iconfont &#xe623;
           span 信用提升
     .chassis
@@ -160,6 +160,9 @@ export default {
     },
     toScroll () {
       this.$router.push('/main/scroll')
+    },
+    toSector () {
+      this.$router.push('/main/sector')
     }
   }
 }

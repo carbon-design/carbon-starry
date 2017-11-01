@@ -1,6 +1,7 @@
 {
   "isAdmin": true,
-  "subProjectName": "example",
+  "publicPathName": "megatron",
+  "subBranchName": "example",
   "projectRoot": "branchs/example",
   "projectEntry": "branchs/example/main.js",
   "assetsRoot": "dist/example",

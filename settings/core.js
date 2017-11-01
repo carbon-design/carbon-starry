@@ -25,6 +25,7 @@ let assetsRoot = `dist/${assetsRootName}`
 let assetsIndex = `dist/${assetsRootName}/index.html`
 
 const projectName = defaultCfg.project.projectName
+let assetsPublicPath = defaultCfg.project.publicPathName
 let projectRoot = 'src'
 
 let devServerPort = defaultCfg.project.devServerPort
@@ -40,6 +41,7 @@ if (!developer.isAdmin) {
   projectRoot = developer.projectRoot
   devServerPort = developer.devServerPort
   distServerPort = developer.distServerPort
+  assetsPublicPath = developer.publicPathName
   buildCjsVendor = devCjsVendor = true
   buildExtCSS = devExtCSS = extCSS.concat(defaultCfg.external.compressed.vendorCSS)
   buildExtJS = devExtJS = extJS.concat(defaultCfg.external.compressed.vendorJS)
@@ -61,7 +63,7 @@ module.exports = {
     index: resolve(assetsIndex),
     assetsRoot: resolve(assetsRoot),
     assetsSubDir: '',
-    assetsPublicPath: `/${defaultCfg.project.publicPathName}/`,
+    assetsPublicPath: `/${assetsPublicPath}/`,
     projectName: projectName,
     productionSourceMap: false,
     lint: false,

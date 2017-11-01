@@ -15,9 +15,9 @@ const resolve = dir => path.join(__dirname, '..', dir)
 const isTest = process.env.NODE_ENV === 'testing'
 const env = isTest ? allEnv.test : allEnv.prod
 
-let subProjectName = ''
+let subBranchName = ''
 if (!developer.isAdmin) {
-  subProjectName = developer.subProjectName + '-'
+  subBranchName = developer.subBranchName + '-'
 }
 
 let webpackConfig = merge(baseWebpackConfig, {
@@ -100,7 +100,7 @@ if (process.env.npm_config_report) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'static',
-    reportFilename: resolve(`data/reports/${subProjectName}${Date.now()}.html`)
+    reportFilename: resolve(`data/reports/${subBranchName}${Date.now()}.html`)
   }))
 }
 

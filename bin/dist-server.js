@@ -36,6 +36,7 @@ app.listen(port, error => {
       const fullPath = uri + route.path
       await tools.screenshot(fullPath, devices, route.name, route.delay)
     }
+    console.log(chalk.yellow('\nScreen capture have already done!\n'))
   }
   process.env.npm_config_shot && genShot()
 })

@@ -2,10 +2,9 @@
   "isAdmin": true,
   "publicPathName": "megatron",
   "subBranchName": "example",
-  "projectRoot": "branchs/example",
-  "projectEntry": "branchs/example/main.js",
-  "assetsRoot": "dist/example",
-  "assetsIndex": "dist/example/index.html",
+  "subBranchEntry": "main.js",
+  "subDistRootName": "example",
+  "subDistIndex": "index.html",
   "devServerPort": 3000,
   "distServerPort": 3001
 }

@@ -35,10 +35,10 @@ let buildCjsVendor = false
 let devCjsVendor = false
 
 if (!developer.isAdmin) {
-  entry = developer.projectEntry
-  assetsRoot = developer.assetsRoot
-  assetsIndex = developer.assetsIndex
-  projectRoot = developer.projectRoot
+  projectRoot = `branchs/${developer.subBranchName}`
+  entry = `${projectRoot}/${developer.subBranchEntry}`
+  assetsRoot = `dist/${developer.subDistRootName}`
+  assetsIndex = `${assetsRoot}/${developer.subDistIndex}`
   devServerPort = developer.devServerPort
   distServerPort = developer.distServerPort
   assetsPublicPath = developer.publicPathName

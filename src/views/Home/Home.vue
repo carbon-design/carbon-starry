@@ -3,7 +3,7 @@
     .chassis
       .card
         .card-content
-          .action(@click="toGyro")
+          .action(@click="toWave")
             i.iconfont &#xe68e;
             p 扫码付款
           .result
@@ -156,6 +156,9 @@ export default {
   },
 
   methods: {
+    toWave () {
+      this.$router.push('/main/wave')
+    },
     toGyro () {
       this.$router.push('/main/gyro')
     },

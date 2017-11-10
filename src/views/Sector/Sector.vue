@@ -1,5 +1,5 @@
 <template lang="pug">
-  .page-sector(ref="group")
+  article.page-sector(ref="group")
     .gallary(v-for="(item, index) in imgData")
       lazy-image(
         :thumb="item.thumb"

@@ -11,6 +11,7 @@ import Gyro from '@/Gyro/Async'
 import Maps from '@/Map/Async'
 import Scroll from '@/Scroll/Async'
 import Sector from '@/Sector/Async'
+import Wave from '@/Wave/Async'
 
 export default [{
   path: '/login',
@@ -45,6 +46,9 @@ export default [{
   }, {
     path: 'sector',
     component: Sector
+  }, {
+    path: 'wave',
+    component: Wave
   }]
 }, {
   path: '/redirect',

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .page-scroll
+  article.page-scroll
     .scroller(ref="scroller")
     .btn(@click="selectRow") 选中其中一项
     .btn(@click="resetScroll") 重设选项列表

@@ -173,13 +173,18 @@ export default {
             show: false
           },
           type: 'category',
+          scale: true,
           boundaryGap: false,
           data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
         }],
         yAxis: [{
           scale: true,
+          min (value) {
+            return value.min - 2
+          },
           type: 'value',
           axisLine: {
+            onZero: false,
             show: false
           },
           splitLine: {

@@ -13,6 +13,10 @@
 
 >  ❤️ A Web Application Scaffolding
 
+## Install Chromium
+ [Click to download chromium](https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/508693/chrome-win32.zip)
+
+
 ## Build Setup
 
 ``` bash

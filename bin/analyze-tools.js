@@ -12,7 +12,10 @@ const createDir = path => {
 }
 
 exports.screenshot = async (url, deviceList, filename, delay) => {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+executablePath : '/chromium/chrome.exe',
+    headless: false
+  })
   for (let device of deviceList) {
     const params = typeof device === 'object' ? device : devices[device]
     const page = await browser.newPage()

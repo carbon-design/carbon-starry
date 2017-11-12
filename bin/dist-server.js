@@ -46,9 +46,9 @@ Object.keys(proxyTable).forEach(context => {
   if (typeof options === 'string') {
     options = { target: options }
   }
-options.onProxyReq = (proxyReq, req, res) => {
-  console.log(`[${chalk.gray('proxy')}]: ${chalk.yellow(proxyReq.path)}`)
-}
+  options.onProxyReq = (proxyReq, req, res) => {
+    console.log(`[${chalk.gray('proxy')}]: ${chalk.yellow(proxyReq.path)}`)
+  }
   app.use(proxyMiddleware(options.filter || context, options))
 })
 

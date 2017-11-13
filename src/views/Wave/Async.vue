@@ -9,6 +9,17 @@
       height: 4.2rem;
       background-color: #eee;
     }
+    .btn {
+      padding: 0.3rem;
+      color: #fff;
+      text-align: center;
+      margin: 0.6rem 0.3rem;
+      display: block;
+      font-size: 0.32rem;
+      cursor: pointer;
+      background-image: -webkit-linear-gradient(135deg, #1389ff, #00c2ff);
+      border-radius: 0.08rem;
+    }
   }
 </style>
 

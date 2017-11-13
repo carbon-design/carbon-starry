@@ -1,5 +1,7 @@
 class multiWave {
   constructor (el, opts) {
+    this._parseNum = this._parseNum.bind(this)
+    this._mergeParam = this._mergeParam.bind(this)
     if (Object.prototype.toString.call(opts) !== '[object Array]') {
       throw new Error('Function Parameter Error!')
     }
@@ -26,36 +28,57 @@ class multiWave {
     this.ctx = canvas.getContext('2d')
   }
 
-  _initWavesParam () {
-    const _parseNum = (num, coord) => {
-      let size = num
-      if (typeof waveHeight !== 'number') {
-        let coo = this._width
-        if (coord === 'y') {
-          coo = this._height
-        }
-        size = parseFloat(num) / 100 * coo
+  _parseNum (num, coord, relSize) {
+    let size = num
+    if (typeof num !== 'number') {
+      let dis = this._width
+      if (coord === 'y') {
+        dis = this._height
       }
-      return size
+      if (relSize) {
+        dis = relSize
+      }
+      size = parseFloat(num) / 100 * dis
     }
+    return size
+  }
 
-    Array.prototype.forEach.call(this.opts, (item, i) => {
-      const waveWidth = _parseNum(item.waveWidth)
-      const minCount = Math.ceil(this._width / waveWidth) + 2
-      let curWave = {
-        offsetX: waveWidth * parseFloat(item.offsetX) / -100,
-        waveWidth: waveWidth,
-        waveHeight: _parseNum(item.waveHeight, 'y'),
-        waveCount: minCount,
-        waveColor: item.waveColor,
-        currentMoveX: 0,
-        currentMoveY: 0,
-        startFromTop: _parseNum(item.startFromTop, 'y'),
-        endFromTop: _parseNum(item.endFromTop, 'y'),
-        moveXStep: _parseNum(item.moveXStep),
-        moveYStep: _parseNum(item.moveYStep, 'y')
+  _mergeParam (oldParams, newParams) {
+    oldParams = oldParams || {}
+    const _parseNum = this._parseNum
+    let waveWidth = _parseNum(newParams.waveWidth || oldParams.waveWidth)
+    let finalParams = {
+      waveCount: Math.ceil(this._width / waveWidth) + 2
+    }
+    Object.keys(newParams).forEach(key => {
+      if (key === 'waveHeight' || key === 'startFromTop' || key === 'endFromTop' || key === 'moveYStep') {
+        finalParams[key] = _parseNum(newParams[key], 'y')
+      } else if (key === 'moveXStep') {
+        finalParams[key] = _parseNum(newParams[key])
+      } else if (key === 'offsetX') {
+        finalParams[key] = _parseNum(newParams[key], null, waveWidth) * -1
+      } else if (key === 'moveXDirection') {
+        finalParams['dir'] = newParams[key] === 'right' ? -1 : 1
+      } else if (key === 'waveWidth') {
+        finalParams[key] = waveWidth
+      } else {
+        finalParams[key] = newParams[key]
       }
-      this.wavesParam[i] = curWave
+    })
+    return {
+      ...oldParams,
+      ...finalParams
+    }
+  }
+
+  _initWavesParam () {
+    Array.prototype.forEach.call(this.opts, (item, i) => {
+      this.wavesParam[i] = this._mergeParam({
+        id: item.id || i,
+        dir: 1,
+        currentMoveX: 0,
+        currentMoveY: 0
+      }, item)
     })
   }
 
@@ -69,19 +92,19 @@ class multiWave {
       let wavesParam = this.wavesParam
       this.ctx.clearRect(0, 0, this._width, this._height)
       Array.prototype.forEach.call(wavesParam, (item, i) => {
-        let { offsetX, currentMoveX, waveWidth, waveHeight, waveCount, waveColor, startFromTop, endFromTop, moveXStep, currentMoveY, moveYStep } = item
-        let curX = offsetX + currentMoveX
+        let { offsetX, currentMoveX, waveWidth, waveHeight, waveCount, waveColor, startFromTop, endFromTop, moveXStep, currentMoveY, moveYStep, dir } = item
+        let curX = offsetX + currentMoveX + (dir - 1) * 2 * waveWidth
         let curY = startFromTop + currentMoveY
         this._drawWave(curX, curY, waveCount, waveHeight, waveWidth, waveColor)
-        if (Math.abs(waveWidth * 2 + currentMoveX) > moveXStep) {
-          this.wavesParam[i].currentMoveX -= moveXStep
+        if (Math.abs(waveWidth * 2 + currentMoveX * dir) > moveXStep) {
+          this.wavesParam[i].currentMoveX -= (moveXStep * dir)
         } else {
           this.wavesParam[i].currentMoveX = 0
         }
         if (Math.abs(startFromTop + currentMoveY - endFromTop) <= moveYStep) {
           this.wavesParam[i].currentMoveY = endFromTop - startFromTop
         } else {
-          if (startFromTop > endFromTop) {
+          if (startFromTop > endFromTop || curY > endFromTop) {
             this.wavesParam[i].currentMoveY -= moveYStep
           } else {
             this.wavesParam[i].currentMoveY += moveYStep
@@ -109,6 +132,14 @@ class multiWave {
     ctx.closePath()
     ctx.fillStyle = waveColor
     ctx.fill()
+  }
+
+  dynamicSettingParamsById (id, newParams) {
+    this.wavesParam.forEach((item, i) => {
+      if (item.id === id) {
+        this.wavesParam[i] = this._mergeParam(item, newParams)
+      }
+    })
   }
 
   destroy () {

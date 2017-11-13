@@ -1,4 +1,3 @@
-const ip = require('ip')
 const opn = require('opn')
 const chalk = require('chalk')
 const express = require('express')
@@ -14,7 +13,7 @@ const app = express()
 const port = settings.build.distServerPort
 const publicPath = settings.build.assetsPublicPath
 const distServerPath = settings.build.distServerPath
-const uri = `http://${ip.address()}:${port}${publicPath}`
+const uri = settings.build.distServerHost
 
 app.use('/mock', express.static('./mock'))
 

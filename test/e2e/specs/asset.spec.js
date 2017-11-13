@@ -1,6 +1,6 @@
 const { host, expect, browser } = require('../browser')
 
-describe('Center Page', function () {
+describe('Asset Page', function () {
   this.timeout('30s')
   let html
   beforeEach(async function () {
@@ -10,17 +10,13 @@ describe('Center Page', function () {
       .type('.fm-item:last-child input', '123456')
       .click('button.loginBtn')
       .wait('article.page-home')
-      .goto(`${host}#/main/center`)
-      .wait('article.page-center')
+      .goto(`${host}#/main/asset`)
+      .wait('article.page-asset')
       .evaluate(() => document.body.innerHTML)
       .end()
   })
 
-  it('should get center page level information', () => {
-    expect(html).contain('钻石VIP高级用户')
-  })
-
-  it('should get center page username information', () => {
-    expect(html).contain('柯银明')
+  it('should get fund list', () => {
+    expect(html).contain('<div class="title"><h1>博时基金</h1><p>由天宏基金有限公司提供</p></div>')
   })
 })

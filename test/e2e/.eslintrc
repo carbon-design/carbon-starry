@@ -1,0 +1,11 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "it": true,
+    "describe": true,
+    "beforeEach": true,
+    "expect": true
+  }
+}

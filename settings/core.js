@@ -1,3 +1,4 @@
+const ip = require('ip')
 const path = require('path')
 const env = require('./env')
 const chalk = require('chalk')
@@ -70,6 +71,7 @@ module.exports = {
     gzip: false,
     distServerPort: distServerPort,
     distServerPath: assetsRoot,
+    distServerHost: `http://${ip.address()}:${distServerPort}/${assetsPublicPath}/`,
     gzipExtensions: ['js', 'css'],
     isMobile: true
   },

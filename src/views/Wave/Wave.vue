@@ -57,7 +57,8 @@ export default {
     resetGreen () {
       this.multiWave.dynamicSettingParamsById('wave-green', {
         moveXStep: '2.2%',
-        endFromTop: '20%'
+        endFromTop: '20%',
+        moveXDirection: 'right'
       })
     },
     resetBlue () {
@@ -69,7 +70,8 @@ export default {
     resetRed () {
       this.multiWave.dynamicSettingParamsById('wave-red', {
         moveXStep: '1.2%',
-        endFromTop: '20%'
+        endFromTop: '20%',
+        waveWidth: '60%'
       })
     }
   }

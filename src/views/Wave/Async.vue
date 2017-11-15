@@ -7,7 +7,6 @@
     .wave-area {
       width: 100%;
       height: 4.2rem;
-      background-color: #eee;
     }
     .btn {
       padding: 0.3rem;

@@ -96,7 +96,7 @@ class multiWave {
         let curX = offsetX + currentMoveX + (dir - 1) * 2 * waveWidth
         let curY = startFromTop + currentMoveY
         this._drawWave(curX, curY, waveCount, waveHeight, waveWidth, waveColor)
-        if (Math.abs(waveWidth * 2 + currentMoveX * dir) > moveXStep) {
+        if (Math.abs(currentMoveX) < waveWidth * 2) {
           this.wavesParam[i].currentMoveX -= (moveXStep * dir)
         } else {
           this.wavesParam[i].currentMoveX = 0
@@ -134,11 +134,17 @@ class multiWave {
     ctx.fill()
   }
 
-  dynamicSettingParamsById (id, newParams) {
+  dynamicSetParamsById (id, newParams) {
     this.wavesParam.forEach((item, i) => {
       if (item.id === id) {
         this.wavesParam[i] = this._mergeParam(item, newParams)
       }
+    })
+  }
+
+  dynamicSetParamsAll (newParamsArray) {
+    newParamsArray.forEach(newItem => {
+      this.dynamicSettingParamsById(newItem.id, newItem)
     })
   }
 

@@ -144,7 +144,7 @@ class multiWave {
 
   dynamicSetParamsAll (newParamsArray) {
     newParamsArray.forEach(newItem => {
-      this.dynamicSettingParamsById(newItem.id, newItem)
+      this.dynamicSetParamsById(newItem.id, newItem)
     })
   }
 

@@ -73,7 +73,7 @@ export default {
         })
         $indicator.close()
         if (resLogin.data) {
-          $router.push('/redirect?path=/main/home')
+          $router.push('/redirect?path=/main/center')
           setCookie('userinfo', resLogin.data, 3 * 60 * 60 * 1000)
           login(resLogin.data)
         }

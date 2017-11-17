@@ -4,13 +4,13 @@
       router-link(to="/main/home" active-class="active")
         i.iconfont &#xe601;
         div 首页
-      router-link(to="/main/asset" active-class="active")
+      router-link(to="/redirect?path=/main/asset" active-class="active")
         i.iconfont &#xe645;
         div 我的资产
       router-link(to="/main/channel" active-class="active")
         i.iconfont &#xe61f;
         div 金融频道
-      router-link(to="/main/center" active-class="active")
+      router-link(to="/redirect?path=/main/center" active-class="active")
         i.iconfont &#xe600;
         div 用户中心
 </template>
@@ -18,8 +18,6 @@
 <style lang="scss" src="#/styles/layouts/footer.scss"></style>
 
 <script>
-/* global throttle:false */
-
 export default {
   name: 'footer',
   data () {

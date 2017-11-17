@@ -56,8 +56,6 @@
 </template>
 
 <script>
-/* global echarts:false */
-import { getCookie } from '~/utils/cookie'
 import { getAssets } from '~/config/api'
 
 export default {
@@ -89,15 +87,6 @@ export default {
         },
         onTransitionEnd: this.triggerChart
       }
-    }
-  },
-  beforeMount () {
-    // 未检测到cookie则返回登录页
-    const userInfo = JSON.parse(getCookie('userinfo'))
-    if (userInfo) {
-      this.userName = userInfo.name
-    } else {
-      this.$router.replace('/login')
     }
   },
   async mounted () {

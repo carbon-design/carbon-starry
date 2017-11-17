@@ -1,0 +1,12 @@
+{
+  "globals": {
+    "echarts": true,
+    "throttle": true,
+    "debounce": true,
+    "CircleProgress": true,
+    "Counter": true,
+    "Indicator": true,
+    "toast": true,
+    "Sector": true
+  }
+}

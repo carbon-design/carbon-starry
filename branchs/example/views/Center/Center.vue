@@ -32,7 +32,6 @@
 </template>
 
 <script>
-/* global echarts:false */
 import { getCookie } from '~/utils/cookie'
 
 export default {

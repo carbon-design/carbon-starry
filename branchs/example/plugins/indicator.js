@@ -1,5 +1,3 @@
-/* global Indicator:false */
-
 export const indicator = new Indicator()
 
 export default {

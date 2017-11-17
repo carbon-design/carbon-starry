@@ -1,5 +1,3 @@
-/* global Counter:false */
-
 const counter = opts => new Counter(opts)
 
 export default {

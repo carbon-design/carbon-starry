@@ -1,5 +1,3 @@
-/* global Indicator:false, toast:false */
-
 import axios from 'axios'
 const indicator = new Indicator()
 

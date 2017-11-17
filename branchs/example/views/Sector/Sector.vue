@@ -17,8 +17,6 @@
 
 <script>
 import { getImages } from '~/config/api'
-const Sector = window.Sector
-const debounce = window.debounce
 
 export default {
   name: 'sector',

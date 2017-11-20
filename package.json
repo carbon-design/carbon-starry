@@ -103,7 +103,7 @@
     "pug-loader": "^2.3.0",
     "puppeteer": "^0.13.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.51.7",
+    "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",

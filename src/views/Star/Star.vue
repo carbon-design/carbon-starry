@@ -19,7 +19,16 @@ export default {
       starSize: window.dpr,
       numStars: 100,
       maxStarSpeed: 4,
-      bgColor: 'rgba(0, 5, 43, 1)'
+      bgColor: [{
+        stop: 0,
+        color: 'rgb(0, 0, 10)'
+      }, {
+        stop: 0.4,
+        color: 'rgb(0, 0, 40)'
+      }, {
+        stop: 0.8,
+        color: 'rgb(20, 0, 80)'
+      }]
     })
     this.starField.render()
   },

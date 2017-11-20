@@ -99,9 +99,17 @@ class StarField {
   _renderStarField () {
     let i
     let star
+    let bgColor = this.options.bgColor
     const starSize = this.options.starSize
     const ctx = this.ctx
-    ctx.fillStyle = this.options.bgColor
+    if (typeof bgColor !== 'string') {
+      let linearGradient = ctx.createLinearGradient(0, 0, 0, this._height)
+      bgColor.forEach((item, i) => {
+        linearGradient.addColorStop(item.stop, item.color)
+      })
+      bgColor = linearGradient
+    }
+    ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, this._width, this._height)
 
     for (i = 0; i < this.numStars; i++) {

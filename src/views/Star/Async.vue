@@ -10,6 +10,16 @@
       width: 100%;
       height: 100%;
     }
+
+    .btn {
+      padding: 0.2rem 0.4rem;
+      background-color: rgba(255, 255, 255, .16);
+      position: absolute;
+      right: 0.2rem;
+      bottom: 1.14rem;
+      color: #fff;
+      border-radius: 0.1rem;
+    }
   }
 </style>
 

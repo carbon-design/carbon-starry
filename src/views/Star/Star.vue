@@ -1,6 +1,7 @@
 <template lang="pug">
   article.page-star(ref="starWrap")
     .starContent(ref="starCtx")
+    .btn(@click="speedUp") 点击加速 ({{speed}})
 </template>
 
 <script>
@@ -10,6 +11,8 @@ export default {
   name: 'star',
   data () {
     return {
+      speed: 2,
+      num: 100
     }
   },
   mounted () {
@@ -23,11 +26,11 @@ export default {
         stop: 0,
         color: 'rgb(0, 0, 10)'
       }, {
-        stop: 0.4,
+        stop: 0.3,
         color: 'rgb(0, 0, 40)'
       }, {
         stop: 0.8,
-        color: 'rgb(20, 0, 80)'
+        color: 'rgb(50, 0, 80)'
       }]
     })
     this.starField.render()
@@ -36,6 +39,11 @@ export default {
     this.starField.destroy()
   },
   methods: {
+    speedUp () {
+      this.speed += 2
+      this.num -= 1
+      this.starField.render(this.num, this.speed)
+    }
   }
 }
 </script>

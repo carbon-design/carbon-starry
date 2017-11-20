@@ -1,13 +1,18 @@
 <template lang="pug">
-  .app-error
+  .app-error(@click="refresh")
     .fail-icon
-    .title 页面获取发生错误！
+    .title 页面错误，点击页面刷新！
 </template>
 
 <style lang="scss" src="#/styles/layouts/error.scss"></style>
 
 <script>
 export default {
-  name: 'error'
+  name: 'error',
+  methods: {
+    refresh () {
+      window.location.reload()
+    }
+  }
 }
 </script>

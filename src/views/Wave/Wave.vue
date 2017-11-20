@@ -12,10 +12,6 @@ import MultiWave from '~/libs/multiWave'
 
 export default {
   name: 'wave',
-  data () {
-    return {
-    }
-  },
   mounted () {
     const el = this.$refs.multiWave
     this.multiWave = new MultiWave(el, [{

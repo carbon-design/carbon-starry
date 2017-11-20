@@ -38,7 +38,7 @@
     .chassis
       .card.type2
         .card-content
-          .action
+          .action(@click="toStar")
             i.iconfont &#xe6f9;
             p 理财投资指导
           .result
@@ -170,6 +170,9 @@ export default {
     },
     toSector () {
       this.$router.push('/main/sector')
+    },
+    toStar () {
+      this.$router.push('/main/star')
     }
   }
 }

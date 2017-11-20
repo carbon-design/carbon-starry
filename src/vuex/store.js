@@ -4,7 +4,7 @@ import createLogger from 'vuex/dist/logger'
 import createPersistedState from 'vuex-persistedstate'
 import { state, mutations } from './mutations'
 import * as actions from './actions'
-import * as getters from './getters'
+import getters from './getters'
 import channel from './modules/channel'
 
 Vue.use(Vuex)

@@ -12,6 +12,7 @@ import Maps from '@/Map/Async'
 import Scroll from '@/Scroll/Async'
 import Sector from '@/Sector/Async'
 import Wave from '@/Wave/Async'
+import Star from '@/Star/Async'
 
 export default [{
   path: '/login',
@@ -49,6 +50,9 @@ export default [{
   }, {
     path: 'wave',
     component: Wave
+  }, {
+    path: 'star',
+    component: Star
   }]
 }, {
   path: '/redirect',

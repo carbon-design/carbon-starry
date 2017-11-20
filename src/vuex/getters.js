@@ -1,6 +1,6 @@
-export const loginState = state => state.loginState
-export const userInfo = state => state.userInfo
-
-export const routePath = state => state.route.fullPath
-
-export const lessonList = state => state.channel.lessonList
+export default {
+  loginState: state => state.loginState,
+  userInfo: state => state.userInfo,
+  routePath: state => state.route.fullPath,
+  lessonList: state => state.channel.lessonList
+}

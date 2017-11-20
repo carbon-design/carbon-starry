@@ -16,7 +16,7 @@ export default {
     const { $router, $route } = this
     const userInfo = getCookie('userinfo')
     if (!userInfo) {
-      this.message = '登录已失效，请先登录！'
+      this.message = '未登录或登录失效，请先登录！'
       this.backTimer = setTimeout(() => {
         $router.replace('/login')
       }, 3000)

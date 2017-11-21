@@ -5,6 +5,7 @@
 
 class CircleProgress {
   constructor (options) {
+    this.destroy = this.destroy.bind(this)
     let opts = {
       value: 0.0,
       size: 100.0,
@@ -235,8 +236,10 @@ class CircleProgress {
         progress = this.circleProgressEasing(progress)
       }
       setStep(progress)
-      if (duration !== gapTime && progress <= 1) {
+      if (duration > gapTime && progress < 1) {
         this.circleRaf = window.requestAnimationFrame(run)
+      } else {
+        setStep(1)
       }
     }
     run()

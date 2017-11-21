@@ -1,9 +1,15 @@
+/*
+ * @ Author Aford
+ * @ Date: 2017/11/20
+ */
+
 class Star {
-  constructor (x, y, maxSpeed) {
+  constructor (x, y, maxSpeed, maxSize) {
     this.x = x
     this.y = y
     this.slope = y / x
     this.opacity = 0
+    this.size = Math.round(maxSize * Math.random())
     this.speed = Math.max(Math.random() * maxSpeed, 1)
   }
 
@@ -11,16 +17,16 @@ class Star {
     return Math.sqrt(Math.pow(originX - this.x, 2) + Math.pow(originY - this.y, 2))
   }
 
-  resetPosition (x, y, maxSpeed) {
+  resetPosition (x, y, maxSpeed, maxSize) {
     Star.apply(this, arguments)
     return this
   }
 }
 
 const BigBang = {
-  getRandomStar (minX, minY, maxX, maxY, maxSpeed) {
+  getRandomStar (minX, minY, maxX, maxY, maxSpeed, maxSize) {
     let coords = BigBang.getRandomPosition(minX, minY, maxX, maxY)
-    return new Star(coords.x, coords.y, maxSpeed)
+    return new Star(coords.x, coords.y, maxSpeed, maxSize)
   },
   getRandomPosition (minX, minY, maxX, maxY) {
     return {
@@ -35,7 +41,7 @@ class StarField {
     options = options || {}
 
     this.options = {
-      starSize: 2,
+      maxSize: 2,
       numStars: 100,
       maxStarSpeed: 3,
       bgColor: 'rgba(0, 0, 0, .5)'
@@ -91,7 +97,7 @@ class StarField {
           -this._width / 10, -this._height / 10,
           this._width / 5, this._height / 5
         )
-        star.resetPosition(randomLoc.x, randomLoc.y, this.maxStarSpeed)
+        star.resetPosition(randomLoc.x, randomLoc.y, this.maxStarSpeed, this.maxSize)
       }
     }
   }
@@ -100,7 +106,6 @@ class StarField {
     let i
     let star
     let bgColor = this.options.bgColor
-    const starSize = this.options.starSize
     const ctx = this.ctx
     if (typeof bgColor !== 'string') {
       let linearGradient = ctx.createLinearGradient(0, 0, 0, this._height)
@@ -114,9 +119,10 @@ class StarField {
 
     for (i = 0; i < this.numStars; i++) {
       star = this.starField[i]
+      let size = star.size
       let x = star.x + this._width / 2
       let y = star.y + this._height / 2
-      this._fillRound(x, y, starSize, `rgba(188, 213, 236, ${star.opacity})`)
+      this._fillRound(x, y, size, `rgba(255, 255, 255, ${star.opacity})`)
     }
   }
 
@@ -144,7 +150,7 @@ class StarField {
     let i
     for (i = 0; i < this.numStars; i++) {
       this.starField.push(
-        BigBang.getRandomStar(-this._width / 2, -this._height / 2, this._width, this._height, this.maxStarSpeed)
+        BigBang.getRandomStar(-this._width / 2, -this._height / 2, this._width, this._height, this.maxStarSpeed, this.maxSize)
       )
     }
     this.animateRaf = window.requestAnimationFrame(this._renderFrame.bind(this))
@@ -154,9 +160,10 @@ class StarField {
     window.cancelAnimationFrame(this.animateRaf)
   }
 
-  render (numStars, maxStarSpeed) {
+  render (numStars, maxStarSpeed, maxSize) {
     this.numStars = numStars || this.options.numStars
     this.maxStarSpeed = maxStarSpeed || this.options.maxStarSpeed
+    this.maxSize = maxSize || this.options.maxSize
 
     this._initScene(this.numStars)
   }

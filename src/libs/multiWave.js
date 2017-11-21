@@ -1,3 +1,8 @@
+/*
+ * @ Author Aford
+ * @ Date: 2017/11/02
+ */
+
 class multiWave {
   constructor (el, opts) {
     this._parseNum = this._parseNum.bind(this)

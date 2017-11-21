@@ -19,18 +19,18 @@ export default {
     const { starWrap, starCtx } = this.$refs
     starWrap.style.height = document.documentElement.clientHeight + 'px'
     this.starField = new StarField(starCtx, {
-      starSize: window.dpr,
+      maxSize: window.dpr,
       numStars: 100,
       maxStarSpeed: 4,
       bgColor: [{
         stop: 0,
-        color: 'rgb(0, 0, 10)'
+        color: 'rgb(15, 19, 26)'
       }, {
-        stop: 0.3,
-        color: 'rgb(0, 0, 40)'
+        stop: 0.6,
+        color: 'rgb(27, 39, 51)'
       }, {
-        stop: 0.8,
-        color: 'rgb(50, 0, 80)'
+        stop: 1,
+        color: 'rgb(42, 63, 78)'
       }]
     })
     this.starField.render()

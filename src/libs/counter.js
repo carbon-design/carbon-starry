@@ -1,9 +1,6 @@
 /*
- * @ param numFrom [number]
- * @ param numTo [number]
- * @ param gap [number]
- * @ param duration [number]
- * @ param callback [function]
+ * @ Author Aford
+ * @ Date: 2017/09/30
  */
 
 class Counter {

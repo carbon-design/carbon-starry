@@ -1,3 +1,8 @@
+/*
+ * @ Author Aford
+ * @ Date: 2017/10/26
+ */
+
 class Sector {
   constructor (el, options) {
     options = options || {}

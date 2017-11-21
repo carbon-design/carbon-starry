@@ -1,5 +1,6 @@
 /*
- * @ param callback [function]
+ * @ Author Aford
+ * @ Date: 2017/10/22
  */
 
 class Gyroscope {

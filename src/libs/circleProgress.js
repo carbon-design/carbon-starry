@@ -224,6 +224,9 @@ class CircleProgress {
     let start = Date.now()
 
     const setStep = p => {
+      if (p >= 1) {
+        p = 1
+      }
       let stepValue = this.animationStartValue * (1 - p) + v * p
       this.drawFrame(stepValue)
       this.callback(stepValue)

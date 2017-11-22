@@ -52,7 +52,7 @@
     .chassis
       .card.type3
         .card-content
-          .action
+          .action(@click="toPixel")
             i.iconfont &#xe623;
             p 信用贷款审批
           .result
@@ -173,6 +173,9 @@ export default {
     },
     toStar () {
       this.$router.push('/main/star')
+    },
+    toPixel () {
+      this.$router.push('/main/pixel')
     }
   }
 }

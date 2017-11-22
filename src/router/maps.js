@@ -13,6 +13,7 @@ import Scroll from '@/Scroll/Async'
 import Sector from '@/Sector/Async'
 import Wave from '@/Wave/Async'
 import Star from '@/Star/Async'
+import Pixel from '@/Pixel/Async'
 
 export default [{
   path: '/login',
@@ -53,6 +54,9 @@ export default [{
   }, {
     path: 'star',
     component: Star
+  }, {
+    path: 'pixel',
+    component: Pixel
   }]
 }, {
   path: '/redirect',

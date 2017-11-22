@@ -36,7 +36,9 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# serve with static files at localhost, if you want to automatically open the browser or generate screenshots, adds the [--opn] or [--shot] parameter for the current command line
+# serve with static files at localhost
+# if you want to automatically open the browser or generate screenshots
+# adds the [--opn] or [--shot] parameter for the current command line
 npm run dist-server --opn --shot
 
 # run unit tests

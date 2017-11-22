@@ -1,10 +1,10 @@
 import { Axios } from '~/plugins/requester'
 
 // 测试代理服务接口
-const rq = name => `/WechatBank/fee/${name}`
+// const rq = name => `/WechatBank/fee/${name}`
 
 export const API = {
-  queryCode: rq('queryAreaCode'),
+  // queryCode: rq('queryAreaCode'),
   login: '/mock/login.json',
   channel: '/mock/channel.json',
   assets: '/mock/assets.json',

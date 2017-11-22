@@ -12,13 +12,11 @@
     "echarts/dist/echarts.simple"
   ],
   "project": {
-    "projectName": "Carbon Megatron",
+    "projectName": "Carbon Megatron Master",
     "isMobile": true,
     "entry": "src/main.js",
-    "publicPathName": "carbon",
-    "assets": {
-      "rootName": "demonstration"
-    },
+    "publicPathName": "megatron",
+    "subDistRootName": "demonstration",
     "devServerPort": 3000,
     "distServerPort": 3001,
     "proxy": {

@@ -21,9 +21,9 @@ let buildExtCSS = extCSS
 
 let entry = defaultCfg.project.entry
 
-const assetsRootName = defaultCfg.project.assets.rootName
-let assetsRoot = `dist/${assetsRootName}`
-let assetsIndex = `dist/${assetsRootName}/index.html`
+const subDistRootName = defaultCfg.project.subDistRootName
+let assetsRoot = `dist/${subDistRootName}`
+let assetsIndex = `dist/${subDistRootName}/index.html`
 
 const projectName = defaultCfg.project.projectName
 let assetsPublicPath = defaultCfg.project.publicPathName
@@ -46,9 +46,9 @@ if (!developer.isAdmin) {
   buildCjsVendor = devCjsVendor = true
   buildExtCSS = devExtCSS = extCSS.concat(defaultCfg.external.compressed.vendorCSS)
   buildExtJS = devExtJS = extJS.concat(defaultCfg.external.compressed.vendorJS)
-  console.log(chalk.cyan('\n ====== DEVELOPER MODE ====== \n'))
+  console.log(chalk.cyan('\n ========== DEVELOPER MODE ========== \n'))
 } else {
-  console.log(chalk.cyan('\n ====== ADMINISTRATOR MODE ====== \n'))
+  console.log(chalk.cyan('\n ======== ADMINISTRATOR MODE ======== \n'))
 }
 
 module.exports = {

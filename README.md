@@ -13,6 +13,10 @@
 
 >  ❤️ A Web Application Scaffolding
 
+## Preview
+
+![preview demo](http://amaze.qiniudn.com/demo.png)
+
 ## Install Chromium
  [Click to download chromium](https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/515411/chrome-win32.zip)
 

@@ -24,7 +24,7 @@
       display: block;
       cursor: pointer;
       margin: 0.1rem;
-      background-image: -webkit-linear-gradient(135deg, #1389ff, #00c2ff);
+      background-image: -webkit-linear-gradient(135deg, #191919, #585858);
       border-radius: 0.08rem;
     }
   }

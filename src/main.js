@@ -1,4 +1,4 @@
-﻿import './utils/requestAnimationFrame'
+﻿import './utils/raf'
 import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'

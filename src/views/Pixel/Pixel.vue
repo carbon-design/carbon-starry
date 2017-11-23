@@ -2,12 +2,12 @@
   article.page-pixel
     img(src="~/#/images/human.jpg" ref="pic")
     .btnGrp
-      .btn(@click="reset") 点击重置
-      .btn(@click="invert") 点击反相
-      .btn(@click="grayscale") 点击黑白化
-      .btn(@click="colorFilter('red')") 点击显示红色通道
-      .btn(@click="colorFilter('green')") 点击显示绿色通道
-      .btn(@click="colorFilter('blue')") 点击显示蓝色通道
+      .btn(@click="reset") 重置
+      .btn(@click="invert") 反相
+      .btn(@click="grayscale") 黑白化
+      .btn(@click="colorFilter('red')") 红色通道
+      .btn(@click="colorFilter('green')") 绿色通道
+      .btn(@click="colorFilter('blue')") 蓝色通道
 </template>
 
 <script>

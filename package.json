@@ -28,7 +28,7 @@
     "vue-awesome-swiper": "2.6.7",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.4.0",
+    "vuex-persistedstate": "^2.4.2",
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "compression-webpack-plugin": "^1.0.1",
     "connect-history-api-fallback": "^1.5.0",
     "connect-livereload": "^0.6.0",
-    "copy-webpack-plugin": "4.2.1",
+    "copy-webpack-plugin": "4.2.3",
     "cross-env": "^5.1.1",
     "cross-port-killer": "^1.0.1",
     "css-loader": "^0.28.7",

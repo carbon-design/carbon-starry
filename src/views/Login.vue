@@ -5,11 +5,11 @@
     .form
       .fm-item
         .label 用户账号
-        .ipt-wrap
+        .ipt-wrap.user
           input(type="text" placeholder="请输入账户名/手机号" v-model="userName" @focus="userFocus" @blur="userBlur")
       .fm-item
         .label 密码
-        .ipt-wrap
+        .ipt-wrap.pswd
           input(type="password" placeholder="请输入账户密码" v-model="password" @focus="passwordFocus" @blur="passwordBlur")
     .foot
       button(class="loginBtn" @click="submit") 登  录

@@ -32,6 +32,7 @@
 
 .page-home {
   padding: 0.3rem 0.4rem;
+  position: relative;
 
   .chassis {
     width: 100%;
@@ -245,7 +246,7 @@
     left: 0;
     top: 0;
     transform: translateY(-100%);
-    transition: left 1s linear;
+    transition: left 1s ease-out;
 
     &.b {
       background-image: url(../../images/kill.png);

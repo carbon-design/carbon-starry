@@ -1,5 +1,5 @@
 <template lang="pug">
-  article.page-home
+  article.page-home(ref="page")
     .chassis
       .card
         .card-content
@@ -63,11 +63,11 @@
             .dot
             .dot
             .dot
-    .face(ref="face")
 </template>
 
 <script>
 import { getHome } from '~/config/api'
+import { waiter } from '~/utils/tools'
 import { mapGetters } from 'vuex'
 import dynamics from 'dynamics.js'
 
@@ -76,7 +76,6 @@ export default {
   data () {
     return {
       emoji: '',
-      closed: false,
       countScan: 0,
       countProfit: 0,
       countCreditQuota: 0,
@@ -96,6 +95,8 @@ export default {
     })
   },
   async mounted () {
+    this._count = 0
+    this.$page = this.$refs.page
     // 代理转发接口测试
     // const resCode = await getCode()
     // console.log(resCode.data)
@@ -158,32 +159,28 @@ export default {
 
   beforeDestroy () {
     this.vmCircleProgress.destroy()
-    this.closed = true
   },
 
   methods: {
     goPage (path) {
       this.$router.push(`/main/${path}`)
     },
-    waiter: time => {
-      return new Promise((resolve, reject) => {
-        const tempTimer = setTimeout(() => {
-          clearTimeout(tempTimer)
-          resolve()
-        }, time)
-      })
-    },
     async jump () {
-      if (this.closed) {
+      if (this._count > 10) {
         return
       }
-      const { waiter } = this
+      this._count++
       const rs = window.rootFontSize
-      const $face = this.$refs.face
-      const emoType = Math.random()
+      const $face = document.createElement('div')
+      $face.className = 'face'
+      this.$page.appendChild($face)
+
       const ry = () => Math.random() * 6.7 * rs
+      const rt = () => Math.random() * 2000 + 1000
+
       const getEmoji = () => {
         let emoji = ''
+        const emoType = Math.random()
         if (emoType > 0 && emoType < 0.33) {
           emoji = 'a'
         } else if (emoType >= 0.33 && emoType < 0.66) {
@@ -197,7 +194,9 @@ export default {
         }
         return emoji
       }
-      $face.classList.add(getEmoji())
+      const emj = getEmoji()
+      this.emoji = emj
+      $face.classList.add(emj)
       const jumpPoz = [{
         x: ry(),
         y: 0.3 * rs
@@ -212,12 +211,12 @@ export default {
         y: 10.5 * rs
       }, {
         x: ry(),
-        y: 20 * rs
+        y: document.documentElement.offsetHeight
       }]
-      const jumpStep = index => {
-        $face.style.left = jumpPoz[index].x + 'px'
+      const jumpStep = data => {
+        $face.style.left = data.x + 'px'
         dynamics.animate($face, {
-          translateY: jumpPoz[index].y
+          translateY: data.y
         }, {
           type: dynamics.gravity,
           duration: 1000,
@@ -225,20 +224,14 @@ export default {
           elasticity: 400
         })
       }
-      await waiter(2000)
-      jumpStep(0)
-      await waiter(2000)
-      jumpStep(1)
-      await waiter(2000)
-      jumpStep(2)
-      await waiter(2000)
-      jumpStep(3)
-      await waiter(2000)
-      jumpStep(4)
-      await waiter(2000)
-      $face.setAttribute('style', '')
-      $face.className = 'face'
-      this.jump()
+      for (let i = 0; i < jumpPoz.length; i++) {
+        await waiter(rt())
+        jumpStep(jumpPoz[i])
+        this.jump()
+      }
+      await waiter(rt())
+      this.$page.removeChild($face)
+      this._count--
     }
   }
 }

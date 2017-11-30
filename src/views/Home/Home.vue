@@ -3,7 +3,7 @@
     .chassis
       .card
         .card-content
-          .action(@click="toWave")
+          .action(@click="goPage('wave')")
             i.iconfont &#xe68e;
             p 扫码付款
           .result
@@ -23,22 +23,22 @@
           .circle
             .inner(data-surplus="￥0.00可用" ref="perCircle")
       .app-grid-menu
-        .cell(@click="toGyro")
+        .cell(@click="goPage('gyro')")
           i.iconfont &#xe68e;
           span 扫码付款
-        .cell(@click="toMap")
+        .cell(@click="goPage('map')")
           i.iconfont &#xe6f9;
           span 理财指导
-        .cell(@click="toScroll")
+        .cell(@click="goPage('scroll')")
           i.iconfont &#xe624;
           span 贷款申请
-        .cell(@click="toSector")
+        .cell(@click="goPage('sector')")
           i.iconfont &#xe623;
           span 信用提升
     .chassis
       .card.type2
         .card-content
-          .action(@click="toStar")
+          .action(@click="goPage('star')")
             i.iconfont &#xe6f9;
             p 理财投资指导
           .result
@@ -52,7 +52,7 @@
     .chassis
       .card.type3
         .card-content
-          .action(@click="toPixel")
+          .action(@click="goPage('pixel')")
             i.iconfont &#xe623;
             p 信用贷款审批
           .result
@@ -63,16 +63,20 @@
             .dot
             .dot
             .dot
+    .face(ref="face")
 </template>
 
 <script>
 import { getHome } from '~/config/api'
 import { mapGetters } from 'vuex'
+import dynamics from 'dynamics.js'
 
 export default {
   name: 'home',
   data () {
     return {
+      emoji: '',
+      closed: false,
       countScan: 0,
       countProfit: 0,
       countCreditQuota: 0,
@@ -149,33 +153,92 @@ export default {
     })
     this.vmCircleProgress = vmCircleProgress
     vmCircleProgress.init()
+    this.jump()
   },
 
   beforeDestroy () {
     this.vmCircleProgress.destroy()
+    this.closed = true
   },
 
   methods: {
-    toWave () {
-      this.$router.push('/main/wave')
+    goPage (path) {
+      this.$router.push(`/main/${path}`)
     },
-    toGyro () {
-      this.$router.push('/main/gyro')
+    waiter: time => {
+      return new Promise((resolve, reject) => {
+        const tempTimer = setTimeout(() => {
+          clearTimeout(tempTimer)
+          resolve()
+        }, time)
+      })
     },
-    toMap () {
-      this.$router.push('/main/map')
-    },
-    toScroll () {
-      this.$router.push('/main/scroll')
-    },
-    toSector () {
-      this.$router.push('/main/sector')
-    },
-    toStar () {
-      this.$router.push('/main/star')
-    },
-    toPixel () {
-      this.$router.push('/main/pixel')
+    async jump () {
+      if (this.closed) {
+        return
+      }
+      const { waiter } = this
+      const rs = window.rootFontSize
+      const $face = this.$refs.face
+      const emoType = Math.random()
+      const ry = () => Math.random() * 6.7 * rs
+      const getEmoji = () => {
+        let emoji = ''
+        if (emoType > 0 && emoType < 0.33) {
+          emoji = 'a'
+        } else if (emoType >= 0.33 && emoType < 0.66) {
+          emoji = 'b'
+        } else {
+          emoji = 'c'
+        }
+        if (this.emoji === emoji) {
+          getEmoji()
+          return
+        }
+        return emoji
+      }
+      $face.classList.add(getEmoji())
+      const jumpPoz = [{
+        x: ry(),
+        y: 0.3 * rs
+      }, {
+        x: ry(),
+        y: 2.9 * rs
+      }, {
+        x: ry(),
+        y: 7.9 * rs
+      }, {
+        x: ry(),
+        y: 10.5 * rs
+      }, {
+        x: ry(),
+        y: 20 * rs
+      }]
+      const jumpStep = index => {
+        $face.style.left = jumpPoz[index].x + 'px'
+        dynamics.animate($face, {
+          translateY: jumpPoz[index].y
+        }, {
+          type: dynamics.gravity,
+          duration: 1000,
+          bounciness: 610,
+          elasticity: 400
+        })
+      }
+      await waiter(2000)
+      jumpStep(0)
+      await waiter(2000)
+      jumpStep(1)
+      await waiter(2000)
+      jumpStep(2)
+      await waiter(2000)
+      jumpStep(3)
+      await waiter(2000)
+      jumpStep(4)
+      await waiter(2000)
+      $face.setAttribute('style', '')
+      $face.className = 'face'
+      this.jump()
     }
   }
 }

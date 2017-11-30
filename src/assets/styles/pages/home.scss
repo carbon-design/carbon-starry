@@ -235,4 +235,24 @@
       }
     }
   }
+  .face {
+    width: .8rem;
+    height: .8rem;
+    margin: -0.8rem 0 0 -0.1rem;
+    background: url(../../images/yeah.png) no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    transition: left 1s linear;
+
+    &.b {
+      background-image: url(../../images/kill.png);
+    }
+    
+    &.c {
+      background-image: url(../../images/silly.png);
+    }
+  }
 }

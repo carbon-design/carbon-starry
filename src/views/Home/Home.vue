@@ -97,6 +97,7 @@ export default {
   async mounted () {
     this._count = 0
     this.$page = this.$refs.page
+
     // 代理转发接口测试
     // const resCode = await getCode()
     // console.log(resCode.data)
@@ -199,6 +200,9 @@ export default {
       $face.classList.add(emj)
       const jumpPoz = [{
         x: ry(),
+        y: 0.3 * rs - ry()
+      }, {
+        x: ry(),
         y: 0.3 * rs
       }, {
         x: ry(),
@@ -224,7 +228,10 @@ export default {
           elasticity: 400
         })
       }
-      for (let i = 0; i < jumpPoz.length; i++) {
+      dynamics.css($face, {
+        transform: `translate3d(${jumpPoz[0].x}px, ${jumpPoz[0].y}px, 0)`
+      })
+      for (let i = 1; i < jumpPoz.length; i++) {
         await waiter(rt())
         jumpStep(jumpPoz[i])
         this.jump()

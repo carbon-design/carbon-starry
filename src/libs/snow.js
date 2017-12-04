@@ -9,11 +9,13 @@ class Snow {
   constructor (el, options) {
     this.destroy = this.destroy.bind(this)
     this.start = this.start.bind(this)
-    this.stop = this.stop.bind(this)
+
     options = options || {}
+
     this.options = {
-      maxCount: 30,
-      maxWaitTime: 1000
+      maxCount: 50,
+      maxWaitTime: 1000,
+      thread: 2
     }
 
     for (let key in options) {
@@ -22,39 +24,34 @@ class Snow {
       }
     }
 
-    const doc = document.documentElement
     this.$wrap = el || document.body
-    this.index = 0
-    this.count = 0
-    this.flake = []
-    this.stopFlag = false
+    const doc = document.documentElement
     this.maxWidth = doc.clientWidth
     this.maxHeight = doc.clientHeight
-    this._initDOM()
+  }
+
+  _initState () {
+    this.count = 0
+    this.flakes = []
+    this.destroyed = false
   }
 
   _createFlake () {
-    if (this.count > this.options.maxCount || this.stopFlag) {
+    if (this.count > this.options.maxCount) {
       return
     }
     const time = this.options.maxWaitTime * Math.random()
     const tempTimer = setTimeout(() => {
-      let flake = new SnowFlake(this.$root, {
+      const flake = new SnowFlake(this.$root, {
         ...this.options,
         maxWidth: this.maxWidth,
         maxHeight: this.maxHeight,
-        beforeDestroy: () => {
-          this.flake = this.flake.splice(this.index)
-          this.count--
-          this._createFlake()
-        },
         beforeCreate: () => {
           this.count++
-          this.index++
           this._createFlake()
         }
       })
-      this.flake.push(flake)
+      this.flakes.push(flake)
       clearTimeout(tempTimer)
     }, time)
   }
@@ -66,16 +63,19 @@ class Snow {
   }
 
   destroy () {
+    if (this.destroyed) {
+      return
+    }
     this.$wrap.removeChild(this.$root)
+    this.destroyed = true
   }
 
   start () {
-    this.stopFlag = false
-    this._createFlake()
-  }
-
-  stop () {
-    this.stopFlag = true
+    this._initDOM()
+    this._initState()
+    for (let i = 0; i < this.options.thread; i++) {
+      this._createFlake()
+    }
   }
 }
 

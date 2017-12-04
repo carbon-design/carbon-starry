@@ -19,7 +19,6 @@ class SnowFlake {
       maxWidth: options.maxWidth || doc.clientWidth,
       maxHeight: options.maxHeight || doc.clientHeight,
       opacity: Math.min(Math.random() * 1 + 0.1, 1),
-      beforeDestroy: noop,
       beforeCreate: noop
     }
 
@@ -29,20 +28,24 @@ class SnowFlake {
       }
     }
 
+    this.$root = el || document.body
+    this._initFlakeDOM()
+    this._initAll()
+  }
+
+  _initAll () {
     this.deviation = 0
     this.progress = 0
     this.gap = this.options.maxHeight / Math.max(~~Math.random() * 4, 2)
     this.fluctuation = this.options.fluctuation * this.options.maxWidth * Math.random()
     this.size = Math.max(this.options.maxSize * Math.random(), this.options.minSize)
-    this.speed = Math.max((1 - this.size / this.options.maxSize) * this.options.maxSpeed, this.options.minSpeed)
-    this.$root = el || document.body
-    this._initFlake()
+    this.speed = Math.max(this.size / this.options.maxSize * this.options.maxSpeed, this.options.minSpeed)
+    this._setStyle()
     this._drawFrame()
   }
 
-  _initFlake () {
-    this.options.beforeCreate && this.options.beforeCreate()
-    const $snow = this.$snow = document.createElement('div')
+  _setStyle () {
+    const $snow = this.$snow
     let style = `
       position: fixed;
       left: ${this.options.maxWidth * Math.random() - this.size / 2}px;
@@ -54,11 +57,15 @@ class SnowFlake {
       width: ${this.size}px;
       z-index: 9999;
     `
-
     if (this.options.isBlur) {
       style += `filter: blur(${this.size / 4}px);`
     }
     $snow.style.cssText = style
+  }
+
+  _initFlakeDOM () {
+    this.options.beforeCreate && this.options.beforeCreate()
+    const $snow = this.$snow = document.createElement('div')
     this.$root.appendChild($snow)
   }
 
@@ -77,8 +84,7 @@ class SnowFlake {
     if (this.progress < this.options.maxHeight + this.size) {
       window.requestAnimationFrame(this._drawFrame.bind(this))
     } else {
-      this.options.beforeDestroy && this.options.beforeDestroy()
-      this.$root.removeChild(this.$snow)
+      this._initAll()
     }
   }
 }

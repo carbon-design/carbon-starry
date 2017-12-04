@@ -78,7 +78,8 @@ export default {
 
     this.snow = new Snow(this.$refs.snowPage, {
       maxSize: 10 * window.dpr,
-      minSize: 5 * window.dpr
+      minSize: 5 * window.dpr,
+      thread: 4
     })
   },
   beforeDestroy () {
@@ -99,7 +100,7 @@ export default {
       if (this.themeDark) {
         this.snow.start()
       } else {
-        this.snow.stop()
+        this.snow.destroy()
       }
     },
     renderChart (el, data, lineWidth, lineColor) {

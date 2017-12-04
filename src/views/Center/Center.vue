@@ -1,5 +1,5 @@
 <template lang="pug">
-  article.page-center
+  article.page-center(ref="snowPage")
     .radio(:class="{ checked: themeDark }" @click="toogleTheme")
     h1.title 用户中心
     .mainstay
@@ -34,6 +34,7 @@
 <script>
 import { getCookie } from '~/utils/cookie'
 import echarts from 'echarts/dist/echarts.simple'
+import Snow from '~/libs/snow'
 
 export default {
   name: 'center',
@@ -74,8 +75,14 @@ export default {
         this.percent = num
       }
     }).start()
+
+    this.snow = new Snow(this.$refs.snowPage, {
+      maxSize: 10 * window.dpr,
+      minSize: 5 * window.dpr
+    })
   },
   beforeDestroy () {
+    this.snow.destroy()
     this.bodyClass.remove('app-theme-dark', 'app-light-linear')
   },
   methods: {
@@ -89,6 +96,11 @@ export default {
     },
     toogleTheme () {
       this.themeDark ? this.themeDark = false : this.themeDark = true
+      if (this.themeDark) {
+        this.snow.start()
+      } else {
+        this.snow.stop()
+      }
     },
     renderChart (el, data, lineWidth, lineColor) {
       el.style.cssText = `width: ${el.offsetWidth}px; height: ${el.offsetHeight}`

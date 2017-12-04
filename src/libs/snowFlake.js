@@ -12,7 +12,7 @@ class SnowFlake {
       maxSize: 20,
       minSize: 10,
       minSpeed: 2,
-      maxSpeed: 10,
+      maxSpeed: 8,
       wind: 0,
       fluctuation: 0.2,
       isBlur: false,
@@ -36,7 +36,7 @@ class SnowFlake {
   _initAll () {
     this.deviation = 0
     this.progress = 0
-    this.gap = this.options.maxHeight / Math.max(~~Math.random() * 4, 2)
+    this.gap = this.options.maxHeight / Math.max(~~Math.random() * 6, 4) * (Math.random() > 0.5 ? 1 : -1)
     this.fluctuation = this.options.fluctuation * this.options.maxWidth * Math.random()
     this.size = Math.max(this.options.maxSize * Math.random(), this.options.minSize)
     this.speed = Math.max(this.size / this.options.maxSize * this.options.maxSpeed, this.options.minSpeed)

@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "axios": true,
+    "echarts": true,
+    "VueAwesomeSwiper": true
+  }
+}

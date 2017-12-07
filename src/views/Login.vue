@@ -74,7 +74,7 @@ export default {
         $indicator.close()
         if (resLogin.data) {
           $router.push('/main/home')
-          setCookie('userinfo', resLogin.data, 3 * 60 * 60 * 1000)
+          setCookie('userinfo', resLogin.data, 8 * 60 * 60 * 1000)
           login(resLogin.data)
         }
       }

@@ -11,7 +11,7 @@
 <style lang="scss" src="#/styles/plugins/picker.scss"></style>
 
 <script>
-import 'swiper/dist/css/swiper.css'
+// import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'app'

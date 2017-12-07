@@ -57,7 +57,7 @@
 
 <script>
 import { getAssets } from '~/config/api'
-import echarts from 'echarts/dist/echarts.simple'
+// import echarts from 'echarts/dist/echarts.simple'
 
 export default {
   name: 'asset',

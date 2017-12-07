@@ -33,7 +33,7 @@
 
 <script>
 import { getCookie } from '~/utils/cookie'
-import echarts from 'echarts/dist/echarts.simple'
+// import echarts from 'echarts/dist/echarts.simple'
 import Snow from '~/libs/snow'
 
 export default {

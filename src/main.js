@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'
-import swiper from 'vue-awesome-swiper'
+// import swiper from 'vue-awesome-swiper'
 import device from './plugins/device'
 import indicator from './plugins/indicator'
 import toast from './plugins/toast'
@@ -21,7 +21,7 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
-const plugins = [device, toast, indicator, requester, circleProgress, swiper, counter]
+const plugins = [device, toast, indicator, requester, circleProgress, VueAwesomeSwiper, counter]
 
 plugins.forEach(plugin => {
   Vue.use(plugin)

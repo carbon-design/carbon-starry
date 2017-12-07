@@ -3,6 +3,7 @@
     "echarts": true,
     "throttle": true,
     "debounce": true,
+    "VueAwesomeSwiper": true,
     "CircleProgress": true,
     "Counter": true,
     "Indicator": true,

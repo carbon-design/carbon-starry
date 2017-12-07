@@ -1,15 +1,12 @@
 {
   "vendor": [
-    "axios",
     "vue",
     "vuex",
     "vue-router",
     "lodash/throttle",
     "lodash/debounce",
     "vuex-router-sync",
-    "vue-awesome-swiper",
-    "vuex-persistedstate",
-    "echarts/dist/echarts.simple"
+    "vuex-persistedstate"
   ],
   "project": {
     "projectName": "Carbon Megatron Master",
@@ -28,15 +25,20 @@
   },
   "external": {
     "mapping": {
-      "axios": "window.axios",
       "vue": "window.vue",
       "vuex": "window.vuex",
       "vue-router": "window.vueRouter",
       "vuex-router-sync": "window.vuexRouterSync",
       "vuex-persistedstate": "window.vuexPersistedstate"
     },
-    "JSlinks": ["//webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac"],
-    "CSSlinks": [],
+    "JSlinks": [
+      "https://cdn.bootcss.com/axios/0.17.1/axios.min.js",
+      "https://cdn.bootcss.com/echarts/3.7.1/echarts.simple.min.js",
+      "https://webapi.amap.com/maps?v=1.4.0&key=f582aead07ca97967fea0637d51e98ac",
+      "https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js",
+      "https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.0.4/dist/vue-awesome-swiper.js"
+    ],
+    "CSSlinks": ["https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css"],
     "compressed": {
       "vendorJS": ["resource/js/core.min.js"],
       "vendorCSS": ["resource/css/core.min.css"]

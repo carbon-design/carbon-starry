@@ -25,37 +25,45 @@
 
 ``` bash
 # install dependencies
+
 npm install
 ```
 
 ``` bash
 # serve with hot reload at localhost
+
 npm run dev
 ```
 
 ``` bash
 # build for production with minification
+
 npm run build
 ```
 
 ``` bash
 # build for production and view the bundle analyzer report
+
 npm run build --report
 ```
 
 ``` bash
 # serve with static files at localhost
+
 # if you want to automatically open the browser or generate screenshots
 # adds the [--opn] or [--shot] parameter for the current command line
+
 npm run dist-server --opn --shot
 ```
 
 ``` bash
 # run unit tests
+
 npm run unit
 ```
 
 ``` bash
 # run all tests
+
 npm test
 ```

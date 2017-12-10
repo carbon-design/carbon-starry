@@ -1,11 +1,11 @@
-# carbon-megatron
-[![GitHub watchers](https://img.shields.io/github/watchers/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
-[![issues](https://img.shields.io/github/issues/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
-[![forks](https://img.shields.io/github/forks/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
-[![stars](https://img.shields.io/github/stars/carbon-design/carbon-megatron.svg)](https://github.com/carbon-design/carbon-megatron)
-[![downloads](https://img.shields.io/github/downloads/carbon-design/carbon-megatron/total.svg)](https://github.com/carbon-design/carbon-megatron)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carbon-design/carbon-megatron)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/carbon-design/carbon-megatron)
+# carbon-starry
+[![GitHub watchers](https://img.shields.io/github/watchers/carbon-design/carbon-starry.svg)](https://github.com/carbon-design/carbon-starry)
+[![issues](https://img.shields.io/github/issues/carbon-design/carbon-starry.svg)](https://github.com/carbon-design/carbon-starry)
+[![forks](https://img.shields.io/github/forks/carbon-design/carbon-starry.svg)](https://github.com/carbon-design/carbon-starry)
+[![stars](https://img.shields.io/github/stars/carbon-design/carbon-starry.svg)](https://github.com/carbon-design/carbon-starry)
+[![downloads](https://img.shields.io/github/downloads/carbon-design/carbon-starry/total.svg)](https://github.com/carbon-design/carbon-starry)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carbon-design/carbon-starry)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/carbon-design/carbon-starry)
 
 
 [![GitHub followers](https://img.shields.io/github/followers/OwlAford.svg?style=social&label=Follow)](https://github.com/OwlAford)
@@ -13,9 +13,9 @@
 
 >  🚀 A Web Application Scaffolding
 
-## 📦 Preview
+## 📦 Effect preview
 
-![preview demo](https://raw.githubusercontent.com/carbon-design/carbon-megatron/master/demo.png)
+![preview demo](https://raw.githubusercontent.com/carbon-design/carbon-starry/master/preview-demo.png)
 
 ## 🐠 Install Chromium
  [Click to download chromium](https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/515411/chrome-win32.zip)

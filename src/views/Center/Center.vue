@@ -79,6 +79,8 @@ export default {
     this.snow = new Snow(this.$refs.snowPage, {
       maxSize: 10 * window.dpr,
       minSize: 5 * window.dpr,
+      minSpeed: window.dpr / 2,
+      maxSpeed: window.dpr * 2,
       thread: 4
     })
   },

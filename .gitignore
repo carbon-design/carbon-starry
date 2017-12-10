@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 .ftppass
+.vscode
 node_modules/
 chromium/
 dist/

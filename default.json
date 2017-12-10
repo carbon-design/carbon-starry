@@ -9,10 +9,10 @@
     "vuex-persistedstate"
   ],
   "project": {
-    "projectName": "Carbon Megatron Master",
+    "projectName": "Carbon Starry Master",
     "isMobile": true,
     "entry": "src/main.js",
-    "publicPathName": "megatron",
+    "publicPathName": "starry",
     "subDistRootName": "demonstration",
     "devServerPort": 3000,
     "distServerPort": 3001,

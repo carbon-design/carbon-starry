@@ -1,6 +1,6 @@
 {
   "isAdmin": true,
-  "publicPathName": "megatron",
+  "publicPathName": "starry",
   "subBranchName": "example",
   "subBranchEntry": "main.js",
   "subDistRootName": "example",

@@ -13,7 +13,7 @@
 
 >  🚀 A Web Application Scaffolding
 
-## 📦 Effect preview
+## 📦 Effect Preview
 
 ![preview demo](https://raw.githubusercontent.com/carbon-design/carbon-starry/master/preview-demo.png)
 

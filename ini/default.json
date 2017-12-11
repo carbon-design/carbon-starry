@@ -20,6 +20,10 @@
       "/WechatBank": {
         "target": "http://test.hccb.cc",
         "changeOrigin": true
+      },
+      "/mirror": {
+        "target": "http://amaze.qiniudn.com",
+        "changeOrigin": true
       }
     }
   },

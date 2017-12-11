@@ -2,8 +2,8 @@ const ip = require('ip')
 const path = require('path')
 const env = require('./env')
 const chalk = require('chalk')
-const defaultCfg = require('../default.json')
-const developer = require('../developer.json')
+const defaultCfg = require('../ini/default.json')
+const developer = require('../ini/developer.json')
 
 const resolve = dir => path.join(__dirname, '..', dir)
 

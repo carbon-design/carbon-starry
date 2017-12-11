@@ -1,62 +1,62 @@
 {
   "imgData": [{
-    "origin": "resource/images/origin1.jpg",
-    "thumb": "resource/images/thumb1.jpg",
+    "origin": "/mirror/origin1.jpg",
+    "thumb": "/mirror/thumb1.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin11.jpg",
-    "thumb": "resource/images/thumb11.jpg",
+    "origin": "/mirror/origin11.jpg",
+    "thumb": "/mirror/thumb11.jpg",
     "width": "1665",
     "height": "3000"
   }, {
-    "origin": "resource/images/origin2.jpg",
-    "thumb": "resource/images/thumb2.jpg",
+    "origin": "/mirror/origin2.jpg",
+    "thumb": "/mirror/thumb2.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin3.jpg",
-    "thumb": "resource/images/thumb3.jpg",
+    "origin": "/mirror/origin3.jpg",
+    "thumb": "/mirror/thumb3.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin12.jpg",
-    "thumb": "resource/images/thumb12.jpg",
+    "origin": "/mirror/origin12.jpg",
+    "thumb": "/mirror/thumb12.jpg",
     "width": "1024",
     "height": "768"
   }, {
-    "origin": "resource/images/origin4.jpg",
-    "thumb": "resource/images/thumb4.jpg",
+    "origin": "/mirror/origin4.jpg",
+    "thumb": "/mirror/thumb4.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin5.jpg",
-    "thumb": "resource/images/thumb5.jpg",
+    "origin": "/mirror/origin5.jpg",
+    "thumb": "/mirror/thumb5.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin6.jpg",
-    "thumb": "resource/images/thumb6.jpg",
+    "origin": "/mirror/origin6.jpg",
+    "thumb": "/mirror/thumb6.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin7.jpg",
-    "thumb": "resource/images/thumb7.jpg",
+    "origin": "/mirror/origin7.jpg",
+    "thumb": "/mirror/thumb7.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin8.jpg",
-    "thumb": "resource/images/thumb8.jpg",
+    "origin": "/mirror/origin8.jpg",
+    "thumb": "/mirror/thumb8.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin9.jpg",
-    "thumb": "resource/images/thumb9.jpg",
+    "origin": "/mirror/origin9.jpg",
+    "thumb": "/mirror/thumb9.jpg",
     "width": "1920",
     "height": "1080"
   }, {
-    "origin": "resource/images/origin10.jpg",
-    "thumb": "resource/images/thumb10.jpg",
+    "origin": "/mirror/origin10.jpg",
+    "thumb": "/mirror/thumb10.jpg",
     "width": "1920",
     "height": "1080"
   }]

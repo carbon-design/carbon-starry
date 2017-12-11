@@ -1,4 +1,5 @@
 ﻿import './utils/raf'
+import './utils/focus'
 import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'
@@ -21,7 +22,15 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
-const plugins = [device, toast, indicator, requester, circleProgress, VueAwesomeSwiper, counter]
+const plugins = [
+  device,
+  toast,
+  indicator,
+  requester,
+  circleProgress,
+  VueAwesomeSwiper,
+  counter
+]
 
 plugins.forEach(plugin => {
   Vue.use(plugin)

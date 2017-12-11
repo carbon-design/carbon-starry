@@ -62,7 +62,7 @@ gulp.task('vendorJS', () => {
   }).then(bundle => {
     bundle.write({
       format: 'cjs',
-      file: './common/resource/js/core.min.js',
+      file: './remote/resource/js/core.min.js',
       sourcemap: false
     })
   })
@@ -79,5 +79,5 @@ gulp.task('vendorCSS', () => {
     }))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('./common/resource/css'))
+    .pipe(gulp.dest('./remote/resource/css'))
 })

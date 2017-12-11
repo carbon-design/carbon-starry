@@ -66,7 +66,7 @@ class Snow {
     if (this.destroyed) {
       return
     }
-    this.$wrap.removeChild(this.$root)
+    this.$root && this.$wrap && this.$wrap.removeChild(this.$root)
     this.destroyed = true
   }
 

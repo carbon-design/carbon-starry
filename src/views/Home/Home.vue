@@ -167,7 +167,7 @@ export default {
       this.$router.push(`/main/${path}`)
     },
     async jump () {
-      if (this._count > 10) {
+      if (this._count > 4) {
         return
       }
       this._count++

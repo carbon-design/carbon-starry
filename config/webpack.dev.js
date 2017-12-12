@@ -28,7 +28,6 @@ module.exports = merge(baseWebpackConfig, {
       extJS: settings.extJS || [],
       extCSS: settings.extCSS || [],
       title: settings.projectName,
-      isMobile: settings.isMobile,
       filename: 'index.html',
       favicon: resolve('static/favicon.ico'),
       template: resolve('static/index.ejs'),

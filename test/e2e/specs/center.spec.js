@@ -19,8 +19,4 @@ describe('Center Page', function () {
   it('should get center page level information', () => {
     expect(html).contain('钻石VIP高级用户')
   })
-
-  it('should get center page username information', () => {
-    expect(html).contain('柯银明')
-  })
 })

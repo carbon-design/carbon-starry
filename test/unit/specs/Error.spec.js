@@ -6,6 +6,6 @@ describe('Error.vue', () => {
     const Constructor = Vue.extend(Error)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.app-error .title').textContent)
-      .to.equal('页面获取发生错误！')
+      .to.equal('页面错误，点击页面刷新！')
   })
 })

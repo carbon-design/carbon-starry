@@ -55,7 +55,6 @@ let webpackConfig = merge(baseWebpackConfig, {
       extJS: settings.extJS || [],
       extCSS: settings.extCSS || [],
       title: settings.projectName,
-      isMobile: settings.isMobile,
       filename: isTest ? 'index.html' : settings.index,
       favicon: resolve('static/favicon.ico'),
       template: resolve('static/index.ejs'),

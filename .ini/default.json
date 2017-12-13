@@ -10,7 +10,6 @@
   ],
   "project": {
     "projectName": "Carbon Starry Master",
-    "isMobile": true,
     "entry": "src/main.js",
     "publicPathName": "starry",
     "subDistRootName": "demonstration",

@@ -9,17 +9,10 @@ const env = isProd ? 'build' : 'dev'
 const assetsPublicPath = settings[env].assetsPublicPath
 const assetsSubDir = settings[env].assetsSubDir
 const assetJsPath = assetsSubDir ? `${assetsSubDir}/js` : 'js'
-const isMobile = settings[env].isMobile
 const isCjs = settings[env].cjsVendor
 const root = settings[env].root
 
 const resolve = dir => path.join(__dirname, '..', dir)
-
-let entry = settings[env].entry
-
-if (isMobile) {
-  entry = [resolve('externals/init-device.js'), entry]
-}
 
 let rules = [{
   test: /\.vue$/,
@@ -73,7 +66,7 @@ let plugins = [
 
 let baseConfig = {
   entry: {
-    app: entry
+    app: settings[env].entry
   },
   output: {
     path: settings.build.assetsRoot,

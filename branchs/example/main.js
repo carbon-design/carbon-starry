@@ -1,4 +1,5 @@
-﻿import './utils/requestAnimationFrame'
+﻿import './init-device'
+import './utils/requestAnimationFrame'
 import Vue from 'vue'
 import router from './router'
 import { sync } from 'vuex-router-sync'

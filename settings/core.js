@@ -2,8 +2,8 @@ const ip = require('ip')
 const path = require('path')
 const env = require('./env')
 const chalk = require('chalk')
-const defaultCfg = require('../ini/default.json')
-const developer = require('../ini/developer.json')
+const defaultCfg = require('../.ini/default.json')
+const developer = require('../.ini/developer.json')
 
 const resolve = dir => path.join(__dirname, '..', dir)
 
@@ -72,8 +72,7 @@ module.exports = {
     distServerPort: distServerPort,
     distServerPath: assetsRoot,
     distServerHost: `http://${ip.address()}:${distServerPort}/${assetsPublicPath}/`,
-    gzipExtensions: ['js', 'css'],
-    isMobile: true
+    gzipExtensions: ['js', 'css']
   },
   dev: {
     env: env.dev,
@@ -91,7 +90,6 @@ module.exports = {
     assetsSubDir: '',
     assetsPublicPath: '/',
     proxyTable: defaultCfg.project.proxy,
-    isMobile: true,
     cssSourceMap: true
   }
 }

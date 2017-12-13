@@ -5,6 +5,6 @@
   "subBranchEntry": "main.js",
   "subDistRootName": "example",
   "subDistIndex": "index.html",
-  "devServerPort": 3000,
-  "distServerPort": 3001
+  "devServerPort": 3002,
+  "distServerPort": 3003
 }

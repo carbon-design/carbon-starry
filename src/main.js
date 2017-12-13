@@ -1,4 +1,5 @@
-﻿import './utils/raf'
+﻿import './init-device'
+import './utils/raf'
 import './utils/focus'
 import Vue from 'vue'
 import router from './router'

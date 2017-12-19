@@ -69,6 +69,7 @@ module.exports = {
     productionSourceMap: false,
     lint: false,
     gzip: false,
+    adjustMode: 'mix', // mix, base, false
     distServerPort: distServerPort,
     distServerPath: assetsRoot,
     distServerHost: `http://${ip.address()}:${distServerPort}/${assetsPublicPath}/`,
@@ -85,6 +86,7 @@ module.exports = {
     extCSS: devExtCSS,
     port: devServerPort,
     lint: true,
+    adjustMode: 'mix', // mix, base, false
     autoOpenBrowser: true,
     projectName: projectName,
     assetsSubDir: '',

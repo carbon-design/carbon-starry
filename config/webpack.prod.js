@@ -52,6 +52,7 @@ let webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     new HtmlWebpackPlugin({
+      adjustMode: settings.adjustMode,
       extJS: settings.extJS || [],
       extCSS: settings.extCSS || [],
       title: settings.projectName,

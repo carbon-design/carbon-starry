@@ -25,6 +25,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
+      adjustMode: settings.adjustMode,
       extJS: settings.extJS || [],
       extCSS: settings.extCSS || [],
       title: settings.projectName,

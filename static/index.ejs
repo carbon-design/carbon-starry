@@ -6,6 +6,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="renderer" content="webkit"/>
 <title><%=htmlWebpackPlugin.options.title%></title>
+<%if(htmlWebpackPlugin.options.adjustMode == 'mix'){%>
+  <script>
+    "use strict"; !function (e, t) { var i = window, a = i.document, n = navigator.userAgent, o = n.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i), r = n.match(/U3\/((\d+|\.){5,})/i), d = r && parseInt(r[1].split(".").join(""), 10) >= 80, m = navigator.appVersion.match(/(iphone|ipad|ipod)/gi), c = i.devicePixelRatio || 1; m || o && o[1] > 534 || d || (c = 1); var p = 1 / c, s = a.querySelector('meta[name="viewport"]'); s || ((s = a.createElement("meta")).setAttribute("name", "viewport"), a.head.appendChild(s)), s.setAttribute("content", "width=device-width,user-scalable=no,initial-scale=" + p + ",maximum-scale=" + p + ",minimum-scale=" + p), i.dpr = c, i.rootFontSize = 50 * c * 1, a.documentElement.style.fontSize = i.rootFontSize + "px" }();
+  </script>
+<%}%>
+<%if(htmlWebpackPlugin.options.adjustMode == 'base'){%>
+  <script>
+    var setClient = function () { var a = document.documentElement, b = a.clientWidth; a.style.fontSize = 100 * b / 750 + "px" }; setClient(), window.addEventListener("resize", setClient, !1);
+  </script>
+<%}%>
 <% for(var i = 0; i < htmlWebpackPlugin.options.extCSS.length; i++) {%>
   <link rel=stylesheet type=text/css href='<%= htmlWebpackPlugin.options.extCSS[i] %>'>
 <%}%>

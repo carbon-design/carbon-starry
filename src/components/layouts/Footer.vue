@@ -21,7 +21,7 @@
 import throttle from 'lodash/throttle'
 
 export default {
-  name: 'footer',
+  name: 'app-footer',
   data () {
     return {
       y: 0

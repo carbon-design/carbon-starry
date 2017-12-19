@@ -1,4 +1,4 @@
-(function (baseFontSize, fontscale) {
+((baseFontSize, fontscale) => {
   const _baseFontSize = baseFontSize || 100
   const _fontscale = fontscale || 1
   const win = window

@@ -13,6 +13,40 @@ const rollupUglify = require('rollup-plugin-uglify')
 const resolve = require('rollup-plugin-node-resolve')
 const packageConfig = require('./package.json')
 
+const rollupVendor = (input, output) => {
+  rollup.rollup({
+    input: input,
+    plugins: [
+      resolve({
+        jsnext: true,
+        main: true,
+        browser: true
+      }),
+      commonjs(),
+      rollupBabel({
+        exclude: 'node_modules/**',
+        plugins: [
+          'transform-runtime',
+          'external-helpers'
+        ],
+        runtimeHelpers: true,
+        externalHelpers: true
+      }),
+      replace({
+        exclude: 'node_modules/**',
+        ENVIRONMENT: JSON.stringify('production')
+      }),
+      rollupUglify()
+    ]
+  }).then(bundle => {
+    bundle.write({
+      format: 'cjs',
+      file: output,
+      sourcemap: false
+    })
+  })
+}
+
 gulp.task('dist-server', () => {
   require('./bin/dist-server.js')
 })
@@ -38,46 +72,26 @@ gulp.task('ncu', () => {
 gulp.task('vendor', ['vendorJS', 'vendorCSS'])
 
 gulp.task('vendorJS', () => {
-  rollup.rollup({
-    input: './externals/core.js',
-    plugins: [
-      resolve({
-        jsnext: true,
-        main: true,
-        browser: true
-      }),
-      commonjs(),
-      rollupBabel({
-        exclude: 'node_modules/**',
-        plugins: ['transform-runtime', 'external-helpers'],
-        runtimeHelpers: true,
-        externalHelpers: true
-      }),
-      replace({
-        exclude: 'node_modules/**',
-        ENVIRONMENT: JSON.stringify('production')
-      }),
-      rollupUglify()
-    ]
-  }).then(bundle => {
-    bundle.write({
-      format: 'cjs',
-      file: './remote/resource/js/core.min.js',
-      sourcemap: false
-    })
-  })
+  rollupVendor('./externals/core.js', './remote/resource/js/core.min.js')
 })
 
 gulp.task('vendorCSS', () => {
   gulp.src(['./externals/*.scss'])
-    .pipe(sass({
-      outputStyle: 'expanded'
-    }).on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: packageConfig.browserslist,
-      cascade: false
-    }))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(
+      sass({
+        outputStyle: 'expanded'
+      }).on('error', sass.logError)
+    ).pipe(
+      autoprefixer({
+        browsers: packageConfig.browserslist,
+        cascade: false
+      })
+    )
+    .pipe(
+      rename({
+        suffix: '.min'
+      })
+    )
     .pipe(minifycss())
     .pipe(gulp.dest('./remote/resource/css'))
 })

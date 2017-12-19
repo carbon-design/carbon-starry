@@ -8,7 +8,7 @@
 import AppFooter from '^/layouts/Footer'
 
 export default {
-  name: 'main',
+  name: 'app-main',
   components: {
     AppFooter
   }

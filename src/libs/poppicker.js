@@ -10,7 +10,7 @@ class PopPicker {
 
     this.options = {
       data: [],
-      defaultValues: [],
+      defaultValues: null,
       onSelect () {},
       onshow () {},
       onConfirm () {},
@@ -25,34 +25,66 @@ class PopPicker {
 
     if (Object.prototype.toString.call(this.options.data[0]) === '[object Object]') {
       this.options.data = [this.options.data]
+      this.multiMode = false
+    } else {
+      this.multiMode = true
     }
 
-    if (this.options.defaultValues.length === 0) {
-      let defaultValues = []
-      const data = this.options.data
-      data.forEach((e, i) => {
-        if (i === 0) {
-          defaultValues.push(e[0])
-        } else {
-          let group = this._getChildsByParent(defaultValues[i - 1].value, e)
-          defaultValues.push(group[0])
-        }
-      })
+    const data = this.options.data
+
+    if (!this.options.defaultValues) {
+      let defaultValues
+      if (this.multiMode) {
+        defaultValues = []
+        data.forEach((e, i) => {
+          if (i === 0) {
+            defaultValues.push(e[0])
+          } else {
+            let group = this._getChildsByParent(defaultValues[i - 1].value, e)
+            defaultValues.push(group[0])
+          }
+        })
+      } else {
+        defaultValues = data[0][0].value
+      }
       this._values = defaultValues
     } else {
-      this._values = this.options.defaultValues
+      let defaultValues = this.options.defaultValues
+      if (this.multiMode) {
+        this._values = []
+        for (let i = 0; i < data.length; i++) {
+          let defVal = defaultValues[i]
+          if (defVal) {
+            this._values[i] = this._getChildsByValue(defVal, data[i])[0]
+          } else {
+            this._values[i] = this._getChildsByParent(this._values[i - 1].value, data[i])[0]
+          }
+        }
+      } else {
+        this._values = defaultValues
+      }
     }
-    this._scrollSize = this.options.data.length
+    this._scrollSize = data.length
     this._root = document.body
     this._init()
   }
 
   _getChildsByParent (parent, tar) {
-    return tar.filter(e => e.parent === parent)
+    let result = tar.filter(e => e.parent === parent)
+    let empty = [{
+      name: '',
+      value: null
+    }]
+    return result.length !== 0 ? result : empty
   }
 
   _getChildsByValue (value, tar) {
-    return tar.filter(e => e.value === value)
+    let result = tar.filter(e => e.value === value)
+    let empty = [{
+      name: '',
+      value: null
+    }]
+    return result.length !== 0 ? result : empty
   }
 
   _createEl (classname, html) {
@@ -102,15 +134,19 @@ class PopPicker {
     const data = this.options.data
     const values = this._values
     this._selectGroup = []
-    values.forEach((e, i) => {
-      if (i === 0) {
-        this._selectGroup.push(data[i])
-      } else {
-        let parent = values[i - 1].value
-        let currentGroup = this._getChildsByParent(parent, data[i])
-        this._selectGroup.push(currentGroup)
-      }
-    })
+    if (this.multiMode) {
+      values.forEach((e, i) => {
+        if (i === 0) {
+          this._selectGroup.push(data[i])
+        } else {
+          let parent = values[i - 1].value
+          let currentGroup = this._getChildsByParent(parent, data[i])
+          this._selectGroup.push(currentGroup)
+        }
+      })
+    } else {
+      this._selectGroup.push(data[0])
+    }
     this._initScroller(0)
   }
 
@@ -118,16 +154,22 @@ class PopPicker {
     const _selectGroup = this._selectGroup
     _selectGroup.forEach((e, i) => {
       if (i >= startIndex) {
+        let defaultValue
+        this.multiMode
+          ? defaultValue = this._values[i].value
+          : defaultValue = this._values
+
         this._scrollers[i].init({
           data: e,
+          defaultValue: defaultValue,
           onSelect: val => {
-            if (_selectGroup.length > 1) {
+            if (this.multiMode) {
               let vals = this._getChildsByValue(val, e)[0]
               this._getFullValues(vals, i)
               this._initScroller(i + 1)
               this.options.onSelect(this._arrayFilter(this._values))
             } else {
-              this.options.onSelect(val)
+              this.options.onSelect(this.options.data[0][val])
               this._values = val
             }
           }
@@ -168,7 +210,7 @@ class PopPicker {
     }, false)
 
     this._okBtn.addEventListener('click', () => {
-      if (Array.isArray(this._values)) {
+      if (this.multiMode) {
         this.options.onConfirm(this._arrayFilter(this._values))
       } else {
         this.options.onConfirm(this.options.data[0][this._values])
@@ -197,7 +239,11 @@ class PopPicker {
   show () {
     this._container.classList.add('show')
     this._mask.classList.add('show')
-    this.options.onShow(this._arrayFilter(this._values))
+    if (this.multiMode) {
+      this.options.onShow(this._arrayFilter(this._values))
+    } else {
+      this.options.onShow(this.options.data[0][this._values])
+    }
   }
 
   hide () {

@@ -250,7 +250,7 @@ class Scroller {
   select (value, animate) {
     let children = this._content.children
     for (let i = 0, len = children.length; i < len; i++) {
-      if (children[i].dataset.value === value) {
+      if (children[i].dataset.value === (value += '')) {
         this.selectByIndex(i, animate)
         return
       }

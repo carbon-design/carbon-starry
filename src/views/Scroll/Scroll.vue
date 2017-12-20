@@ -3,6 +3,7 @@
     .scroller(ref="scroller")
     .btn(@click="selectRow") 选中其中一项
     .btn(@click="resetScroll") 重设选项列表
+    .btn(@click="singleSelect") 单项选择
     .btn(@click="multiSelect") 级联选择
     .btn(@click="timeSelect") 日期时间选择
 </template>
@@ -70,6 +71,7 @@ export default {
     const scroller = this.scroller = new Scroller($container)
     scroller.init({
       data: exampleData,
+      defaultValue: 12,
       onSelect: val => {
         this.$toast(`你选择了第${val * 1 + 1}行诗句`, 'bottom', 800)
       }
@@ -77,7 +79,8 @@ export default {
     const res = await getAddress()
     this.addressPoppicker = new Poppicker({
       data: res.data,
-      // data: exampleData,
+      // defaultValues: ['360000', '360100', '360121'],
+      defaultValues: ['620000', '620200'],
       onShow (val) {
         console.log(val)
       },
@@ -85,8 +88,21 @@ export default {
         console.log(vals)
       },
       onConfirm: vals => {
-        // this.$toast(vals.name, 'bottom')
         this.$toast(vals.map(e => e.name).join('-'), 'bottom')
+      }
+    })
+
+    this.singlePoppicker = new Poppicker({
+      data: exampleData,
+      defaultValues: 3,
+      onShow (val) {
+        console.log(val)
+      },
+      onSelect (vals) {
+        console.log(vals)
+      },
+      onConfirm: vals => {
+        this.$toast(vals.name, 'bottom')
       }
     })
 
@@ -106,7 +122,7 @@ export default {
   },
   methods: {
     selectRow () {
-      this.scroller.select('5')
+      this.scroller.select(5)
     },
     resetScroll () {
       this.scroller.init({
@@ -138,7 +154,9 @@ export default {
     multiSelect () {
       this.addressPoppicker.show()
     },
-
+    singleSelect () {
+      this.singlePoppicker.show()
+    },
     timeSelect () {
       this.timePicker.show()
     }

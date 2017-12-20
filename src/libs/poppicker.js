@@ -23,6 +23,10 @@ class PopPicker {
       }
     }
 
+    if (Object.prototype.toString.call(this.options.data[0]) === '[object Object]') {
+      this.options.data = [this.options.data]
+    }
+
     if (this.options.defaultValues.length === 0) {
       let defaultValues = []
       const data = this.options.data
@@ -105,21 +109,26 @@ class PopPicker {
         let parent = values[i - 1].value
         let currentGroup = this._getChildsByParent(parent, data[i])
         this._selectGroup.push(currentGroup)
-        this._initScroller(0)
       }
     })
+    this._initScroller(0)
   }
 
   _initScroller (startIndex) {
-    this._selectGroup.forEach((e, i) => {
+    const _selectGroup = this._selectGroup
+    _selectGroup.forEach((e, i) => {
       if (i >= startIndex) {
         this._scrollers[i].init({
           data: e,
           onSelect: val => {
-            let vals = this._getChildsByValue(val, e)[0]
-            this._getFullValues(vals, i)
-            this._initScroller(i + 1)
-            this.options.onSelect(this._arrayFilter(this._values))
+            if (_selectGroup.length > 1) {
+              let vals = this._getChildsByValue(val, e)[0]
+              this._getFullValues(vals, i)
+              this._initScroller(i + 1)
+              this.options.onSelect(this._arrayFilter(this._values))
+            } else {
+              this.options.onSelect(val)
+            }
           }
         })
       }
@@ -148,6 +157,11 @@ class PopPicker {
 
   _bindEventHandle () {
     this._cancelBtn.addEventListener('click', () => {
+      this.options.onCancel()
+      this.hide()
+    }, false)
+
+    this._mask.addEventListener('click', () => {
       this.options.onCancel()
       this.hide()
     }, false)

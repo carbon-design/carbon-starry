@@ -241,6 +241,11 @@ class DatetimePicker {
       this.hide()
     }, false)
 
+    this._mask.addEventListener('click', e => {
+      e.preventDefault()
+      this.hide()
+    }, false)
+
     this._confirmBtn.addEventListener('click', e => {
       e.preventDefault()
       this.confirm()

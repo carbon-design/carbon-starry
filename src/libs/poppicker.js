@@ -128,6 +128,7 @@ class PopPicker {
               this.options.onSelect(this._arrayFilter(this._values))
             } else {
               this.options.onSelect(val)
+              this._values = val
             }
           }
         })
@@ -167,7 +168,11 @@ class PopPicker {
     }, false)
 
     this._okBtn.addEventListener('click', () => {
-      this.options.onConfirm(this._arrayFilter(this._values))
+      if (Array.isArray(this._values)) {
+        this.options.onConfirm(this._arrayFilter(this._values))
+      } else {
+        this.options.onConfirm(this.options.data[0][this._values])
+      }
       this.hide()
     }, false)
   }

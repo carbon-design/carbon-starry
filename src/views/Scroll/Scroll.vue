@@ -77,6 +77,7 @@ export default {
     const res = await getAddress()
     this.addressPoppicker = new Poppicker({
       data: res.data,
+      // data: exampleData,
       onShow (val) {
         console.log(val)
       },
@@ -84,6 +85,7 @@ export default {
         console.log(vals)
       },
       onConfirm: vals => {
+        // this.$toast(vals.name, 'bottom')
         this.$toast(vals.map(e => e.name).join('-'), 'bottom')
       }
     })

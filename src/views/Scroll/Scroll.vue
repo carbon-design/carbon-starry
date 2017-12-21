@@ -23,55 +23,55 @@ export default {
   async mounted () {
     const exampleData = [{
       name: '金樽清酒斗十千，玉盘珍羞直万钱',
-      value: 0
+      value: '001'
     }, {
       name: '停杯投箸不能食，拔剑四顾心茫然',
-      value: 1
+      value: '002'
     }, {
       name: '欲渡黄河冰塞川，将登太行雪满山',
-      value: 2
+      value: '003'
     }, {
       name: '闲来垂钓碧溪上，忽复乘舟梦日边',
-      value: 3
+      value: '004'
     }, {
       name: '行路难！行路难！多歧路，今安在',
-      value: 4
+      value: '005'
     }, {
       name: '长风破浪会有时，直挂云帆济沧海',
-      value: 5
+      value: '006'
     }, {
       name: '长风破浪会有时，直挂云帆济沧海',
-      value: 6
+      value: '007'
     }, {
       name: '杨花落尽子规啼，闻道龙标过五溪',
-      value: 7
+      value: '008'
     }, {
       name: '我寄愁心与明月，随风直到夜郎西',
-      value: 8
+      value: '009'
     }, {
       name: '谁家玉笛暗飞声，散入春风满洛城',
-      value: 9
+      value: '010'
     }, {
       name: '此夜曲中闻折柳，何人不起故园情',
-      value: 10
+      value: '011'
     }, {
       name: '懒摇白羽扇，裸袒青林中',
-      value: 11
+      value: '012'
     }, {
       name: '脱巾挂石壁，露顶洒松风',
-      value: 12
+      value: '013'
     }, {
       name: '兰陵美酒郁金香，玉碗盛来琥珀光',
-      value: 13
+      value: '014'
     }, {
       name: '但使主人能醉客，不知何处是他乡',
-      value: 14
+      value: '015'
     }]
     const $container = this.$refs.scroller
     const scroller = this.scroller = new Scroller($container)
     scroller.init({
       data: exampleData,
-      defaultValue: 12,
+      defaultValue: '012',
       onSelect: val => {
         this.$toast(`你选择了第${val * 1 + 1}行诗句`, 'bottom', 800)
       }
@@ -94,7 +94,7 @@ export default {
 
     this.singlePoppicker = new Poppicker({
       data: exampleData,
-      defaultValues: 3,
+      defaultValues: '003',
       onShow (val) {
         console.log(val)
       },
@@ -128,22 +128,22 @@ export default {
       this.scroller.init({
         data: [{
           name: '脱了裤子打老虎——又不要脸又不要命',
-          value: 0
+          value: 100
         }, {
           name: '女生寝室长水——泡妞',
-          value: 1
+          value: 101
         }, {
           name: '做砖的坯子、插刀的鞘子——框框套套',
-          value: 2
+          value: 102
         }, {
           name: '煎饼果子翻车——乱套了',
-          value: 3
+          value: 103
         }, {
           name: '挑水的看大河——都是钱',
-          value: 4
+          value: 104
         }, {
           name: '傻小子睡凉炕——全凭火力壮',
-          value: 5
+          value: 105
         }],
         onSelect: val => {
           this.$toast(`你选择了第${val * 1 + 1}行歇后语`, 'bottom', 800)

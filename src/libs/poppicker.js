@@ -24,44 +24,36 @@ class PopPicker {
     }
 
     if (Object.prototype.toString.call(this.options.data[0]) === '[object Object]') {
-      this.options.data = [this.options.data]
       this.multiMode = false
     } else {
       this.multiMode = true
     }
 
+    this.options.data = this._object2array(this.options.data)
+
     const data = this.options.data
 
     if (!this.options.defaultValues) {
-      let defaultValues
-      if (this.multiMode) {
-        defaultValues = []
-        data.forEach((e, i) => {
-          if (i === 0) {
-            defaultValues.push(e[0])
-          } else {
-            let group = this._getChildsByParent(defaultValues[i - 1].value, e)
-            defaultValues.push(group[0])
-          }
-        })
-      } else {
-        defaultValues = data[0][0].value
-      }
+      let defaultValues = []
+      data.forEach((e, i) => {
+        if (i === 0) {
+          defaultValues.push(e[0])
+        } else {
+          let group = this._getChildsByParent(defaultValues[i - 1].value, e)
+          defaultValues.push(group[0])
+        }
+      })
       this._values = defaultValues
     } else {
-      let defaultValues = this.options.defaultValues
-      if (this.multiMode) {
-        this._values = []
-        for (let i = 0; i < data.length; i++) {
-          let defVal = defaultValues[i]
-          if (defVal) {
-            this._values[i] = this._getChildsByValue(defVal, data[i])[0]
-          } else {
-            this._values[i] = this._getChildsByParent(this._values[i - 1].value, data[i])[0]
-          }
+      let defaultValues = this._object2array(this.options.defaultValues)
+      this._values = []
+      for (let i = 0; i < data.length; i++) {
+        let defVal = defaultValues[i]
+        if (defVal) {
+          this._values[i] = this._getChildsByValue(defVal, data[i])[0]
+        } else {
+          this._values[i] = this._getChildsByParent(this._values[i - 1].value, data[i])[0]
         }
-      } else {
-        this._values = defaultValues
       }
     }
     this._scrollSize = data.length
@@ -69,8 +61,12 @@ class PopPicker {
     this._init()
   }
 
+  _object2array (obj) {
+    return this.multiMode ? obj : [obj]
+  }
+
   _getChildsByParent (parent, tar) {
-    let result = tar.filter(e => e.parent === parent)
+    let result = tar.filter(e => String(e.parent) === String(parent))
     let empty = [{
       name: '',
       value: null
@@ -79,7 +75,7 @@ class PopPicker {
   }
 
   _getChildsByValue (value, tar) {
-    let result = tar.filter(e => e.value === value)
+    let result = tar.filter(e => String(e.value) === String(value))
     let empty = [{
       name: '',
       value: null
@@ -154,23 +150,18 @@ class PopPicker {
     const _selectGroup = this._selectGroup
     _selectGroup.forEach((e, i) => {
       if (i >= startIndex) {
-        let defaultValue
-        this.multiMode
-          ? defaultValue = this._values[i].value
-          : defaultValue = this._values
-
         this._scrollers[i].init({
           data: e,
-          defaultValue: defaultValue,
+          defaultValue: this._values[i].value,
           onSelect: val => {
+            let vals = this._getChildsByValue(val, e)[0]
             if (this.multiMode) {
-              let vals = this._getChildsByValue(val, e)[0]
               this._getFullValues(vals, i)
               this._initScroller(i + 1)
               this.options.onSelect(this._arrayFilter(this._values))
             } else {
-              this.options.onSelect(this.options.data[0][val])
-              this._values = val
+              this.options.onSelect(vals)
+              this._values[i] = vals
             }
           }
         })
@@ -213,7 +204,7 @@ class PopPicker {
       if (this.multiMode) {
         this.options.onConfirm(this._arrayFilter(this._values))
       } else {
-        this.options.onConfirm(this.options.data[0][this._values])
+        this.options.onConfirm(this._values[0])
       }
       this.hide()
     }, false)
@@ -242,7 +233,7 @@ class PopPicker {
     if (this.multiMode) {
       this.options.onShow(this._arrayFilter(this._values))
     } else {
-      this.options.onShow(this.options.data[0][this._values])
+      this.options.onShow(this._values[0])
     }
   }
 
